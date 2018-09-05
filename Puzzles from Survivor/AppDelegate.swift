@@ -46,5 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var EpisodeSelected = -1
     var PuzzleSelected = -1
     var puzzleArray: [Constants.Puzzle] = []    //this is a sub array of the full puzzle array that only holds the puzzles for the selected episode of a season
+    var puzzleArraySimple: [Constants.PuzzleSimple] = []    //this is a full array of the simplified puzzles
+    var WatchVideo = "" //If this string is empty, use the array. If it has a Code, watch this video
+    var isLearn = false
+    var isPractice = false
 }
 

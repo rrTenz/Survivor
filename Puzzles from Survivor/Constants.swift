@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Constants {
     
@@ -315,6 +316,22 @@ class Constants {
     
     
     static let PuzzleArray = [Puzzle_0106, Puzzle_0109, Puzzle_0204, Puzzle_0208, Puzzle_0214A, Puzzle_0214B, Puzzle_0304, Puzzle_0305, Puzzle_0309, Puzzle_0313A, Puzzle_0313B, Puzzle_0404, Puzzle_0405, Puzzle_0412, Puzzle_0501, Puzzle_0502, Puzzle_0503, Puzzle_0504, Puzzle_0506, Puzzle_0509, Puzzle_0509B, Puzzle_0512, Puzzle_0513, Puzzle_0513B, Puzzle_3601, Puzzle_3601B, Puzzle_3602, Puzzle_3604, Puzzle_3605, Puzzle_3609, Puzzle_3612, Puzzle_3613A, Puzzle_3613B, Puzzle_3613C]
+    
+    struct PuzzleSimple {
+        let Name: String
+        let Description: String
+        let VideoCode: String
+        let VideoCode_Learn: String
+        let Image: UIImage
+    }
+    
+    static let SlidePuzzle = PuzzleSimple(Name: "Slide Puzzle", Description: "Standard slide puzzle", VideoCode: "lIiaj4PKI-E", VideoCode_Learn: "NXRIrP1k4dE", Image: #imageLiteral(resourceName: "SlidePuzzle.jpg"))
+    static let FivePiece = PuzzleSimple(Name: "Five Piece Puzzle", Description: "Spencer's puzzle", VideoCode: "1WqtQwGSnLE", VideoCode_Learn: "aCWADuym0JI", Image: #imageLiteral(resourceName: "SpencerPuzzle.jpg"))
+    static let SeaCrates = PuzzleSimple(Name: "Sea Crates", Description: "A pair of castaways from each tribe would swim out into the ocean to retrieve one of four crates with a different color on each face of a crate. Between the beach and crates would be a 'battle zone' marked off by four flags. Within this zone, an opposing tribe member would try to prevent the two castaways from crossing the zone and reaching the crate. Once the two castaways crossed the zone, they would bring a crate back to the beach, and a second pair of castaways would go out to retrieve another crate. Once all four crates were retrieved, the crates would need to be stacked so that one color didn't show more than once on each column. The first tribe to complete the puzzle would win.", VideoCode: "tLVjnRXBItg", VideoCode_Learn: "sI7lX3M7OZo", Image: #imageLiteral(resourceName: "SeaCrates.png"))
+    static let TowerOfHanoi = PuzzleSimple(Name: "Tower of Hanoi", Description: "The Tower of Hanoi  is a mathematical game or puzzle. It consists of three rods and a number of disks of different sizes, which can slide onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the smallest at the top, thus making a conical shape. The objective of the puzzle is to move the entire stack to another rod, obeying the following simple rules: (1) Only one disk can be moved at a time. (2) Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod. (3) No disk may be placed on top of a smaller disk.", VideoCode: "xwMZLmE6Tlc", VideoCode_Learn: "6YmSMJnHraU", Image: #imageLiteral(resourceName: "Hanoi.png"))
+    static let TwentyOneFlags = PuzzleSimple(Name: "21 Flags", Description: "Your tribe takes turns against another tribe removing flags. You want to be the tribe that removes the last flag. The twist is that on each turn your tribe must remove 1, 2, or 3 flags.", VideoCode: "kx8vdnARxbw", VideoCode_Learn: "K_MckZc8VvQ", Image: #imageLiteral(resourceName: "Flags_21.png"))
+    
+    static let PuzzleArraySimple = [SlidePuzzle, FivePiece, SeaCrates, TowerOfHanoi, TwentyOneFlags]
     
     static public func getPuzzleCount(season: Int) -> Int {
         var count = 0

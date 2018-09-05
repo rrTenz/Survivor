@@ -18,8 +18,19 @@ class ViewController_Puzzle: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getVideo(videoCode: appDelegate.puzzleArray[appDelegate.PuzzleSelected].VideoCode)
-        labelTitle.text = appDelegate.puzzleArray[appDelegate.PuzzleSelected].Name
+        var code = appDelegate.WatchVideo
+        if code == "" {
+            code = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].VideoCode
+        }
+        getVideo(videoCode: code)
+        
+        if appDelegate.isLearn {
+            labelTitle.text = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name + " - Learn"
+        }else if appDelegate.isPractice {
+            labelTitle.text = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name + " - Practice"
+        }else {
+            labelTitle.text = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name
+        }
     }
 
     override func didReceiveMemoryWarning() {
