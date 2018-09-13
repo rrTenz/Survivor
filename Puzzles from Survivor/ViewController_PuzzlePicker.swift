@@ -80,7 +80,12 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         switch appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name {
         case "Slide Puzzle":
-            UIApplication.shared.openURL(NSURL(string: "https://www.proprofs.com/games/puzzle/sliding/survivor-cagayan-sliding-puzzle/")! as URL)
+            //UIApplication.shared.openURL(NSURL(string: "https://www.proprofs.com/games/puzzle/sliding/survivor-cagayan-sliding-puzzle/")! as URL)
+            let controller = storyboard.instantiateViewController(withIdentifier: "VC_SlidePuzzle_Practice")
+            self.present(controller, animated: true, completion: nil)
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_SlidePuzzle_Practice") as? VC_SlidePuzzle_Practice {
+                present(vc, animated: true, completion: nil)
+            }
         case "Five Piece Puzzle":
             let controller = storyboard.instantiateViewController(withIdentifier: "VC_FivePiece_Practice")
             self.present(controller, animated: true, completion: nil)

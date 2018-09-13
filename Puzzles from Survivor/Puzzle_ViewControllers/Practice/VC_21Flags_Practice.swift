@@ -92,7 +92,7 @@ class VC_21Flags_Practice: UIViewController {
     @IBAction func Button_Remove1(_ sender: Any) {
         var flagsTaken = 0
         flagsTaken += RemoveFlag()
-        Label_Status1.text = "P\(whosTurn) took \(flagsTaken) flag(s). There are \(flagsRemaining) flag(s) remaining."
+        Label_Status1.text = "\(flagsTaken) taken, \(flagsRemaining) remaining"
         SwitchPlayer(flagsTaken: 1)
     }
     
@@ -101,7 +101,7 @@ class VC_21Flags_Practice: UIViewController {
         var flagsTaken = 0
         flagsTaken += RemoveFlag()
         flagsTaken += RemoveFlag()
-        Label_Status1.text = "P\(whosTurn) took \(flagsTaken) flag(s). There are \(flagsRemaining) flag(s) remaining."
+        Label_Status1.text = "\(flagsTaken) taken, \(flagsRemaining) remaining"
         SwitchPlayer(flagsTaken: 2)
     }
     
@@ -111,7 +111,7 @@ class VC_21Flags_Practice: UIViewController {
         flagsTaken += RemoveFlag()
         flagsTaken += RemoveFlag()
         flagsTaken += RemoveFlag()
-        Label_Status1.text = "P\(whosTurn) took \(flagsTaken) flag(s). There are \(flagsRemaining) flag(s) remaining."
+        Label_Status1.text = "\(flagsTaken) taken, \(flagsRemaining) remaining"
         SwitchPlayer(flagsTaken: 3)
     }
     
@@ -166,16 +166,7 @@ class VC_21Flags_Practice: UIViewController {
             return
         }
         
-        var playerString = ""
-        
-        if whosTurn == 0 {
-            playerString = "CPU"
-        }else if whosTurn == 1 {
-            playerString = "P1"
-        }else {
-            playerString = "P2"
-        }
-        Label_Status1.text = "\(playerString) took \(flagsTaken) flag(s). There are \(flagsRemaining) flag(s) remaining."
+        Label_Status1.text = "\(flagsTaken) taken, \(flagsRemaining) remaining"
         
         if whosTurn == 0 || whosTurn == 2 {
             whosTurn = 1    //always switch to Player1 after Computer or Player2
@@ -214,9 +205,9 @@ class VC_21Flags_Practice: UIViewController {
         }        
         
         for _ in 0..<removeCount {
-            RemoveFlag()
+            _ = RemoveFlag()
         }
-        Label_Status1.text = "CPU took \(removeCount) flag(s). There are \(flagsRemaining) flag(s) remaining."
+        Label_Status1.text = "\(removeCount) taken, \(flagsRemaining) remaining"
         SwitchPlayer(flagsTaken: removeCount)
         
         Button_Remove1_outlet.isHidden = false
