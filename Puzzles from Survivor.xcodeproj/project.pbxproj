@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C708DB8520BF439C0021F6BF /* ViewController_PuzzlePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C708DB8420BF439C0021F6BF /* ViewController_PuzzlePicker.swift */; };
+		C71D4A62214B1C81009E81AB /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = C71D4A61214B1C81009E81AB /* blank.png */; };
+		C71D4A64214B1D3F009E81AB /* VC_Hanoi_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D4A63214B1D3F009E81AB /* VC_Hanoi_Practice.swift */; };
 		C7603F0A2139B3A1008731C5 /* SeaCrates.png in Resources */ = {isa = PBXBuildFile; fileRef = C7603F092139B3A1008731C5 /* SeaCrates.png */; };
 		C7603F0C2139B603008731C5 /* SlidePuzzle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7603F0B2139B603008731C5 /* SlidePuzzle.jpg */; };
 		C7603F0E2139B60E008731C5 /* SpencerPuzzle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7603F0D2139B60E008731C5 /* SpencerPuzzle.jpg */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		C708DB8420BF439C0021F6BF /* ViewController_PuzzlePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_PuzzlePicker.swift; sourceTree = "<group>"; };
+		C71D4A61214B1C81009E81AB /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank.png; sourceTree = "<group>"; };
+		C71D4A63214B1D3F009E81AB /* VC_Hanoi_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_Hanoi_Practice.swift; sourceTree = "<group>"; };
 		C7603F092139B3A1008731C5 /* SeaCrates.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SeaCrates.png; sourceTree = "<group>"; };
 		C7603F0B2139B603008731C5 /* SlidePuzzle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SlidePuzzle.jpg; sourceTree = "<group>"; };
 		C7603F0D2139B60E008731C5 /* SpencerPuzzle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SpencerPuzzle.jpg; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 				C7603F0D2139B60E008731C5 /* SpencerPuzzle.jpg */,
 				C7603F21213B82DF008731C5 /* Flags_21.png */,
 				C761D780213F4BF5002310CB /* Icon_1024.png */,
+				C71D4A61214B1C81009E81AB /* blank.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 				C7603F152139C0DD008731C5 /* VC_SlidePuzzle_Practice.swift */,
 				C7603F192139C856008731C5 /* VC_FivePiece_Practice.swift */,
 				C7603F1D2139C883008731C5 /* VC_SeaCrates_Practice.swift */,
+				C71D4A63214B1D3F009E81AB /* VC_Hanoi_Practice.swift */,
 				C7603F23213B8CF5008731C5 /* VC_21Flags_Practice.swift */,
 			);
 			path = Practice;
@@ -214,6 +220,7 @@
 				C7603F0C2139B603008731C5 /* SlidePuzzle.jpg in Resources */,
 				C761D781213F4BF5002310CB /* Icon_1024.png in Resources */,
 				C78E7E5620B4D9BC004119CC /* Assets.xcassets in Resources */,
+				C71D4A62214B1C81009E81AB /* blank.png in Resources */,
 				C78E7E5420B4D9BA004119CC /* Main.storyboard in Resources */,
 				C7603F20213B65E6008731C5 /* Hanoi.png in Resources */,
 				C7603F0E2139B60E008731C5 /* SpencerPuzzle.jpg in Resources */,
@@ -231,6 +238,7 @@
 			files = (
 				C78E7E5120B4D9BA004119CC /* ViewController.swift in Sources */,
 				C7603F24213B8CF5008731C5 /* VC_21Flags_Practice.swift in Sources */,
+				C71D4A64214B1D3F009E81AB /* VC_Hanoi_Practice.swift in Sources */,
 				C78E7E4F20B4D9BA004119CC /* AppDelegate.swift in Sources */,
 				C78E7E6320B4E92B004119CC /* ViewController_Episode.swift in Sources */,
 				C7603F1C2139C872008731C5 /* VC_SeaCrates_Learn.swift in Sources */,

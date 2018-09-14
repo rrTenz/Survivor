@@ -99,7 +99,11 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
                 present(vc, animated: true, completion: nil)
             }
         case "Tower of Hanoi":
-            UIApplication.shared.openURL(NSURL(string: "https://www.mathsisfun.com/games/towerofhanoi.html")! as URL)
+            let controller = storyboard.instantiateViewController(withIdentifier: "VC_Hanoi_Practice")
+            self.present(controller, animated: true, completion: nil)
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_Hanoi_Practice") as? VC_Hanoi_Practice {
+                present(vc, animated: true, completion: nil)
+            }
         case "21 Flags":
             let controller = storyboard.instantiateViewController(withIdentifier: "VC_21Flags_Practice")
             self.present(controller, animated: true, completion: nil)
