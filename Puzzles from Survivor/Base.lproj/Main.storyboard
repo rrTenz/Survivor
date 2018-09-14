@@ -1090,6 +1090,7 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                             <constraint firstItem="ee3-mO-5AG" firstAttribute="height" secondItem="hUB-6T-lTP" secondAttribute="height" multiplier="0.03" id="1VT-pt-z5H"/>
                             <constraint firstItem="eJX-dJ-FjV" firstAttribute="centerX" secondItem="IJw-xb-Sab" secondAttribute="centerX" id="1Vk-e1-Yzn"/>
                             <constraint firstItem="vLU-t1-C8r" firstAttribute="centerY" secondItem="IJw-xb-Sab" secondAttribute="centerY" multiplier="1.5" id="1hJ-q9-ljP"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dVl-ig-qJQ" secondAttribute="trailing" constant="20" symbolic="YES" id="1wD-sa-ErI"/>
                             <constraint firstItem="niJ-Bv-8TP" firstAttribute="centerY" secondItem="IJw-xb-Sab" secondAttribute="centerY" multiplier="1.1" id="4Tx-NN-Jaf"/>
                             <constraint firstItem="Fsz-9X-9zY" firstAttribute="centerX" secondItem="IJw-xb-Sab" secondAttribute="centerX" multiplier="0.4" id="5uP-Zv-ra8"/>
                             <constraint firstItem="uYy-oX-VqG" firstAttribute="centerX" secondItem="IJw-xb-Sab" secondAttribute="centerX" id="7cN-Lz-7Bg"/>
