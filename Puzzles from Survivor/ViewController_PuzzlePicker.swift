@@ -61,17 +61,12 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
     
     @IBAction func Button_Learn(_ sender: Any) {
         appDelegate.isLearn = true
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        switch appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name {
-        case "Slide Puzzle", "Five Piece Puzzle", "Sea Crates", "Tower of Hanoi", "21 Flags":
-            appDelegate.WatchVideo = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].VideoCode_Learn
-            let controller = storyboard.instantiateViewController(withIdentifier: "ViewController_Puzzle")
-            self.present(controller, animated: true, completion: nil)
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController_Puzzle") as? ViewController_Puzzle {
-                present(vc, animated: true, completion: nil)
-            }
-        default:
-            print("!!!!!! oops !!!!!!")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)        
+        appDelegate.WatchVideo = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].VideoCode_Learn
+        let controller = storyboard.instantiateViewController(withIdentifier: "ViewController_Puzzle")
+        self.present(controller, animated: true, completion: nil)
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController_Puzzle") as? ViewController_Puzzle {
+            present(vc, animated: true, completion: nil)
         }
     }
     
@@ -108,6 +103,12 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             let controller = storyboard.instantiateViewController(withIdentifier: "VC_21Flags_Practice")
             self.present(controller, animated: true, completion: nil)
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_21Flags_Practice") as? VC_21Flags_Practice {
+                present(vc, animated: true, completion: nil)
+            }
+        case "Might as Well Jump":
+            let controller = storyboard.instantiateViewController(withIdentifier: "VC_MightAsWellJump_Practice")
+            self.present(controller, animated: true, completion: nil)
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_MightAsWellJump_Practice") as? VC_MightAsWellJump_Practice {
                 present(vc, animated: true, completion: nil)
             }
         default:

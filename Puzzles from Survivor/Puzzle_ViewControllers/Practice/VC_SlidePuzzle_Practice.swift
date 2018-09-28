@@ -9,21 +9,31 @@
 //
 
 import UIKit
+import GameKit
 
-class VC_SlidePuzzle_Practice: UIViewController {
+class VC_SlidePuzzle_Practice: UIViewController, GKGameCenterControllerDelegate {
+    
+    var gcEnabled = Bool() // Check if the user has Game Center enabled
+    var gcDefaultLeaderBoard = String() // Check the default leaderboardID
+    
+    let LEADERBOARD_ID_SLIDE_TIME = "com.score_slide_time.puzzlesfromsurvivor"    //Best Time - Slide Puzzle
+    let LEADERBOARD_ID_SLIDE_MOVES = "com.score_slide_moves.puzzlesfromsurvivor"  //Fewest Moves - Slide Puzzle
 
     @IBOutlet weak var gameView: UIView!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var Label_MoveCount: UILabel!
     @IBOutlet weak var Label_YouWin: UILabel!
     
     var allImgViews: [UIImageView] = []
     var allCenters: [CGPoint] = []
+    var allIndexes: [Int] = []
     
     var gameViewWidth: CGFloat = 0.0
     var blockWidth: CGFloat = 0.0
     
     var timer = Timer()
     var timerCount = 0
+    var moveCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +52,7 @@ class VC_SlidePuzzle_Practice: UIViewController {
                 
                 let currentCenter = CGPoint(x: xCen, y: yCen)
                 allCenters.append(currentCenter)
+                allIndexes.append(index - 1)
                 myImageView.center = currentCenter
                 
                 if index < 10 {
@@ -65,6 +76,65 @@ class VC_SlidePuzzle_Practice: UIViewController {
         allImgViews.removeLast()
         
         ranodomizeBlocks()
+        
+        authenticateLocalPlayer()
+        
+        moveCount = 0
+        Label_MoveCount.text = "\(moveCount)"
+    }
+    
+    // MARK: - AUTHENTICATE LOCAL PLAYER
+    func authenticateLocalPlayer() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            if((ViewController) != nil) {
+                // 1. Show login if player is not logged in
+                self.present(ViewController!, animated: true, completion: nil)
+            } else if (localPlayer.isAuthenticated) {
+                // 2. Player is already authenticated & logged in, load game center
+                self.gcEnabled = true
+                
+                // Get the default leaderboard ID
+                localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
+                    if error != nil { print(error ?? "Default Error")
+                    } else { self.gcDefaultLeaderBoard = leaderboardIdentifer! }
+                })
+                
+            } else {
+                // 3. Game center is not enabled on the users device
+                self.gcEnabled = false
+                print("Local player could not be authenticated!")
+                print(error ?? "Default Error")
+            }
+        }
+    }
+    
+    // MARK: - SUBMIT THE SCORE TO GAME CENTER
+    func submitScoreToGC(score: Int, leaderBoardID: String) {
+        // Submit score to GC leaderboard
+        let bestScoreInt = GKScore(leaderboardIdentifier: leaderBoardID)
+        bestScoreInt.value = Int64(score)
+        GKScore.report([bestScoreInt]) { (error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            } else {
+                print("Best Score submitted to your Leaderboard!")
+            }
+        }
+    }
+    
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - OPEN GAME CENTER LEADERBOARD
+    func checkGCLeaderboard(leaderBoardID: String) {
+        let gcVC = GKGameCenterViewController()
+        gcVC.gameCenterDelegate = self
+        gcVC.viewState = .leaderboards
+        gcVC.leaderboardIdentifier = leaderBoardID
+        present(gcVC, animated: true, completion: nil)
     }
     
     var timerStarted = false
@@ -72,14 +142,26 @@ class VC_SlidePuzzle_Practice: UIViewController {
         timerCount = 0
         timerLabel.text = "\(timerCount)"
         ranodomizeBlocks()
+        moveCount = 0
+        Label_MoveCount.text = "\(moveCount)"
     }
     
     @IBOutlet weak var Button_Done_outlet: UIButton!
     @IBAction func Button_Done(_ sender: Any) {
         if timerStarted {
-            timerStarted = false
-            timer.invalidate()
-            Button_Done_outlet.setTitle("Resume", for: .normal)
+            if checkForSolved() == false {
+                let alertController = UIAlertController(title: "No", message: "Something is wrong! Keep going!", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                    UIAlertAction in
+                    NSLog("OK Pressed")
+                }
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }else {
+                timerStarted = false
+                timer.invalidate()
+                Button_Done_outlet.setTitle("Resume", for: .normal)
+            }
         }else {
             timerStarted = true
             timer.invalidate()
@@ -137,6 +219,7 @@ class VC_SlidePuzzle_Practice: UIViewController {
             }
             
             if leftIsEmpty || rightIsEmpty || topIsEmpty || bottomIsEmpty {
+                updateIndexArray(first: tapCenter, second: emptySpot)
                 allImgViews[randIndex].center = emptySpot
                 emptySpot = tapCenter
                 leftIsEmpty = false
@@ -188,6 +271,7 @@ class VC_SlidePuzzle_Practice: UIViewController {
             }
             
             if leftIsEmpty || rightIsEmpty || topIsEmpty || bottomIsEmpty {
+                updateIndexArray(first: tapCenter, second: emptySpot)
                 UIView.beginAnimations(nil, context: nil)
                 UIView.setAnimationDuration(0.5)
                 myTouch?.view?.center = emptySpot
@@ -197,8 +281,78 @@ class VC_SlidePuzzle_Practice: UIViewController {
                 rightIsEmpty = false
                 topIsEmpty = false
                 bottomIsEmpty = false
+                moveCount += 1
+                Label_MoveCount.text = "\(moveCount)"
             }
         }
+        
+        _ = checkForSolved()
     }
-
+    
+    func updateIndexArray(first: CGPoint, second: CGPoint) {
+        var indexFirst = 0
+        var indexSecond = 0
+        var index = 0
+        
+        for center in allCenters {
+            if first == center {
+                indexFirst = index
+            }
+            if second == center {
+                indexSecond = index
+            }
+            index += 1
+        }
+        
+        let tempIndex = allIndexes[indexFirst]
+        allIndexes[indexFirst] = allIndexes[indexSecond]
+        allIndexes[indexSecond] = tempIndex
+        print(allIndexes)
+    }
+    
+    func checkForSolved() -> Bool{
+        var index = 0
+        for i in allIndexes {
+            if i != index {
+                return false
+            }
+            index += 1
+        }
+        
+        //If we get here, then the puzzle is solved
+        
+        let alertController = UIAlertController(title: "You Win", message: "Good job!\nYou completed the puzzle!\n\nMoves: \(moveCount)\nSeconds: \(timerCount)", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            NSLog("OK Pressed")
+        }
+        let submitScoreAction = UIAlertAction(title: "Submit Score", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            NSLog("Submit Pressed")
+            self.submitScore()
+        }
+        let submitScoreAndGoAction = UIAlertAction(title: "Submit / View Leaders", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            NSLog("Submit Pressed")
+            
+            self.submitScore()
+            self.checkGCLeaderboard(leaderBoardID: self.LEADERBOARD_ID_SLIDE_TIME)
+            
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(submitScoreAction)
+        alertController.addAction(submitScoreAndGoAction)
+        self.present(alertController, animated: true, completion: nil)
+        
+        timerStarted = false
+        timer.invalidate()
+        Button_Done_outlet.setTitle("Resume", for: .normal)
+        
+        return true
+    }
+    
+    func submitScore() {
+        self.submitScoreToGC(score: self.timerCount, leaderBoardID: self.LEADERBOARD_ID_SLIDE_TIME)
+        self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_SLIDE_MOVES)
+    }
 }

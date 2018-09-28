@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import GameKit
 
-class VC_Hanoi_Practice: UIViewController {
+class VC_Hanoi_Practice: UIViewController, GKGameCenterControllerDelegate {
+    
+    var gcEnabled = Bool() // Check if the user has Game Center enabled
+    var gcDefaultLeaderBoard = String() // Check the default leaderboardID
+    
+    let LEADERBOARD_ID_HANOI_TIME = "com.score_hanoi_time.puzzlesfromsurvivor"    //Best Time - Tower of Hanoi
+    let LEADERBOARD_ID_HANOI_MOVES = "com.score_hanoi_moves.puzzlesfromsurvivor"  //Fewest Moves - Tower of Hanoi
     
     @IBOutlet weak var Label_Block_0_0: UILabel!
     @IBOutlet weak var Label_Block_0_1: UILabel!
@@ -31,17 +38,79 @@ class VC_Hanoi_Practice: UIViewController {
     
     @IBOutlet weak var Label_InHand: UILabel!
     @IBOutlet weak var Label_MoveCount: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
     
     var Column0: [Block] = []
     var Column1: [Block] = []
     var Column2: [Block] = []
     var InHand = Block(size: 0)
     var MoveCount = 0
+    
+    var timer = Timer()
+    var timerCount = 0.0
+    let TIMER_INCREMENT = 0.01
+    var timerStarted = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         NewGame()
+        
+        authenticateLocalPlayer()
+    }
+    
+    // MARK: - AUTHENTICATE LOCAL PLAYER
+    func authenticateLocalPlayer() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            if((ViewController) != nil) {
+                // 1. Show login if player is not logged in
+                self.present(ViewController!, animated: true, completion: nil)
+            } else if (localPlayer.isAuthenticated) {
+                // 2. Player is already authenticated & logged in, load game center
+                self.gcEnabled = true
+                
+                // Get the default leaderboard ID
+                localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
+                    if error != nil { print(error ?? "Default Error")
+                    } else { self.gcDefaultLeaderBoard = leaderboardIdentifer! }
+                })
+                
+            } else {
+                // 3. Game center is not enabled on the users device
+                self.gcEnabled = false
+                print("Local player could not be authenticated!")
+                print(error ?? "Default Error")
+            }
+        }
+    }
+    
+    // MARK: - SUBMIT THE SCORE TO GAME CENTER
+    func submitScoreToGC(score: Int, leaderBoardID: String) {
+        // Submit score to GC leaderboard
+        let bestScoreInt = GKScore(leaderboardIdentifier: leaderBoardID)
+        bestScoreInt.value = Int64(score)
+        GKScore.report([bestScoreInt]) { (error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            } else {
+                print("Best Score submitted to your Leaderboard!")
+            }
+        }
+    }
+    
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - OPEN GAME CENTER LEADERBOARD
+    func checkGCLeaderboard(leaderBoardID: String) {
+        let gcVC = GKGameCenterViewController()
+        gcVC.gameCenterDelegate = self
+        gcVC.viewState = .leaderboards
+        gcVC.leaderboardIdentifier = leaderBoardID
+        present(gcVC, animated: true, completion: nil)
     }
     
     @IBAction func Button_NewGame(_ sender: Any) {
@@ -67,6 +136,17 @@ class VC_Hanoi_Practice: UIViewController {
         UpdateButtonTitles()
         MoveCount = 0
         Label_MoveCount.text = "Moves: \(MoveCount)"
+        
+        timerCount = 0.0
+        timerLabel.text = String(format: "%.2f", timerCount)
+        timer.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: TIMER_INCREMENT, target: self, selector: #selector(inrementTimer), userInfo: nil, repeats: true)
+        timerStarted = true
+    }
+    
+    @objc func inrementTimer() {
+        timerCount += TIMER_INCREMENT
+        timerLabel.text = String(format: "%.2f", timerCount)
     }
     
     func UpdateBlockLabels() {
@@ -193,7 +273,37 @@ class VC_Hanoi_Practice: UIViewController {
     func CheckForWin() {
         if Column0.count == 0 && Column1.count == 0 && Column2.count == 4 {
             Label_InHand.text = "You Win!"
+            timerStarted = false
+            timer.invalidate()
+            
+            let timeString = String(format: "%.2f", timerCount)
+            let alertController = UIAlertController(title: "You Win", message: "Good job!\nYou completed the puzzle!\n\nMoves: \(MoveCount)\nSeconds: \(timeString)", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                UIAlertAction in
+                NSLog("OK Pressed")
+            }
+            let submitScoreAction = UIAlertAction(title: "Submit Score", style: UIAlertActionStyle.default) {
+                UIAlertAction in
+                NSLog("Submit Pressed")
+                self.submitScore()
+            }
+            let submitScoreAndGoAction = UIAlertAction(title: "Submit / View Leaders", style: UIAlertActionStyle.default) {
+                UIAlertAction in
+                NSLog("Submit Pressed")
+                
+                self.submitScore()
+                self.checkGCLeaderboard(leaderBoardID: self.LEADERBOARD_ID_HANOI_TIME)
+            }
+            alertController.addAction(okAction)
+            alertController.addAction(submitScoreAction)
+            alertController.addAction(submitScoreAndGoAction)
+            self.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    func submitScore() {
+        self.submitScoreToGC(score: Int(self.timerCount * 100), leaderBoardID: self.LEADERBOARD_ID_HANOI_TIME)
+        self.submitScoreToGC(score: self.MoveCount, leaderBoardID: self.LEADERBOARD_ID_HANOI_MOVES)
     }
     
     
