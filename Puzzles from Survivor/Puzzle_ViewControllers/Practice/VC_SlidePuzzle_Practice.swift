@@ -85,7 +85,7 @@ class VC_SlidePuzzle_Practice: UIViewController, GKGameCenterControllerDelegate 
     
     // MARK: - AUTHENTICATE LOCAL PLAYER
     func authenticateLocalPlayer() {
-        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.local
         
         localPlayer.authenticateHandler = {(ViewController, error) -> Void in
             if((ViewController) != nil) {
@@ -151,7 +151,7 @@ class VC_SlidePuzzle_Practice: UIViewController, GKGameCenterControllerDelegate 
         if timerStarted {
             if checkForSolved() == false {
                 let alertController = UIAlertController(title: "No", message: "Something is wrong! Keep going!", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
                     UIAlertAction in
                     NSLog("OK Pressed")
                 }
@@ -322,16 +322,16 @@ class VC_SlidePuzzle_Practice: UIViewController, GKGameCenterControllerDelegate 
         //If we get here, then the puzzle is solved
         
         let alertController = UIAlertController(title: "You Win", message: "Good job!\nYou completed the puzzle!\n\nMoves: \(moveCount)\nSeconds: \(timerCount)", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("OK Pressed")
         }
-        let submitScoreAction = UIAlertAction(title: "Submit Score", style: UIAlertActionStyle.default) {
+        let submitScoreAction = UIAlertAction(title: "Submit Score", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("Submit Pressed")
             self.submitScore()
         }
-        let submitScoreAndGoAction = UIAlertAction(title: "Submit / View Leaders", style: UIAlertActionStyle.default) {
+        let submitScoreAndGoAction = UIAlertAction(title: "Submit / View Leaders", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("Submit Pressed")
             

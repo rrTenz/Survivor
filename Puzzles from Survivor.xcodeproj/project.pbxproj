@@ -208,6 +208,7 @@
 				TargetAttributes = {
 					C78E7E4A20B4D9BA004119CC = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.GameCenter.iOS = {
 								enabled = 1;
@@ -427,8 +428,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "rrTenz.Puzzles-from-Survivor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -446,8 +447,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "rrTenz.Puzzles-from-Survivor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

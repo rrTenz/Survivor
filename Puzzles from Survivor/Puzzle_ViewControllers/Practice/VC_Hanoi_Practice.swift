@@ -61,7 +61,7 @@ class VC_Hanoi_Practice: UIViewController, GKGameCenterControllerDelegate {
     
     // MARK: - AUTHENTICATE LOCAL PLAYER
     func authenticateLocalPlayer() {
-        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.local
         
         localPlayer.authenticateHandler = {(ViewController, error) -> Void in
             if((ViewController) != nil) {
@@ -278,16 +278,16 @@ class VC_Hanoi_Practice: UIViewController, GKGameCenterControllerDelegate {
             
             let timeString = String(format: "%.2f", timerCount)
             let alertController = UIAlertController(title: "You Win", message: "Good job!\nYou completed the puzzle!\n\nMoves: \(MoveCount)\nSeconds: \(timeString)", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
                 UIAlertAction in
                 NSLog("OK Pressed")
             }
-            let submitScoreAction = UIAlertAction(title: "Submit Score", style: UIAlertActionStyle.default) {
+            let submitScoreAction = UIAlertAction(title: "Submit Score", style: UIAlertAction.Style.default) {
                 UIAlertAction in
                 NSLog("Submit Pressed")
                 self.submitScore()
             }
-            let submitScoreAndGoAction = UIAlertAction(title: "Submit / View Leaders", style: UIAlertActionStyle.default) {
+            let submitScoreAndGoAction = UIAlertAction(title: "Submit / View Leaders", style: UIAlertAction.Style.default) {
                 UIAlertAction in
                 NSLog("Submit Pressed")
                 

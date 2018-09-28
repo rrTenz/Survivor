@@ -136,7 +136,7 @@ class VC_MightAsWellJump_Practice: UIViewController, GKGameCenterControllerDeleg
     
     override func viewDidAppear(_ animated: Bool) {
         let alertController = UIAlertController(title: "Instructions", message: "To spin the wheel\nSwipe Left/Right or Up/Down\n\nTo move balls In/Out of the middle\nTap the rack or the center", preferredStyle: .alert)
-        let standardAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+        let standardAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("OK Pressed")
             self.StartNewGame_alert()
@@ -148,7 +148,7 @@ class VC_MightAsWellJump_Practice: UIViewController, GKGameCenterControllerDeleg
     
     // MARK: - AUTHENTICATE LOCAL PLAYER
     func authenticateLocalPlayer() {
-        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.local
         
         localPlayer.authenticateHandler = {(ViewController, error) -> Void in
             if((ViewController) != nil) {
@@ -224,13 +224,13 @@ class VC_MightAsWellJump_Practice: UIViewController, GKGameCenterControllerDeleg
     
     func StartNewGame_alert() {
         let alertController = UIAlertController(title: "Random or Standard?", message: "Do you want the game to be\n'Random' or 'Standard?\n\nRandom: Balls will be placed randomly (usually harder)\n\nStandard: Same set up as on the episode (usually easier)", preferredStyle: .alert)
-        let standardAction = UIAlertAction(title: "Standard", style: UIAlertActionStyle.default) {
+        let standardAction = UIAlertAction(title: "Standard", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("OK Pressed")
             
             self.StartNewGame(isStandard: true)
         }
-        let randomAction = UIAlertAction(title: "Random", style: UIAlertActionStyle.cancel) {
+        let randomAction = UIAlertAction(title: "Random", style: UIAlertAction.Style.cancel) {
             UIAlertAction in
             NSLog("Cancel Pressed")
             
@@ -315,7 +315,7 @@ class VC_MightAsWellJump_Practice: UIViewController, GKGameCenterControllerDeleg
         if timerStarted {
             if lookForWin() == false {
                 let alertController = UIAlertController(title: "No", message: "Something is wrong! Keep going!", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
                     UIAlertAction in
                     NSLog("OK Pressed")
                 }
@@ -483,16 +483,16 @@ class VC_MightAsWellJump_Practice: UIViewController, GKGameCenterControllerDeleg
         }
         
         let alertController = UIAlertController(title: "You Win", message: "Good job!\nYou completed the puzzle!\n\nMoves: \(moveCount)\nSeconds: \(timerCount)", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("OK Pressed")
         }
-        let submitScoreAction = UIAlertAction(title: "Submit Score", style: UIAlertActionStyle.default) {
+        let submitScoreAction = UIAlertAction(title: "Submit Score", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("Submit Pressed")
             self.submitScore()
         }
-        let submitScoreAndGoAction = UIAlertAction(title: "Submit / View Leaders", style: UIAlertActionStyle.default) {
+        let submitScoreAndGoAction = UIAlertAction(title: "Submit / View Leaders", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("Submit Pressed")
             
