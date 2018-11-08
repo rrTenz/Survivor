@@ -19,14 +19,17 @@ class Constants {
         let Image: UIImage
     }
     
+    //survivor, challenge, puzzle, mark burnett, jeff probst,
+    
     static let SlidePuzzle = PuzzleSimple(Name: "Slide Puzzle", Description: "Standard slide puzzle", VideoCode: "lIiaj4PKI-E", VideoCode_Learn: "NXRIrP1k4dE", Image: #imageLiteral(resourceName: "SlidePuzzle.jpg"))
+    static let SlidePuzzle_8 = PuzzleSimple(Name: "8 Piece Slide Puzzle", Description: "A slide puzzle where the blocks vary in size. You must slide the large square box out of the main puzzle area", VideoCode: "KlX7g7DpEpE", VideoCode_Learn: "4H6GhmpZMCc", Image: #imageLiteral(resourceName: "SlidePuzzle2.png"))
     static let FivePiece = PuzzleSimple(Name: "Five Piece Puzzle", Description: "Spencer's puzzle", VideoCode: "1WqtQwGSnLE", VideoCode_Learn: "aCWADuym0JI", Image: #imageLiteral(resourceName: "SpencerPuzzle.jpg"))
     static let SeaCrates = PuzzleSimple(Name: "Sea Crates", Description: "A pair of castaways from each tribe would swim out into the ocean to retrieve one of four crates with a different color on each face of a crate. Between the beach and crates would be a 'battle zone' marked off by four flags. Within this zone, an opposing tribe member would try to prevent the two castaways from crossing the zone and reaching the crate. Once the two castaways crossed the zone, they would bring a crate back to the beach, and a second pair of castaways would go out to retrieve another crate. Once all four crates were retrieved, the crates would need to be stacked so that one color didn't show more than once on each column. The first tribe to complete the puzzle would win.", VideoCode: "tLVjnRXBItg", VideoCode_Learn: "sI7lX3M7OZo", Image: #imageLiteral(resourceName: "SeaCrates.png"))
     static let TowerOfHanoi = PuzzleSimple(Name: "Tower of Hanoi", Description: "The Tower of Hanoi is a mathematical game or puzzle. It consists of three rods and a number of disks of different sizes, which can slide onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the smallest at the top, thus making a conical shape. The objective of the puzzle is to move the entire stack to another rod, obeying the following simple rules: (1) Only one disk can be moved at a time. (2) Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod. (3) No disk may be placed on top of a smaller disk.", VideoCode: "xwMZLmE6Tlc", VideoCode_Learn: "6YmSMJnHraU", Image: #imageLiteral(resourceName: "Hanoi.png"))
     static let TwentyOneFlags = PuzzleSimple(Name: "21 Flags", Description: "Your tribe takes turns against another tribe removing flags. You want to be the tribe that removes the last flag. The twist is that on each turn your tribe must remove 1, 2, or 3 flags.", VideoCode: "kx8vdnARxbw", VideoCode_Learn: "K_MckZc8VvQ", Image: #imageLiteral(resourceName: "Flags_21.png"))
     static let MightAsWellJump = PuzzleSimple(Name: "Might as Well Jump", Description: "The castaways must swim out and then climb a key of crates. Jumping off the crates, they must grab a bag of key. They must then swim to a balance beam, and cross it, while getting a second set of keys. Using their keys, the castaways will unlock their puzzle. They must then move balls around so they match the corresponding color in the chute. The first person to solve their puzzle wins.", VideoCode: "gfDheINwSFk", VideoCode_Learn: "yBsdJ38fEv0", Image: #imageLiteral(resourceName: "MightAsWellJump.png"))
     
-    static let PuzzleArraySimple = [MightAsWellJump, SlidePuzzle, TowerOfHanoi, TwentyOneFlags, SeaCrates, FivePiece]
+    static let PuzzleArraySimple = [MightAsWellJump, SlidePuzzle, SlidePuzzle_8, TowerOfHanoi, TwentyOneFlags, SeaCrates, FivePiece]
     
     
     
@@ -315,8 +318,6 @@ class Constants {
     //Season 27 - Blood vs. Water
     
     static let Puzzle_270 = Puzzle(Season: 27, Episode: 0, Name: "", Description: "", VideoCode: "")
-    
-    //survivor, challenge, puzzle, mark burnett, jeff probst,
     
     //Season 35
     static let Puzzle_3502 = Puzzle(Season: 35, Episode: 2, Name: "", Description: "", VideoCode: "")

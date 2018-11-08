@@ -33,6 +33,9 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         appDelegate.WatchVideo = ""
         appDelegate.isLearn = false
         appDelegate.isPractice = false
+        let screenSize = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        textView_PuzzleDescription.font = .systemFont(ofSize: screenHeight * 0.03)
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +51,26 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         return "\(appDelegate.puzzleArraySimple[row].Name)"
     }
     
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        var pickerLabel = view as? UILabel;
+        
+        if (pickerLabel == nil)
+        {
+            pickerLabel = UILabel()
+            
+            let screenSize = UIScreen.main.bounds
+            let screenHeight = screenSize.height
+            pickerLabel?.font = UIFont(name: "Helvetica Neue", size: screenHeight * 0.04)
+            pickerLabel?.textAlignment = NSTextAlignment.center
+        }
+        
+        pickerLabel?.text = "\(appDelegate.puzzleArraySimple[row].Name)"
+        
+        
+        return pickerLabel!;
+    }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return appDelegate.puzzleArraySimple.count
     }
@@ -56,6 +79,9 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         appDelegate.PuzzleSelected = row
         labelPuzzle.text = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name
         textView_PuzzleDescription.text = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Description
+        let screenSize = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        textView_PuzzleDescription.font = .systemFont(ofSize: screenHeight * 0.03)
         image.image = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Image
     }
     
@@ -79,6 +105,12 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             let controller = storyboard.instantiateViewController(withIdentifier: "VC_SlidePuzzle_Practice")
             self.present(controller, animated: true, completion: nil)
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_SlidePuzzle_Practice") as? VC_SlidePuzzle_Practice {
+                present(vc, animated: true, completion: nil)
+            }
+        case "8 Piece Slide Puzzle":
+            let controller = storyboard.instantiateViewController(withIdentifier: "VC_SlidePuzzle2_Practice")
+            self.present(controller, animated: true, completion: nil)
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_SlidePuzzle2_Practice") as? VC_SlidePuzzle2_Practice {
                 present(vc, animated: true, completion: nil)
             }
         case "Five Piece Puzzle":

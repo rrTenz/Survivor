@@ -131,11 +131,60 @@ class VC_MightAsWellJump_Practice: UIViewController, GKGameCenterControllerDeleg
         down.direction = .down
         self.view.addGestureRecognizer(down)
         
+        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
+        View_Wheel.addGestureRecognizer(rotate)
+        
         authenticateLocalPlayer()
     }
     
+    var sumRotation: CGFloat = 0.0
+    @objc func handleRotation(sender: UIRotationGestureRecognizer) {
+        guard sender.view != nil else {return}
+        
+        if sender.state == .began || sender.state == .changed {
+            //sender.view?.transform = sender.view!.transform.rotated(by: sender.rotation)
+            let degree = (sender.rotation * 180) / .pi
+            self.currentRotation += degree
+            self.View_Wheel.transform = CGAffineTransform(rotationAngle: CGFloat((self.currentRotation * .pi) / 180.0))
+            sumRotation += sender.rotation
+            print("\(sender.rotation)  \((sumRotation * 180) / .pi)")
+            //self.currentRotation += sender.rotation
+            sender.rotation = 0
+        }else if sender.state == .ended {
+            let halfDiff = DEGREE_DIFF / 2
+            let loc1 = 0 * DEGREE_DIFF
+            let loc2 = 1 * DEGREE_DIFF
+            let loc3 = 2 * DEGREE_DIFF
+            let loc4 = 3 * DEGREE_DIFF
+            let loc5 = 4 * DEGREE_DIFF
+            let loc6 = 5 * DEGREE_DIFF
+            var currentRotation_deg = self.currentRotation
+            while currentRotation_deg < 0 {
+                currentRotation_deg += 360
+            }
+            if currentRotation_deg > loc2 - halfDiff && currentRotation_deg < loc2 + halfDiff {
+                currentRotation = loc2
+            }else if currentRotation_deg > loc3 - halfDiff && currentRotation_deg < loc3 + halfDiff {
+                currentRotation = loc3
+            }else if currentRotation_deg > loc4 - halfDiff && currentRotation_deg < loc4 + halfDiff {
+                currentRotation = loc4
+            }else if currentRotation_deg > loc5 - halfDiff && currentRotation_deg < loc5 + halfDiff {
+                currentRotation = loc5
+            }else if currentRotation_deg > loc6 - halfDiff && currentRotation_deg < loc6 + halfDiff {
+                currentRotation = loc6
+            }else {
+                currentRotation = loc1
+            }
+            UIView.animate(withDuration: 0.1, animations: {
+                self.View_Wheel.transform = CGAffineTransform(rotationAngle: CGFloat((self.currentRotation * .pi) / 180.0))
+            })
+            calculateCurrentBottom()
+            sumRotation = 0.0
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        let alertController = UIAlertController(title: "Instructions", message: "To spin the wheel\nSwipe Left/Right or Up/Down\n\nTo move balls In/Out of the middle\nTap the rack or the center", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Instructions", message: "To spin the wheel\nSwipe Left/Right or Up/Down\nor\nUse 2 finger rotations\n\nTo move balls In/Out of the middle\nTap the rack or the center", preferredStyle: .alert)
         let standardAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("OK Pressed")
