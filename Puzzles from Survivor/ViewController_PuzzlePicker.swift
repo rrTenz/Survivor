@@ -143,6 +143,12 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_MightAsWellJump_Practice") as? VC_MightAsWellJump_Practice {
                 present(vc, animated: true, completion: nil)
             }
+        case "The Color and the Shape":
+            let controller = storyboard.instantiateViewController(withIdentifier: "VC_ColorAndShape_Practice")
+            self.present(controller, animated: true, completion: nil)
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_ColorAndShape_Practice") as? VC_ColorAndShape_Practice {
+                present(vc, animated: true, completion: nil)
+            }
         default:
             print("!!!!!! oops !!!!!!")
         }

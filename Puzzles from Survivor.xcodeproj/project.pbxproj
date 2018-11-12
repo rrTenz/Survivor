@@ -35,6 +35,9 @@
 		C7CF8A6F21534A4B0011340A /* VC_MightAsWellJump_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CF8A6E21534A4B0011340A /* VC_MightAsWellJump_Practice.swift */; };
 		C7DC216620BDFE6C0009F737 /* ViewController_Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DC216520BDFE6C0009F737 /* ViewController_Puzzle.swift */; };
 		C7ED4E3D215D3BC4000B0ADA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ED4E3C215D3BC4000B0ADA /* GameKit.framework */; };
+		C7F64D902194F62E00108338 /* ColorAndShape.png in Resources */ = {isa = PBXBuildFile; fileRef = C7F64D8F2194F62E00108338 /* ColorAndShape.png */; };
+		C7F64D922194F63600108338 /* ColorAndShapeWide.png in Resources */ = {isa = PBXBuildFile; fileRef = C7F64D912194F63600108338 /* ColorAndShapeWide.png */; };
+		C7F64D942194F67400108338 /* VC_ColorAndShape_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64D932194F67400108338 /* VC_ColorAndShape_Practice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,9 @@
 		C7CF8A6E21534A4B0011340A /* VC_MightAsWellJump_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_MightAsWellJump_Practice.swift; sourceTree = "<group>"; };
 		C7DC216520BDFE6C0009F737 /* ViewController_Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_Puzzle.swift; sourceTree = "<group>"; };
 		C7ED4E3C215D3BC4000B0ADA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		C7F64D8F2194F62E00108338 /* ColorAndShape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorAndShape.png; sourceTree = "<group>"; };
+		C7F64D912194F63600108338 /* ColorAndShapeWide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorAndShapeWide.png; sourceTree = "<group>"; };
+		C7F64D932194F67400108338 /* VC_ColorAndShape_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_ColorAndShape_Practice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,8 @@
 				C71D4A61214B1C81009E81AB /* blank.png */,
 				C7CF8A6C215349880011340A /* MightAsWellJump.png */,
 				C7015D49216FEAC00055464A /* SlidePuzzle2.png */,
+				C7F64D8F2194F62E00108338 /* ColorAndShape.png */,
+				C7F64D912194F63600108338 /* ColorAndShapeWide.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -134,6 +142,7 @@
 				C7603F23213B8CF5008731C5 /* VC_21Flags_Practice.swift */,
 				C7CF8A6E21534A4B0011340A /* VC_MightAsWellJump_Practice.swift */,
 				C7015D4B216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift */,
+				C7F64D932194F67400108338 /* VC_ColorAndShape_Practice.swift */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -247,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C78E7E5920B4D9BC004119CC /* LaunchScreen.storyboard in Resources */,
+				C7F64D902194F62E00108338 /* ColorAndShape.png in Resources */,
 				C7603F0C2139B603008731C5 /* SlidePuzzle.jpg in Resources */,
 				C761D781213F4BF5002310CB /* Icon_1024.png in Resources */,
 				C78E7E5620B4D9BC004119CC /* Assets.xcassets in Resources */,
@@ -255,6 +265,7 @@
 				C7603F20213B65E6008731C5 /* Hanoi.png in Resources */,
 				C7603F0E2139B60E008731C5 /* SpencerPuzzle.jpg in Resources */,
 				C7015D4A216FEAC00055464A /* SlidePuzzle2.png in Resources */,
+				C7F64D922194F63600108338 /* ColorAndShapeWide.png in Resources */,
 				C7CF8A6D215349880011340A /* MightAsWellJump.png in Resources */,
 				C7603F22213B82DF008731C5 /* Flags_21.png in Resources */,
 				C7603F0A2139B3A1008731C5 /* SeaCrates.png in Resources */,
@@ -283,6 +294,7 @@
 				C7603F1A2139C856008731C5 /* VC_FivePiece_Practice.swift in Sources */,
 				C7603F26213F2FFD008731C5 /* ViewController_Information.swift in Sources */,
 				C7603F1E2139C883008731C5 /* VC_SeaCrates_Practice.swift in Sources */,
+				C7F64D942194F67400108338 /* VC_ColorAndShape_Practice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
