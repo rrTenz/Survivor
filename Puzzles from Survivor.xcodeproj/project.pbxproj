@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C7015D4A216FEAC00055464A /* SlidePuzzle2.png in Resources */ = {isa = PBXBuildFile; fileRef = C7015D49216FEAC00055464A /* SlidePuzzle2.png */; };
 		C7015D4C216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7015D4B216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift */; };
+		C7018944219A1E7D006618B6 /* VC_Matchbox25_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7018943219A1E7D006618B6 /* VC_Matchbox25_Practice.swift */; };
+		C7018946219A392E006618B6 /* Matchbox25.png in Resources */ = {isa = PBXBuildFile; fileRef = C7018945219A392E006618B6 /* Matchbox25.png */; };
 		C708DB8520BF439C0021F6BF /* ViewController_PuzzlePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C708DB8420BF439C0021F6BF /* ViewController_PuzzlePicker.swift */; };
 		C71D4A62214B1C81009E81AB /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = C71D4A61214B1C81009E81AB /* blank.png */; };
 		C71D4A64214B1D3F009E81AB /* VC_Hanoi_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D4A63214B1D3F009E81AB /* VC_Hanoi_Practice.swift */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		C7015D49216FEAC00055464A /* SlidePuzzle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SlidePuzzle2.png; sourceTree = "<group>"; };
 		C7015D4B216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_SlidePuzzle2_Practice.swift; sourceTree = "<group>"; };
+		C7018943219A1E7D006618B6 /* VC_Matchbox25_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_Matchbox25_Practice.swift; sourceTree = "<group>"; };
+		C7018945219A392E006618B6 /* Matchbox25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Matchbox25.png; sourceTree = "<group>"; };
 		C708DB8420BF439C0021F6BF /* ViewController_PuzzlePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_PuzzlePicker.swift; sourceTree = "<group>"; };
 		C71D4A61214B1C81009E81AB /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank.png; sourceTree = "<group>"; };
 		C71D4A63214B1D3F009E81AB /* VC_Hanoi_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_Hanoi_Practice.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 				C7015D49216FEAC00055464A /* SlidePuzzle2.png */,
 				C7F64D8F2194F62E00108338 /* ColorAndShape.png */,
 				C7F64D912194F63600108338 /* ColorAndShapeWide.png */,
+				C7018945219A392E006618B6 /* Matchbox25.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 				C7CF8A6E21534A4B0011340A /* VC_MightAsWellJump_Practice.swift */,
 				C7015D4B216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift */,
 				C7F64D932194F67400108338 /* VC_ColorAndShape_Practice.swift */,
+				C7018943219A1E7D006618B6 /* VC_Matchbox25_Practice.swift */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -255,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7018946219A392E006618B6 /* Matchbox25.png in Resources */,
 				C78E7E5920B4D9BC004119CC /* LaunchScreen.storyboard in Resources */,
 				C7F64D902194F62E00108338 /* ColorAndShape.png in Resources */,
 				C7603F0C2139B603008731C5 /* SlidePuzzle.jpg in Resources */,
@@ -283,6 +290,7 @@
 				C7CF8A6F21534A4B0011340A /* VC_MightAsWellJump_Practice.swift in Sources */,
 				C7603F24213B8CF5008731C5 /* VC_21Flags_Practice.swift in Sources */,
 				C71D4A64214B1D3F009E81AB /* VC_Hanoi_Practice.swift in Sources */,
+				C7018944219A1E7D006618B6 /* VC_Matchbox25_Practice.swift in Sources */,
 				C78E7E4F20B4D9BA004119CC /* AppDelegate.swift in Sources */,
 				C78E7E6320B4E92B004119CC /* ViewController_Episode.swift in Sources */,
 				C7015D4C216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift in Sources */,

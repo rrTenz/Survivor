@@ -127,12 +127,15 @@ class VC_ColorAndShape_Practice: UIViewController, GKGameCenterControllerDelegat
         timer = Timer.scheduledTimer(timeInterval: TIMER_INCREMENT, target: self, selector: #selector(inrementTimer), userInfo: nil, repeats: true)
         timerStarted = true
         
-        let blockArray = [[UIColor.red, UIColor.green, UIColor.red],
-                          [UIColor.white, UIColor.blue, UIColor.blue],
-                          [UIColor.red, UIColor.blue, UIColor.green],
-                          [UIColor.red, UIColor.white, UIColor.red],
-                          [UIColor.green, UIColor.white, UIColor.red],
-                          [UIColor.white, UIColor.blue, UIColor.green]]
+        let colorArray = [UIColor.red, UIColor.yellow, UIColor.green, UIColor.blue, UIColor.white, UIColor.purple, UIColor.black, UIColor.brown, UIColor.orange]
+        let colorShuffled = colorArray.shuffled()
+        
+        let blockArray = [[colorShuffled[0], colorShuffled[1], colorShuffled[0]],
+                          [colorShuffled[2], colorShuffled[3], colorShuffled[3]],
+                          [colorShuffled[0], colorShuffled[3], colorShuffled[1]],
+                          [colorShuffled[0], colorShuffled[2], colorShuffled[0]],
+                          [colorShuffled[1], colorShuffled[2], colorShuffled[0]],
+                          [colorShuffled[2], colorShuffled[3], colorShuffled[1]]]
         var shuffled = blockArray.shuffled()
         
         var i = 0
