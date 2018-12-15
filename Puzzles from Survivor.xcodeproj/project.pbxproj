@@ -26,6 +26,8 @@
 		C7603F24213B8CF5008731C5 /* VC_21Flags_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7603F23213B8CF5008731C5 /* VC_21Flags_Practice.swift */; };
 		C7603F26213F2FFD008731C5 /* ViewController_Information.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7603F25213F2FFD008731C5 /* ViewController_Information.swift */; };
 		C761D781213F4BF5002310CB /* Icon_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = C761D780213F4BF5002310CB /* Icon_1024.png */; };
+		C770F10321C06F9100D4E7A8 /* SpinPuzzle.png in Resources */ = {isa = PBXBuildFile; fileRef = C770F10221C06F9100D4E7A8 /* SpinPuzzle.png */; };
+		C770F10521C0703600D4E7A8 /* VC_SpinPuzzle_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C770F10421C0703600D4E7A8 /* VC_SpinPuzzle_Practice.swift */; };
 		C78E7E4F20B4D9BA004119CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78E7E4E20B4D9BA004119CC /* AppDelegate.swift */; };
 		C78E7E5120B4D9BA004119CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78E7E5020B4D9BA004119CC /* ViewController.swift */; };
 		C78E7E5420B4D9BA004119CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78E7E5220B4D9BA004119CC /* Main.storyboard */; };
@@ -62,6 +64,8 @@
 		C7603F23213B8CF5008731C5 /* VC_21Flags_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_21Flags_Practice.swift; sourceTree = "<group>"; };
 		C7603F25213F2FFD008731C5 /* ViewController_Information.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_Information.swift; sourceTree = "<group>"; };
 		C761D780213F4BF5002310CB /* Icon_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_1024.png; sourceTree = "<group>"; };
+		C770F10221C06F9100D4E7A8 /* SpinPuzzle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpinPuzzle.png; sourceTree = "<group>"; };
+		C770F10421C0703600D4E7A8 /* VC_SpinPuzzle_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_SpinPuzzle_Practice.swift; sourceTree = "<group>"; };
 		C78E7E4B20B4D9BA004119CC /* Puzzles from Survivor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Puzzles from Survivor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78E7E4E20B4D9BA004119CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C78E7E5020B4D9BA004119CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				C7F64D8F2194F62E00108338 /* ColorAndShape.png */,
 				C7F64D912194F63600108338 /* ColorAndShapeWide.png */,
 				C7018945219A392E006618B6 /* Matchbox25.png */,
+				C770F10221C06F9100D4E7A8 /* SpinPuzzle.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 				C7015D4B216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift */,
 				C7F64D932194F67400108338 /* VC_ColorAndShape_Practice.swift */,
 				C7018943219A1E7D006618B6 /* VC_Matchbox25_Practice.swift */,
+				C770F10421C0703600D4E7A8 /* VC_SpinPuzzle_Practice.swift */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -266,6 +272,7 @@
 				C7F64D902194F62E00108338 /* ColorAndShape.png in Resources */,
 				C7603F0C2139B603008731C5 /* SlidePuzzle.jpg in Resources */,
 				C761D781213F4BF5002310CB /* Icon_1024.png in Resources */,
+				C770F10321C06F9100D4E7A8 /* SpinPuzzle.png in Resources */,
 				C78E7E5620B4D9BC004119CC /* Assets.xcassets in Resources */,
 				C71D4A62214B1C81009E81AB /* blank.png in Resources */,
 				C78E7E5420B4D9BA004119CC /* Main.storyboard in Resources */,
@@ -293,6 +300,7 @@
 				C7018944219A1E7D006618B6 /* VC_Matchbox25_Practice.swift in Sources */,
 				C78E7E4F20B4D9BA004119CC /* AppDelegate.swift in Sources */,
 				C78E7E6320B4E92B004119CC /* ViewController_Episode.swift in Sources */,
+				C770F10521C0703600D4E7A8 /* VC_SpinPuzzle_Practice.swift in Sources */,
 				C7015D4C216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift in Sources */,
 				C7603F1C2139C872008731C5 /* VC_SeaCrates_Learn.swift in Sources */,
 				C7DC216620BDFE6C0009F737 /* ViewController_Puzzle.swift in Sources */,

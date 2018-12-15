@@ -21,6 +21,7 @@ class Constants {
     
     //survivor, challenge, puzzle, mark burnett, jeff probst,
     
+    static let SpinPuzzle = PuzzleSimple(Name: "Spin Puzzle", Description: "Spin the 15 stationary puzzle peices to until you can fit in the 8 flower puzzle pieces", VideoCode: "YagTSS0ynUI", VideoCode_Learn: "kNXxa-w4eiQ", Image: #imageLiteral(resourceName: "SpinPuzzle.png"))
     static let Matchbox25 = PuzzleSimple(Name: "Matchbox 25", Description: "A number puzzle where the numbers must go from 1 to 25, left-to-right and top-to-bottom", VideoCode: "v5c3x6CsvHU", VideoCode_Learn: "zujCoNUjG4M", Image: #imageLiteral(resourceName: "Matchbox25.png"))
     static let ColorAndShape = PuzzleSimple(Name: "The Color and the Shape", Description: "Solve an intersectional puzzle, where all pieces of the intersections must be the same color.", VideoCode: "HAmKT2hNIXU", VideoCode_Learn: "hQlpIoQSjsY", Image: #imageLiteral(resourceName: "ColorAndShapeWide.png"))
     static let SlidePuzzle = PuzzleSimple(Name: "Slide Puzzle", Description: "Standard slide puzzle", VideoCode: "lIiaj4PKI-E", VideoCode_Learn: "NXRIrP1k4dE", Image: #imageLiteral(resourceName: "SlidePuzzle.jpg"))
@@ -31,7 +32,7 @@ class Constants {
     static let TwentyOneFlags = PuzzleSimple(Name: "21 Flags", Description: "Your tribe takes turns against another tribe removing flags. You want to be the tribe that removes the last flag. The twist is that on each turn your tribe must remove 1, 2, or 3 flags.", VideoCode: "kx8vdnARxbw", VideoCode_Learn: "K_MckZc8VvQ", Image: #imageLiteral(resourceName: "Flags_21.png"))
     static let MightAsWellJump = PuzzleSimple(Name: "Might as Well Jump", Description: "The castaways must swim out and then climb a key of crates. Jumping off the crates, they must grab a bag of key. They must then swim to a balance beam, and cross it, while getting a second set of keys. Using their keys, the castaways will unlock their puzzle. They must then move balls around so they match the corresponding color in the chute. The first person to solve their puzzle wins.", VideoCode: "gfDheINwSFk", VideoCode_Learn: "yBsdJ38fEv0", Image: #imageLiteral(resourceName: "MightAsWellJump.png"))
     
-    static let PuzzleArraySimple = [MightAsWellJump, SlidePuzzle, Matchbox25, ColorAndShape, SlidePuzzle_8, TowerOfHanoi, TwentyOneFlags, SeaCrates, FivePiece]
+    static let PuzzleArraySimple = [SpinPuzzle, MightAsWellJump, SlidePuzzle, Matchbox25, ColorAndShape, SlidePuzzle_8, TowerOfHanoi, TwentyOneFlags, SeaCrates, FivePiece]
     
     
     
