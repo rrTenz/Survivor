@@ -642,7 +642,7 @@ class VC_SpinPuzzle_Practice: UIViewController, GKGameCenterControllerDelegate {
     }
     
     func submitScore() {
-        self.submitScoreToGC(score: Int(self.timerCount * 100), leaderBoardID: self.LEADERBOARD_ID_SPIN_TIME)
+        self.submitScoreToGC(score: Int(self.timerCount * 10), leaderBoardID: self.LEADERBOARD_ID_SPIN_TIME)
         self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_SPIN_MOVES)
     }
 }
