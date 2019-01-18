@@ -167,6 +167,12 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_CombinationLock_Practice") as? VC_CombinationLock_Practice {
                 present(vc, animated: true, completion: nil)
             }
+        case "Flip Out":
+            let controller = storyboard.instantiateViewController(withIdentifier: "VC_FlipOut_Practice")
+            self.present(controller, animated: true, completion: nil)
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_FlipOut_Practice") as? VC_FlipOut_Practice {
+                present(vc, animated: true, completion: nil)
+            }
         default:
             print("!!!!!! oops !!!!!!")
         }
