@@ -41,6 +41,8 @@
 		C7C9F34E21EE621D0022D904 /* FlipOut.png in Resources */ = {isa = PBXBuildFile; fileRef = C7C9F34D21EE621D0022D904 /* FlipOut.png */; };
 		C7CF8A6D215349880011340A /* MightAsWellJump.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CF8A6C215349880011340A /* MightAsWellJump.png */; };
 		C7CF8A6F21534A4B0011340A /* VC_MightAsWellJump_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CF8A6E21534A4B0011340A /* VC_MightAsWellJump_Practice.swift */; };
+		C7D141492201FC6C00092C0A /* NumbersGame.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D141482201FC6C00092C0A /* NumbersGame.png */; };
+		C7D1414B2201FDFB00092C0A /* VC_NumbersGame_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1414A2201FDFB00092C0A /* VC_NumbersGame_Practice.swift */; };
 		C7DC216620BDFE6C0009F737 /* ViewController_Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DC216520BDFE6C0009F737 /* ViewController_Puzzle.swift */; };
 		C7ED4E3D215D3BC4000B0ADA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ED4E3C215D3BC4000B0ADA /* GameKit.framework */; };
 		C7F64D902194F62E00108338 /* ColorAndShape.png in Resources */ = {isa = PBXBuildFile; fileRef = C7F64D8F2194F62E00108338 /* ColorAndShape.png */; };
@@ -85,6 +87,8 @@
 		C7C9F34D21EE621D0022D904 /* FlipOut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlipOut.png; sourceTree = "<group>"; };
 		C7CF8A6C215349880011340A /* MightAsWellJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MightAsWellJump.png; sourceTree = "<group>"; };
 		C7CF8A6E21534A4B0011340A /* VC_MightAsWellJump_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_MightAsWellJump_Practice.swift; sourceTree = "<group>"; };
+		C7D141482201FC6C00092C0A /* NumbersGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NumbersGame.png; sourceTree = "<group>"; };
+		C7D1414A2201FDFB00092C0A /* VC_NumbersGame_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_NumbersGame_Practice.swift; sourceTree = "<group>"; };
 		C7DC216520BDFE6C0009F737 /* ViewController_Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_Puzzle.swift; sourceTree = "<group>"; };
 		C7ED4E3C215D3BC4000B0ADA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		C7F64D8F2194F62E00108338 /* ColorAndShape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorAndShape.png; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 				C770F10221C06F9100D4E7A8 /* SpinPuzzle.png */,
 				C760462F21E7AE530005592A /* CombinationLock.png */,
 				C7C9F34D21EE621D0022D904 /* FlipOut.png */,
+				C7D141482201FC6C00092C0A /* NumbersGame.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 				C770F10421C0703600D4E7A8 /* VC_SpinPuzzle_Practice.swift */,
 				C760462B21E6A7180005592A /* VC_CombinationLock_Practice.swift */,
 				C7C9F34B21ED4A4F0022D904 /* VC_FlipOut_Practice.swift */,
+				C7D1414A2201FDFB00092C0A /* VC_NumbersGame_Practice.swift */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -281,6 +287,7 @@
 			files = (
 				C7018946219A392E006618B6 /* Matchbox25.png in Resources */,
 				C78E7E5920B4D9BC004119CC /* LaunchScreen.storyboard in Resources */,
+				C7D141492201FC6C00092C0A /* NumbersGame.png in Resources */,
 				C7F64D902194F62E00108338 /* ColorAndShape.png in Resources */,
 				C7603F0C2139B603008731C5 /* SlidePuzzle.jpg in Resources */,
 				C761D781213F4BF5002310CB /* Icon_1024.png in Resources */,
@@ -314,6 +321,7 @@
 				C7018944219A1E7D006618B6 /* VC_Matchbox25_Practice.swift in Sources */,
 				C7C9F34C21ED4A4F0022D904 /* VC_FlipOut_Practice.swift in Sources */,
 				C78E7E4F20B4D9BA004119CC /* AppDelegate.swift in Sources */,
+				C7D1414B2201FDFB00092C0A /* VC_NumbersGame_Practice.swift in Sources */,
 				C78E7E6320B4E92B004119CC /* ViewController_Episode.swift in Sources */,
 				C770F10521C0703600D4E7A8 /* VC_SpinPuzzle_Practice.swift in Sources */,
 				C7015D4C216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift in Sources */,

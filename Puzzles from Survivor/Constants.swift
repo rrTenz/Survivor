@@ -21,7 +21,13 @@ class Constants {
     
     //survivor, challenge, puzzle, mark burnett, jeff probst,
     
-   
+    
+    
+    /*Puzzles TODO
+     * A Numbers Game https://www.youtube.com/watch?v=SdHM7efIa4I https://www.youtube.com/watch?v=MMCin0-jCK4, 1-10, 11-30, 31-60, 61-100
+     */
+    
+    static let NumbersGame = PuzzleSimple(Name: "A Numbers Game", Description: "Castaways must race across a balance beam while untying four bags of numbered tiles. When they have all their bags, they must arrange the numbers in lines from 1 to 100. The first person to finish wins.", VideoCode: "SdHM7efIa4I", VideoCode_Learn: "Bv9G5Q3tMT4", Image: #imageLiteral(resourceName: "NumbersGame.png"))
     static let FlipOut = PuzzleSimple(Name: "Flip Out", Description: "Each contestant starts the challenge at the edge of a gameboard comprised of several six-sided tiles (or in its debut season, a grid of square tiles). One at a time, contestants will take one step onto a new tile (turning it over to show a designated color). Contestants are not allowed to step onto a space that has already been used. When a castaway has no more legal moves, they are eliminated from the challenge. Last person standing wins. Often, additional rules are included, such as certain tiles giving contestants advantages or penalties.", VideoCode: "ILiYgsjzYeg", VideoCode_Learn: "Vwdk0BoTZ8s", Image: #imageLiteral(resourceName: "FlipOut.png"))
     static let ComboLock = PuzzleSimple(Name: "Combination Lock", Description: "Solve a combination lock where you are given the three 2-digit numbers.", VideoCode: "HdTjY_BlPeo", VideoCode_Learn: "aB9AKAPiL3U", Image: #imageLiteral(resourceName: "CombinationLock.png"))
     static let SpinPuzzle = PuzzleSimple(Name: "Spin Puzzle", Description: "Spin the 15 stationary puzzle peices to until you can fit in the 8 flower puzzle pieces", VideoCode: "YagTSS0ynUI", VideoCode_Learn: "kNXxa-w4eiQ", Image: #imageLiteral(resourceName: "SpinPuzzle.png"))
@@ -35,7 +41,7 @@ class Constants {
     static let TwentyOneFlags = PuzzleSimple(Name: "21 Flags", Description: "Your tribe takes turns against another tribe removing flags. You want to be the tribe that removes the last flag. The twist is that on each turn your tribe must remove 1, 2, or 3 flags.", VideoCode: "kx8vdnARxbw", VideoCode_Learn: "K_MckZc8VvQ", Image: #imageLiteral(resourceName: "Flags_21.png"))
     static let MightAsWellJump = PuzzleSimple(Name: "Might as Well Jump", Description: "The castaways must swim out and then climb a key of crates. Jumping off the crates, they must grab a bag of key. They must then swim to a balance beam, and cross it, while getting a second set of keys. Using their keys, the castaways will unlock their puzzle. They must then move balls around so they match the corresponding color in the chute. The first person to solve their puzzle wins.", VideoCode: "gfDheINwSFk", VideoCode_Learn: "yBsdJ38fEv0", Image: #imageLiteral(resourceName: "MightAsWellJump.png"))
     
-    static let PuzzleArraySimple = [FlipOut, ComboLock, SpinPuzzle, MightAsWellJump, SlidePuzzle, Matchbox25, ColorAndShape, SlidePuzzle_8, TowerOfHanoi, TwentyOneFlags, SeaCrates, FivePiece]
+    static let PuzzleArraySimple = [NumbersGame, FlipOut, ComboLock, SpinPuzzle, MightAsWellJump, SlidePuzzle, Matchbox25, ColorAndShape, SlidePuzzle_8, TowerOfHanoi, TwentyOneFlags, SeaCrates, FivePiece]
     
     
     
