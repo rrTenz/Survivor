@@ -914,6 +914,17 @@ class VC_FlipOut_Practice: UIViewController {
     
     
     func tilePressed(buttonNum: Int) {
+        if NewGame_outlet.titleLabel?.text != "Restart" {
+            let alertController1 = UIAlertController(title: "Start Game", message: "You must begin a game before flipping a tile.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+                NSLog("OK Pressed")
+            }
+            alertController1.addAction(okAction)
+            self.present(alertController1, animated: true, completion: nil)
+            return
+        }
+        
         print(buttonNum)
         
         let currentIndex = playerLoc[whosTurn]
