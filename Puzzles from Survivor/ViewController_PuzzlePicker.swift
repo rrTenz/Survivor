@@ -179,6 +179,12 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_NumbersGame_Practice") as? VC_NumbersGame_Practice {
                 present(vc, animated: true, completion: nil)
             }
+        case "Cog Puzzle":
+            let controller = storyboard.instantiateViewController(withIdentifier: "VC_CogPuzzle_Practice")
+            self.present(controller, animated: true, completion: nil)
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_CogPuzzle_Practice") as? VC_CogPuzzle_Practice {
+                present(vc, animated: true, completion: nil)
+            }
         default:
             print("!!!!!! oops !!!!!!")
         }

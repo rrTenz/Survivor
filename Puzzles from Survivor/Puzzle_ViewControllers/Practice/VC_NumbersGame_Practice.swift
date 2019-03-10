@@ -12,8 +12,7 @@ import GameKit
 class VC_NumbersGame_Practice: UIViewController, GKGameCenterControllerDelegate {
     
     var gcEnabled = Bool() // Check if the user has Game Center enabled
-    var gcDefaultLeaderBoard = String() // Check the default leaderboardID
-    
+    var gcDefaultLeaderBoard = String() // Check the default leaderboardID   
     let LEADERBOARD_ID_NUMBERSGAME_TIME = "com.score_numbersgame_time.puzzlesfromsurvivor"    //Best Time - A Numbers Game
     let LEADERBOARD_ID_NUMBERSGAME_MOVES = "com.score_numbersgame_moves.puzzlesfromsurvivor"  //Fewest Moves - A Numbers Game
     
