@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, MFMailComposeViewControllerDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -36,6 +37,62 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         let screenSize = UIScreen.main.bounds
         let screenHeight = screenSize.height
         textView_PuzzleDescription.font = .systemFont(ofSize: screenHeight * 0.03)
+        
+        Defaults().load_Defaults()
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            if appDelegate.version != version {
+                Defaults().save_Defaults()
+                displayNewVersionAlert()
+            }
+        }
+    }
+    
+    func displayNewVersionAlert() {
+        let alertController = UIAlertController(title: "New Version!", message: "A new version has been released! We hope you enjoy the improvements and/or new puzzles.\n\nTo stay up to date, follow rrTenz on Facebook and subscribe to the Survivor Geek YouTube channel.\n\nIf you have suggestions or questions, please send emails to\n rrtenz@gmail.com", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            NSLog("OK Pressed")
+        }
+        let sendEmail = UIAlertAction(title: "Send Email", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            NSLog("Send Email")
+            self.sendEmail(body: "", subject: "Puzzles from Survivor - Questions/Comments")
+        }
+        let goToFacebook = UIAlertAction(title: "Facebook", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            NSLog("Facebook")
+            UIApplication.shared.openURL(NSURL(string: "https://www.facebook.com/rrTenz/")! as URL)
+        }
+        let goToYouTube = UIAlertAction(title: "YouTube", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            NSLog("YouTube")
+            UIApplication.shared.openURL(NSURL(string: "https://www.youtube.com/channel/UCqwHMKREQeq56nFcQiLPtSg")! as URL)
+        }
+        alertController.addAction(sendEmail)
+        alertController.addAction(goToFacebook)
+        alertController.addAction(goToYouTube)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func sendEmail(body: String, subject: String) {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            
+            mail.setToRecipients(["rrtenz@gmail.com"])
+            mail.setSubject(subject)
+            mail.setMessageBody("\(body)", isHTML: false)
+            
+            present(mail, animated: true)
+        }
+        else {
+            // show failure alert
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -183,6 +240,12 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             let controller = storyboard.instantiateViewController(withIdentifier: "VC_CogPuzzle_Practice")
             self.present(controller, animated: true, completion: nil)
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_CogPuzzle_Practice") as? VC_CogPuzzle_Practice {
+                present(vc, animated: true, completion: nil)
+            }
+        case "Vertical Puzzle":
+            let controller = storyboard.instantiateViewController(withIdentifier: "VC_VerticalPuzzle_Practice")
+            self.present(controller, animated: true, completion: nil)
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_VerticalPuzzle_Practice") as? VC_VerticalPuzzle_Practice {
                 present(vc, animated: true, completion: nil)
             }
         default:

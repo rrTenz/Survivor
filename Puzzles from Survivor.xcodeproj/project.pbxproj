@@ -39,6 +39,10 @@
 		C78E7E5920B4D9BC004119CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78E7E5720B4D9BC004119CC /* LaunchScreen.storyboard */; };
 		C78E7E6120B4DA66004119CC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78E7E6020B4DA66004119CC /* Constants.swift */; };
 		C78E7E6320B4E92B004119CC /* ViewController_Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78E7E6220B4E92B004119CC /* ViewController_Episode.swift */; };
+		C7C54E1C2237247A006565CB /* VC_VerticalPuzzle_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C54E1B2237247A006565CB /* VC_VerticalPuzzle_Practice.swift */; };
+		C7C54E1E2238AB79006565CB /* VerticalPuzzle.png in Resources */ = {isa = PBXBuildFile; fileRef = C7C54E1D2238AB79006565CB /* VerticalPuzzle.png */; };
+		C7C54E5A2239A0E2006565CB /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C54E592239A0E2006565CB /* Defaults.swift */; };
+		C7C54E5C2239A997006565CB /* VC_Info_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C54E5B2239A997006565CB /* VC_Info_main.swift */; };
 		C7C9F34C21ED4A4F0022D904 /* VC_FlipOut_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C9F34B21ED4A4F0022D904 /* VC_FlipOut_Practice.swift */; };
 		C7C9F34E21EE621D0022D904 /* FlipOut.png in Resources */ = {isa = PBXBuildFile; fileRef = C7C9F34D21EE621D0022D904 /* FlipOut.png */; };
 		C7CF8A6D215349880011340A /* MightAsWellJump.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CF8A6C215349880011340A /* MightAsWellJump.png */; };
@@ -87,6 +91,10 @@
 		C78E7E5A20B4D9BC004119CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C78E7E6020B4DA66004119CC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C78E7E6220B4E92B004119CC /* ViewController_Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_Episode.swift; sourceTree = "<group>"; };
+		C7C54E1B2237247A006565CB /* VC_VerticalPuzzle_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_VerticalPuzzle_Practice.swift; sourceTree = "<group>"; };
+		C7C54E1D2238AB79006565CB /* VerticalPuzzle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VerticalPuzzle.png; sourceTree = "<group>"; };
+		C7C54E592239A0E2006565CB /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		C7C54E5B2239A997006565CB /* VC_Info_main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_Info_main.swift; sourceTree = "<group>"; };
 		C7C9F34B21ED4A4F0022D904 /* VC_FlipOut_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_FlipOut_Practice.swift; sourceTree = "<group>"; };
 		C7C9F34D21EE621D0022D904 /* FlipOut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlipOut.png; sourceTree = "<group>"; };
 		C7CF8A6C215349880011340A /* MightAsWellJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MightAsWellJump.png; sourceTree = "<group>"; };
@@ -140,6 +148,7 @@
 				C7C9F34D21EE621D0022D904 /* FlipOut.png */,
 				C7D141482201FC6C00092C0A /* NumbersGame.png */,
 				C7885C2A2232E40D005D2E3B /* CogPuzzle.png */,
+				C7C54E1D2238AB79006565CB /* VerticalPuzzle.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -179,6 +188,7 @@
 				C7C9F34B21ED4A4F0022D904 /* VC_FlipOut_Practice.swift */,
 				C7D1414A2201FDFB00092C0A /* VC_NumbersGame_Practice.swift */,
 				C7885C28222F442B005D2E3B /* VC_CogPuzzle_Practice.swift */,
+				C7C54E1B2237247A006565CB /* VC_VerticalPuzzle_Practice.swift */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -207,9 +217,11 @@
 				C7603F072139B31B008731C5 /* Assets */,
 				C78E7E4E20B4D9BA004119CC /* AppDelegate.swift */,
 				C78E7E6020B4DA66004119CC /* Constants.swift */,
+				C7C54E592239A0E2006565CB /* Defaults.swift */,
 				C78E7E5020B4D9BA004119CC /* ViewController.swift */,
 				C78E7E6220B4E92B004119CC /* ViewController_Episode.swift */,
 				C708DB8420BF439C0021F6BF /* ViewController_PuzzlePicker.swift */,
+				C7C54E5B2239A997006565CB /* VC_Info_main.swift */,
 				C7603F25213F2FFD008731C5 /* ViewController_Information.swift */,
 				C78E7E5220B4D9BA004119CC /* Main.storyboard */,
 				C78E7E5520B4D9BC004119CC /* Assets.xcassets */,
@@ -298,6 +310,7 @@
 				C7603F0C2139B603008731C5 /* SlidePuzzle.jpg in Resources */,
 				C761D781213F4BF5002310CB /* Icon_1024.png in Resources */,
 				C7C9F34E21EE621D0022D904 /* FlipOut.png in Resources */,
+				C7C54E1E2238AB79006565CB /* VerticalPuzzle.png in Resources */,
 				C770F10321C06F9100D4E7A8 /* SpinPuzzle.png in Resources */,
 				C78E7E5620B4D9BC004119CC /* Assets.xcassets in Resources */,
 				C71D4A62214B1C81009E81AB /* blank.png in Resources */,
@@ -326,10 +339,13 @@
 				C7603F24213B8CF5008731C5 /* VC_21Flags_Practice.swift in Sources */,
 				C71D4A64214B1D3F009E81AB /* VC_Hanoi_Practice.swift in Sources */,
 				C7018944219A1E7D006618B6 /* VC_Matchbox25_Practice.swift in Sources */,
+				C7C54E1C2237247A006565CB /* VC_VerticalPuzzle_Practice.swift in Sources */,
 				C7C9F34C21ED4A4F0022D904 /* VC_FlipOut_Practice.swift in Sources */,
 				C78E7E4F20B4D9BA004119CC /* AppDelegate.swift in Sources */,
 				C7D1414B2201FDFB00092C0A /* VC_NumbersGame_Practice.swift in Sources */,
+				C7C54E5A2239A0E2006565CB /* Defaults.swift in Sources */,
 				C78E7E6320B4E92B004119CC /* ViewController_Episode.swift in Sources */,
+				C7C54E5C2239A997006565CB /* VC_Info_main.swift in Sources */,
 				C770F10521C0703600D4E7A8 /* VC_SpinPuzzle_Practice.swift in Sources */,
 				C7015D4C216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift in Sources */,
 				C7603F1C2139C872008731C5 /* VC_SeaCrates_Learn.swift in Sources */,
