@@ -13,8 +13,10 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
     
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
-    let LEADERBOARD_ID_VERTPUZZLE_TIME = "com.score_vertpuzzle_time.puzzlesfromsurvivor"    //Best Time - Vertical Puzzle
-    let LEADERBOARD_ID_VERTPUZZLE_MOVES = "com.score_vartpuzzle_moves.puzzlesfromsurvivor"  //Fewest Moves - Vertical Puzzle
+    let LEADERBOARD_ID_VERTPUZZLE_TIME_0 = "com.score_vertpuzzle_time.puzzlesfromsurvivor"    //Best Time - Vertical Puzzle (Fish)
+    let LEADERBOARD_ID_VERTPUZZLE_MOVES_0 = "com.score_vartpuzzle_moves.puzzlesfromsurvivor"  //Fewest Moves - Vertical Puzzle (Fish)
+    let LEADERBOARD_ID_VERTPUZZLE_TIME_1 = "com.score_vertpuzzle_time_1.puzzlesfromsurvivor"    //Best Time - Vertical Puzzle (Dragon)
+    let LEADERBOARD_ID_VERTPUZZLE_MOVES_1 = "com.score_vartpuzzle_moves_1.puzzlesfromsurvivor"  //Fewest Moves - Vertical Puzzle (Dragon)
     
     struct PuzzlePiece {
         var name = ""
@@ -33,7 +35,29 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        NewGame()
+        pickPuzzle()
+    }
+    
+    func pickPuzzle() {
+        let alertController = UIAlertController(title: "Dragon or Fish?", message: "Which vertical puzzle would you like to do?", preferredStyle: .alert)
+        let dragonAction = UIAlertAction(title: "Dragon", style: UIAlertAction.Style.cancel) {
+            UIAlertAction in
+            NSLog("Dragon Pressed")
+            
+            self.gameNumber = 1
+            self.NewGame()
+        }
+        let fishAction = UIAlertAction(title: "Fish", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            NSLog("Fish Pressed")
+            
+            self.gameNumber = 0
+            self.NewGame()
+        }
+        alertController.addAction(fishAction)
+        alertController.addAction(dragonAction)
+        self.present(alertController, animated: true, completion: nil)
+        
     }
     
     var timer = Timer()
@@ -45,6 +69,7 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var Label_MoveCount: UILabel!
     @IBOutlet weak var Label_YouWin: UILabel!
+    @IBOutlet weak var gameBackground: UIImageView!
     
     // MARK: - AUTHENTICATE LOCAL PLAYER
     func authenticateLocalPlayer() {
@@ -107,18 +132,32 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
     }
     
     @IBAction func Button_NewGame(_ sender: Any) {
-        NewGame()
+        pickPuzzle()
     }
     
     var Pieces_top: [PuzzlePiece] = []
     var Pieces_bot: [PuzzlePiece] = []
     var Piece_onDeck: PuzzlePiece = PuzzlePiece(name: "transparent", isFlipped: false, index: -1)
+    var gameNumber = 0
+    var gameString = ""
     func NewGame() {
         hasWon = false
         
         moveCount = -1
         Label_MoveCount.text = "\(moveCount)"
         Label_YouWin.text = ""
+        
+        switch gameNumber {
+        case 0:
+            gameString = "p"
+            gameBackground.image = UIImage(named: "VP_background")
+        case 1:
+            gameString = "v"
+            gameBackground.image = UIImage(named: "VP2_background")
+        default:
+            gameString = "p"
+            gameBackground.image = UIImage(named: "VP_background")
+        }
         
         timerCount = 0.0
         timerLabel.text = String(format: "%.1f", timerCount)
@@ -142,7 +181,7 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
             }else {
                 numStr = "\(i)"
             }
-            let piece = PuzzlePiece(name: "p\(numStr)", isFlipped: Bool.random(), index: i)
+            let piece = PuzzlePiece(name: "\(gameString)\(numStr)", isFlipped: Bool.random(), index: i)
             Pieces_bot.append(piece)
             i += 1
         }
@@ -210,176 +249,205 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
         if topCount >= 20 { //all of the pieces are up top
             var validCount = 0
             
-            //Look for standard solution
-            if ( (Pieces_top[0].index == 0 && !Pieces_top[0].isFlipped) || (Pieces_top[0].index == 19 && Pieces_top[0].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(0) value: \(Pieces_top[0].index) flipped: \(Pieces_top[0].isFlipped)")
-            }
-            if ( (Pieces_top[1].index == 1 && !Pieces_top[1].isFlipped) || (Pieces_top[1].index == 18 && Pieces_top[1].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(1) value: \(Pieces_top[1].index) flipped: \(Pieces_top[1].isFlipped)")
-            }
-            if ( (Pieces_top[2].index == 2 && !Pieces_top[2].isFlipped) || (Pieces_top[2].index == 17 && Pieces_top[2].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(2) value: \(Pieces_top[2].index) flipped: \(Pieces_top[2].isFlipped)")
-            }
-            if ( (Pieces_top[3].index == 3 && !Pieces_top[3].isFlipped) || (Pieces_top[3].index == 16 && Pieces_top[3].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(3) value: \(Pieces_top[3].index) flipped: \(Pieces_top[3].isFlipped)")
-            }
-            if ( (Pieces_top[4].index == 4 && !Pieces_top[4].isFlipped) || (Pieces_top[4].index == 15 && Pieces_top[4].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(4) value: \(Pieces_top[4].index) flipped: \(Pieces_top[4].isFlipped)")
-            }
-            if ( (Pieces_top[5].index == 5 && !Pieces_top[5].isFlipped) || (Pieces_top[5].index == 14 && Pieces_top[5].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(5) value: \(Pieces_top[5].index) flipped: \(Pieces_top[5].isFlipped)")
-            }
-            if ( (Pieces_top[6].index == 6 && !Pieces_top[6].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(6) value: \(Pieces_top[6].index) flipped: \(Pieces_top[6].isFlipped)")
-            }
-            if ( (Pieces_top[7].index == 7 && !Pieces_top[7].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(7) value: \(Pieces_top[7].index) flipped: \(Pieces_top[7].isFlipped)")
-            }
-            if ( (Pieces_top[8].index == 8 && !Pieces_top[8].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(8) value: \(Pieces_top[8].index) flipped: \(Pieces_top[8].isFlipped)")
-            }
-            if ( (Pieces_top[9].index == 9 && !Pieces_top[9].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(9) value: \(Pieces_top[9].index) flipped: \(Pieces_top[9].isFlipped)")
-            }
-            if ( (Pieces_top[10].index == 10 && !Pieces_top[10].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(10) value: \(Pieces_top[10].index) flipped: \(Pieces_top[10].isFlipped)")
-            }
-            if ( (Pieces_top[11].index == 11 && !Pieces_top[11].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(11) value: \(Pieces_top[11].index) flipped: \(Pieces_top[11].isFlipped)")
-            }
-            if ( (Pieces_top[12].index == 12 && !Pieces_top[12].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(12) value: \(Pieces_top[12].index) flipped: \(Pieces_top[12].isFlipped)")
-            }
-            if ( (Pieces_top[13].index == 13 && !Pieces_top[13].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(13) value: \(Pieces_top[13].index) flipped: \(Pieces_top[13].isFlipped)")
-            }
-            if ( (Pieces_top[14].index == 14 && !Pieces_top[14].isFlipped) || (Pieces_top[14].index == 5 && Pieces_top[14].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(14) value: \(Pieces_top[14].index) flipped: \(Pieces_top[14].isFlipped)")
-            }
-            if ( (Pieces_top[15].index == 15 && !Pieces_top[15].isFlipped) || (Pieces_top[15].index == 4 && Pieces_top[15].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(15) value: \(Pieces_top[15].index) flipped: \(Pieces_top[15].isFlipped)")
-            }
-            if ( (Pieces_top[16].index == 16 && !Pieces_top[16].isFlipped) || (Pieces_top[16].index == 3 && Pieces_top[16].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(16) value: \(Pieces_top[16].index) flipped: \(Pieces_top[16].isFlipped)")
-            }
-            if ( (Pieces_top[17].index == 17 && !Pieces_top[17].isFlipped) || (Pieces_top[17].index == 2 && Pieces_top[17].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(17) value: \(Pieces_top[17].index) flipped: \(Pieces_top[17].isFlipped)")
-            }
-            if ( (Pieces_top[18].index == 18 && !Pieces_top[18].isFlipped) || (Pieces_top[18].index == 1 && Pieces_top[18].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(18) value: \(Pieces_top[18].index) flipped: \(Pieces_top[18].isFlipped)")
-            }
-            if ( (Pieces_top[19].index == 19 && !Pieces_top[19].isFlipped) || (Pieces_top[19].index == 0 && Pieces_top[19].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(19) value: \(Pieces_top[19].index) flipped: \(Pieces_top[19].isFlipped)")
-            }
-            if validCount == 20 {
-                hasWon = true
-            }
-            
-            validCount = 0
-            
-            //Look for reverse solution
-            if ( (Pieces_top[19].index == 0 && Pieces_top[19].isFlipped) || (Pieces_top[19].index == 19 && !Pieces_top[19].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(19) value: \(Pieces_top[19].index) flipped: \(Pieces_top[19].isFlipped)")
-            }
-            if ( (Pieces_top[18].index == 1 && Pieces_top[18].isFlipped) || (Pieces_top[18].index == 18 && !Pieces_top[18].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(18) value: \(Pieces_top[18].index) flipped: \(Pieces_top[18].isFlipped)")
-            }
-            if ( (Pieces_top[17].index == 2 && Pieces_top[17].isFlipped) || (Pieces_top[17].index == 17 && !Pieces_top[17].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(17) value: \(Pieces_top[17].index) flipped: \(Pieces_top[17].isFlipped)")
-            }
-            if ( (Pieces_top[16].index == 3 && Pieces_top[16].isFlipped) || (Pieces_top[16].index == 16 && !Pieces_top[16].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(16) value: \(Pieces_top[16].index) flipped: \(Pieces_top[16].isFlipped)")
-            }
-            if ( (Pieces_top[15].index == 4 && Pieces_top[15].isFlipped) || (Pieces_top[15].index == 15 && !Pieces_top[15].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(15) value: \(Pieces_top[15].index) flipped: \(Pieces_top[15].isFlipped)")
-            }
-            if ( (Pieces_top[14].index == 5 && Pieces_top[14].isFlipped) || (Pieces_top[14].index == 14 && !Pieces_top[14].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(14) value: \(Pieces_top[14].index) flipped: \(Pieces_top[14].isFlipped)")
-            }
-            if ( (Pieces_top[13].index == 6 && Pieces_top[13].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(13) value: \(Pieces_top[13].index) flipped: \(Pieces_top[13].isFlipped)")
-            }
-            if ( (Pieces_top[12].index == 7 && Pieces_top[12].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(12) value: \(Pieces_top[12].index) flipped: \(Pieces_top[12].isFlipped)")
-            }
-            if ( (Pieces_top[11].index == 8 && Pieces_top[11].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(11) value: \(Pieces_top[11].index) flipped: \(Pieces_top[11].isFlipped)")
-            }
-            if ( (Pieces_top[10].index == 9 && Pieces_top[10].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(10) value: \(Pieces_top[10].index) flipped: \(Pieces_top[10].isFlipped)")
-            }
-            if ( (Pieces_top[9].index == 10 && Pieces_top[9].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(9) value: \(Pieces_top[9].index) flipped: \(Pieces_top[9].isFlipped)")
-            }
-            if ( (Pieces_top[8].index == 11 && Pieces_top[8].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(8) value: \(Pieces_top[8].index) flipped: \(Pieces_top[8].isFlipped)")
-            }
-            if ( (Pieces_top[7].index == 12 && Pieces_top[7].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(7) value: \(Pieces_top[7].index) flipped: \(Pieces_top[7].isFlipped)")
-            }
-            if ( (Pieces_top[6].index == 13 && Pieces_top[6].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(6) value: \(Pieces_top[6].index) flipped: \(Pieces_top[6].isFlipped)")
-            }
-            if ( (Pieces_top[5].index == 14 && Pieces_top[5].isFlipped) || (Pieces_top[5].index == 5 && !Pieces_top[5].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(5) value: \(Pieces_top[5].index) flipped: \(Pieces_top[5].isFlipped)")
-            }
-            if ( (Pieces_top[4].index == 15 && Pieces_top[4].isFlipped) || (Pieces_top[4].index == 4 && !Pieces_top[4].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(4) value: \(Pieces_top[4].index) flipped: \(Pieces_top[4].isFlipped)")
-            }
-            if ( (Pieces_top[3].index == 16 && Pieces_top[3].isFlipped) || (Pieces_top[3].index == 3 && !Pieces_top[3].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(3) value: \(Pieces_top[3].index) flipped: \(Pieces_top[3].isFlipped)")
-            }
-            if ( (Pieces_top[2].index == 17 && Pieces_top[2].isFlipped) || (Pieces_top[2].index == 2 && !Pieces_top[2].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(2) value: \(Pieces_top[2].index) flipped: \(Pieces_top[2].isFlipped)")
-            }
-            if ( (Pieces_top[1].index == 18 && Pieces_top[1].isFlipped) || (Pieces_top[1].index == 1 && !Pieces_top[1].isFlipped) ) {
-                validCount += 1
-                print("Count: \(validCount) index: \(1) value: \(Pieces_top[1].index) flipped: \(Pieces_top[1].isFlipped)")
-            }
-            if ( (Pieces_top[0].index == 19 && Pieces_top[0].isFlipped) || (Pieces_top[0].index == 0 && !Pieces_top[0].isFlipped) ) {
-                validCount += 1
-//                print("Count: \(validCount) index: \(0) value: \(Pieces_top[0].index) flipped: \(Pieces_top[0].isFlipped)")
-            }
-            if validCount == 20 {
-                hasWon = true
+            if gameNumber == 0 {    //0 is the puzzle with 2 fish
+                //Look for standard solution
+                if ( (Pieces_top[0].index == 0 && !Pieces_top[0].isFlipped) || (Pieces_top[0].index == 19 && Pieces_top[0].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(0) value: \(Pieces_top[0].index) flipped: \(Pieces_top[0].isFlipped)")
+                }
+                if ( (Pieces_top[1].index == 1 && !Pieces_top[1].isFlipped) || (Pieces_top[1].index == 18 && Pieces_top[1].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(1) value: \(Pieces_top[1].index) flipped: \(Pieces_top[1].isFlipped)")
+                }
+                if ( (Pieces_top[2].index == 2 && !Pieces_top[2].isFlipped) || (Pieces_top[2].index == 17 && Pieces_top[2].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(2) value: \(Pieces_top[2].index) flipped: \(Pieces_top[2].isFlipped)")
+                }
+                if ( (Pieces_top[3].index == 3 && !Pieces_top[3].isFlipped) || (Pieces_top[3].index == 16 && Pieces_top[3].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(3) value: \(Pieces_top[3].index) flipped: \(Pieces_top[3].isFlipped)")
+                }
+                if ( (Pieces_top[4].index == 4 && !Pieces_top[4].isFlipped) || (Pieces_top[4].index == 15 && Pieces_top[4].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(4) value: \(Pieces_top[4].index) flipped: \(Pieces_top[4].isFlipped)")
+                }
+                if ( (Pieces_top[5].index == 5 && !Pieces_top[5].isFlipped) || (Pieces_top[5].index == 14 && Pieces_top[5].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(5) value: \(Pieces_top[5].index) flipped: \(Pieces_top[5].isFlipped)")
+                }
+                if ( (Pieces_top[6].index == 6 && !Pieces_top[6].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(6) value: \(Pieces_top[6].index) flipped: \(Pieces_top[6].isFlipped)")
+                }
+                if ( (Pieces_top[7].index == 7 && !Pieces_top[7].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(7) value: \(Pieces_top[7].index) flipped: \(Pieces_top[7].isFlipped)")
+                }
+                if ( (Pieces_top[8].index == 8 && !Pieces_top[8].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(8) value: \(Pieces_top[8].index) flipped: \(Pieces_top[8].isFlipped)")
+                }
+                if ( (Pieces_top[9].index == 9 && !Pieces_top[9].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(9) value: \(Pieces_top[9].index) flipped: \(Pieces_top[9].isFlipped)")
+                }
+                if ( (Pieces_top[10].index == 10 && !Pieces_top[10].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(10) value: \(Pieces_top[10].index) flipped: \(Pieces_top[10].isFlipped)")
+                }
+                if ( (Pieces_top[11].index == 11 && !Pieces_top[11].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(11) value: \(Pieces_top[11].index) flipped: \(Pieces_top[11].isFlipped)")
+                }
+                if ( (Pieces_top[12].index == 12 && !Pieces_top[12].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(12) value: \(Pieces_top[12].index) flipped: \(Pieces_top[12].isFlipped)")
+                }
+                if ( (Pieces_top[13].index == 13 && !Pieces_top[13].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(13) value: \(Pieces_top[13].index) flipped: \(Pieces_top[13].isFlipped)")
+                }
+                if ( (Pieces_top[14].index == 14 && !Pieces_top[14].isFlipped) || (Pieces_top[14].index == 5 && Pieces_top[14].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(14) value: \(Pieces_top[14].index) flipped: \(Pieces_top[14].isFlipped)")
+                }
+                if ( (Pieces_top[15].index == 15 && !Pieces_top[15].isFlipped) || (Pieces_top[15].index == 4 && Pieces_top[15].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(15) value: \(Pieces_top[15].index) flipped: \(Pieces_top[15].isFlipped)")
+                }
+                if ( (Pieces_top[16].index == 16 && !Pieces_top[16].isFlipped) || (Pieces_top[16].index == 3 && Pieces_top[16].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(16) value: \(Pieces_top[16].index) flipped: \(Pieces_top[16].isFlipped)")
+                }
+                if ( (Pieces_top[17].index == 17 && !Pieces_top[17].isFlipped) || (Pieces_top[17].index == 2 && Pieces_top[17].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(17) value: \(Pieces_top[17].index) flipped: \(Pieces_top[17].isFlipped)")
+                }
+                if ( (Pieces_top[18].index == 18 && !Pieces_top[18].isFlipped) || (Pieces_top[18].index == 1 && Pieces_top[18].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(18) value: \(Pieces_top[18].index) flipped: \(Pieces_top[18].isFlipped)")
+                }
+                if ( (Pieces_top[19].index == 19 && !Pieces_top[19].isFlipped) || (Pieces_top[19].index == 0 && Pieces_top[19].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(19) value: \(Pieces_top[19].index) flipped: \(Pieces_top[19].isFlipped)")
+                }
+                if validCount == 20 {
+                    hasWon = true
+                }
+                
+                validCount = 0
+                
+                //Look for reverse solution
+                if ( (Pieces_top[19].index == 0 && Pieces_top[19].isFlipped) || (Pieces_top[19].index == 19 && !Pieces_top[19].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(19) value: \(Pieces_top[19].index) flipped: \(Pieces_top[19].isFlipped)")
+                }
+                if ( (Pieces_top[18].index == 1 && Pieces_top[18].isFlipped) || (Pieces_top[18].index == 18 && !Pieces_top[18].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(18) value: \(Pieces_top[18].index) flipped: \(Pieces_top[18].isFlipped)")
+                }
+                if ( (Pieces_top[17].index == 2 && Pieces_top[17].isFlipped) || (Pieces_top[17].index == 17 && !Pieces_top[17].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(17) value: \(Pieces_top[17].index) flipped: \(Pieces_top[17].isFlipped)")
+                }
+                if ( (Pieces_top[16].index == 3 && Pieces_top[16].isFlipped) || (Pieces_top[16].index == 16 && !Pieces_top[16].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(16) value: \(Pieces_top[16].index) flipped: \(Pieces_top[16].isFlipped)")
+                }
+                if ( (Pieces_top[15].index == 4 && Pieces_top[15].isFlipped) || (Pieces_top[15].index == 15 && !Pieces_top[15].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(15) value: \(Pieces_top[15].index) flipped: \(Pieces_top[15].isFlipped)")
+                }
+                if ( (Pieces_top[14].index == 5 && Pieces_top[14].isFlipped) || (Pieces_top[14].index == 14 && !Pieces_top[14].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(14) value: \(Pieces_top[14].index) flipped: \(Pieces_top[14].isFlipped)")
+                }
+                if ( (Pieces_top[13].index == 6 && Pieces_top[13].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(13) value: \(Pieces_top[13].index) flipped: \(Pieces_top[13].isFlipped)")
+                }
+                if ( (Pieces_top[12].index == 7 && Pieces_top[12].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(12) value: \(Pieces_top[12].index) flipped: \(Pieces_top[12].isFlipped)")
+                }
+                if ( (Pieces_top[11].index == 8 && Pieces_top[11].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(11) value: \(Pieces_top[11].index) flipped: \(Pieces_top[11].isFlipped)")
+                }
+                if ( (Pieces_top[10].index == 9 && Pieces_top[10].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(10) value: \(Pieces_top[10].index) flipped: \(Pieces_top[10].isFlipped)")
+                }
+                if ( (Pieces_top[9].index == 10 && Pieces_top[9].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(9) value: \(Pieces_top[9].index) flipped: \(Pieces_top[9].isFlipped)")
+                }
+                if ( (Pieces_top[8].index == 11 && Pieces_top[8].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(8) value: \(Pieces_top[8].index) flipped: \(Pieces_top[8].isFlipped)")
+                }
+                if ( (Pieces_top[7].index == 12 && Pieces_top[7].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(7) value: \(Pieces_top[7].index) flipped: \(Pieces_top[7].isFlipped)")
+                }
+                if ( (Pieces_top[6].index == 13 && Pieces_top[6].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(6) value: \(Pieces_top[6].index) flipped: \(Pieces_top[6].isFlipped)")
+                }
+                if ( (Pieces_top[5].index == 14 && Pieces_top[5].isFlipped) || (Pieces_top[5].index == 5 && !Pieces_top[5].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(5) value: \(Pieces_top[5].index) flipped: \(Pieces_top[5].isFlipped)")
+                }
+                if ( (Pieces_top[4].index == 15 && Pieces_top[4].isFlipped) || (Pieces_top[4].index == 4 && !Pieces_top[4].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(4) value: \(Pieces_top[4].index) flipped: \(Pieces_top[4].isFlipped)")
+                }
+                if ( (Pieces_top[3].index == 16 && Pieces_top[3].isFlipped) || (Pieces_top[3].index == 3 && !Pieces_top[3].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(3) value: \(Pieces_top[3].index) flipped: \(Pieces_top[3].isFlipped)")
+                }
+                if ( (Pieces_top[2].index == 17 && Pieces_top[2].isFlipped) || (Pieces_top[2].index == 2 && !Pieces_top[2].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(2) value: \(Pieces_top[2].index) flipped: \(Pieces_top[2].isFlipped)")
+                }
+                if ( (Pieces_top[1].index == 18 && Pieces_top[1].isFlipped) || (Pieces_top[1].index == 1 && !Pieces_top[1].isFlipped) ) {
+                    validCount += 1
+                    print("Count: \(validCount) index: \(1) value: \(Pieces_top[1].index) flipped: \(Pieces_top[1].isFlipped)")
+                }
+                if ( (Pieces_top[0].index == 19 && Pieces_top[0].isFlipped) || (Pieces_top[0].index == 0 && !Pieces_top[0].isFlipped) ) {
+                    validCount += 1
+    //                print("Count: \(validCount) index: \(0) value: \(Pieces_top[0].index) flipped: \(Pieces_top[0].isFlipped)")
+                }
+                if validCount == 20 {
+                    hasWon = true
+                }
+            }else if gameNumber == 1 {
+                //Look for standard solution
+                for i in 0..<20 {
+                    if Pieces_top[i].index == i && !Pieces_top[i].isFlipped {
+                        validCount += 1
+                    }else {
+                        break
+                    }
+                }
+                if validCount == 20 {
+                    hasWon = true
+                }
+                
+                validCount = 0
+                
+                //Look for reverse solution
+                for i in 0..<20 {
+                    if Pieces_top[i].index == 19 - i && Pieces_top[i].isFlipped {
+                        validCount += 1
+                    }else {
+                        break
+                    }
+                }
+                if validCount == 20 {
+                    hasWon = true
+                }
+                
             }
         }
         
@@ -403,7 +471,11 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
                 NSLog("Submit Pressed")
                 
                 self.submitScore()
-                self.checkGCLeaderboard(leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME)
+                if self.gameNumber == 0 {
+                    self.checkGCLeaderboard(leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_0)
+                }else if self.gameNumber == 1 {
+                    self.checkGCLeaderboard(leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_1)
+                }
             }
             alertController.addAction(okAction)
             alertController.addAction(submitScoreAction)
@@ -414,8 +486,13 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
     }
     
     func submitScore() {
-        self.submitScoreToGC(score: Int(self.timerCount * 10), leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME)
-        self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_MOVES)
+        if self.gameNumber == 0 {
+            self.submitScoreToGC(score: Int(self.timerCount * 10), leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_0)
+            self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_MOVES_0)
+        }else if self.gameNumber == 1 {
+            self.submitScoreToGC(score: Int(self.timerCount * 10), leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_1)
+            self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_MOVES_1)
+        }
     }
     
     @objc func inrementTimer() {
