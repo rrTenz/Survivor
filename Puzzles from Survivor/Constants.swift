@@ -29,9 +29,9 @@ class Constants {
         - https://www.youtube.com/watch?v=DwkIGB8kFAQ, https://www.youtube.com/watch?v=o7diD2ylPO8
         - https://survivor.fandom.com/wiki/I%27m_a_Wild_Banshee
      * ???? https://www.youtube.com/watch?v=7KmsnS7rJMo
-     * https://www.youtube.com/watch?v=WSg7hJp__X8
      */
     
+    static let VerticallyChallenged = PuzzleSimple(Name: "Vertically Challenged", Description: "Use the 20 pieces to solve a vertical puzzle.", VideoCode: "FjSWaEKjJOQ", VideoCode_Learn: "uA0gu_lBuiI", Image: #imageLiteral(resourceName: "Vertically Challenged.png"))
     static let VerticalPuzzle = PuzzleSimple(Name: "Vertical Puzzle", Description: "Use the 20 pieces to solve a vertical puzzle.", VideoCode: "WSg7hJp__X8", VideoCode_Learn: "QX6jU62rFAY", Image: #imageLiteral(resourceName: "VerticalPuzzle.png"))
     static let CogPuzzle = PuzzleSimple(Name: "Cog Puzzle", Description: "There are 9 different cog that need to be placed on the frame and 2 cogs that cannot be moved. There are more than nine places that the cogs can be placed. They must be arranged in such a way that the cogs work together to turn the last set cog.", VideoCode: "9172L11tgZY", VideoCode_Learn: "LjmG3tGyKHI", Image: #imageLiteral(resourceName: "CogPuzzle.png"))
     static let NumbersGame = PuzzleSimple(Name: "A Numbers Game", Description: "Castaways must race across a balance beam while untying four bags of numbered tiles. When they have all their bags, they must arrange the numbers in lines from 1 to 100. The first person to finish wins.", VideoCode: "SdHM7efIa4I", VideoCode_Learn: "Bv9G5Q3tMT4", Image: #imageLiteral(resourceName: "NumbersGame.png"))
@@ -48,7 +48,7 @@ class Constants {
     static let TwentyOneFlags = PuzzleSimple(Name: "21 Flags", Description: "Your tribe takes turns against another tribe removing flags. You want to be the tribe that removes the last flag. The twist is that on each turn your tribe must remove 1, 2, or 3 flags.", VideoCode: "kx8vdnARxbw", VideoCode_Learn: "K_MckZc8VvQ", Image: #imageLiteral(resourceName: "Flags_21.png"))
     static let MightAsWellJump = PuzzleSimple(Name: "Might as Well Jump", Description: "The castaways must swim out and then climb a key of crates. Jumping off the crates, they must grab a bag of key. They must then swim to a balance beam, and cross it, while getting a second set of keys. Using their keys, the castaways will unlock their puzzle. They must then move balls around so they match the corresponding color in the chute. The first person to solve their puzzle wins.", VideoCode: "gfDheINwSFk", VideoCode_Learn: "yBsdJ38fEv0", Image: #imageLiteral(resourceName: "MightAsWellJump.png"))
     
-    static let PuzzleArraySimple = [VerticalPuzzle, CogPuzzle, NumbersGame, FlipOut, ComboLock, SpinPuzzle, MightAsWellJump, SlidePuzzle, Matchbox25, ColorAndShape, SlidePuzzle_8, TowerOfHanoi, TwentyOneFlags, SeaCrates, FivePiece]
+    static let PuzzleArraySimple = [VerticallyChallenged, VerticalPuzzle, CogPuzzle, NumbersGame, FlipOut, ComboLock, SpinPuzzle, MightAsWellJump, SlidePuzzle, Matchbox25, ColorAndShape, SlidePuzzle_8, TowerOfHanoi, TwentyOneFlags, SeaCrates, FivePiece]
     
     
     

@@ -248,6 +248,12 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_VerticalPuzzle_Practice") as? VC_VerticalPuzzle_Practice {
                 present(vc, animated: true, completion: nil)
             }
+        case "Vertically Challenged":
+            let controller = storyboard.instantiateViewController(withIdentifier: "VC_VerticallyChallenged_Practice")
+            self.present(controller, animated: true, completion: nil)
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_VerticallyChallenged_Practice") as? VC_VerticallyChallenged_Practice {
+                present(vc, animated: true, completion: nil)
+            }
         default:
             print("!!!!!! oops !!!!!!")
         }

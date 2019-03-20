@@ -14,6 +14,7 @@
 		C708DB8520BF439C0021F6BF /* ViewController_PuzzlePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C708DB8420BF439C0021F6BF /* ViewController_PuzzlePicker.swift */; };
 		C71D4A62214B1C81009E81AB /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = C71D4A61214B1C81009E81AB /* blank.png */; };
 		C71D4A64214B1D3F009E81AB /* VC_Hanoi_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D4A63214B1D3F009E81AB /* VC_Hanoi_Practice.swift */; };
+		C73B6A5F22415BBB00064233 /* Vertically Challenged.png in Resources */ = {isa = PBXBuildFile; fileRef = C73B6A5E22415BBB00064233 /* Vertically Challenged.png */; };
 		C7603F0A2139B3A1008731C5 /* SeaCrates.png in Resources */ = {isa = PBXBuildFile; fileRef = C7603F092139B3A1008731C5 /* SeaCrates.png */; };
 		C7603F0C2139B603008731C5 /* SlidePuzzle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7603F0B2139B603008731C5 /* SlidePuzzle.jpg */; };
 		C7603F0E2139B60E008731C5 /* SpencerPuzzle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7603F0D2139B60E008731C5 /* SpencerPuzzle.jpg */; };
@@ -43,6 +44,7 @@
 		C7C54E1E2238AB79006565CB /* VerticalPuzzle.png in Resources */ = {isa = PBXBuildFile; fileRef = C7C54E1D2238AB79006565CB /* VerticalPuzzle.png */; };
 		C7C54E5A2239A0E2006565CB /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C54E592239A0E2006565CB /* Defaults.swift */; };
 		C7C54E5C2239A997006565CB /* VC_Info_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C54E5B2239A997006565CB /* VC_Info_main.swift */; };
+		C7C54E5E223C3E4B006565CB /* VC_VerticallyChallenged_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C54E5D223C3E4B006565CB /* VC_VerticallyChallenged_Practice.swift */; };
 		C7C9F34C21ED4A4F0022D904 /* VC_FlipOut_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C9F34B21ED4A4F0022D904 /* VC_FlipOut_Practice.swift */; };
 		C7C9F34E21EE621D0022D904 /* FlipOut.png in Resources */ = {isa = PBXBuildFile; fileRef = C7C9F34D21EE621D0022D904 /* FlipOut.png */; };
 		C7CF8A6D215349880011340A /* MightAsWellJump.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CF8A6C215349880011340A /* MightAsWellJump.png */; };
@@ -64,6 +66,7 @@
 		C708DB8420BF439C0021F6BF /* ViewController_PuzzlePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_PuzzlePicker.swift; sourceTree = "<group>"; };
 		C71D4A61214B1C81009E81AB /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank.png; sourceTree = "<group>"; };
 		C71D4A63214B1D3F009E81AB /* VC_Hanoi_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_Hanoi_Practice.swift; sourceTree = "<group>"; };
+		C73B6A5E22415BBB00064233 /* Vertically Challenged.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vertically Challenged.png"; sourceTree = "<group>"; };
 		C7603F092139B3A1008731C5 /* SeaCrates.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SeaCrates.png; sourceTree = "<group>"; };
 		C7603F0B2139B603008731C5 /* SlidePuzzle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SlidePuzzle.jpg; sourceTree = "<group>"; };
 		C7603F0D2139B60E008731C5 /* SpencerPuzzle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SpencerPuzzle.jpg; sourceTree = "<group>"; };
@@ -95,6 +98,7 @@
 		C7C54E1D2238AB79006565CB /* VerticalPuzzle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VerticalPuzzle.png; sourceTree = "<group>"; };
 		C7C54E592239A0E2006565CB /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		C7C54E5B2239A997006565CB /* VC_Info_main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_Info_main.swift; sourceTree = "<group>"; };
+		C7C54E5D223C3E4B006565CB /* VC_VerticallyChallenged_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_VerticallyChallenged_Practice.swift; sourceTree = "<group>"; };
 		C7C9F34B21ED4A4F0022D904 /* VC_FlipOut_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_FlipOut_Practice.swift; sourceTree = "<group>"; };
 		C7C9F34D21EE621D0022D904 /* FlipOut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlipOut.png; sourceTree = "<group>"; };
 		C7CF8A6C215349880011340A /* MightAsWellJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MightAsWellJump.png; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				C7D141482201FC6C00092C0A /* NumbersGame.png */,
 				C7885C2A2232E40D005D2E3B /* CogPuzzle.png */,
 				C7C54E1D2238AB79006565CB /* VerticalPuzzle.png */,
+				C73B6A5E22415BBB00064233 /* Vertically Challenged.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 				C7D1414A2201FDFB00092C0A /* VC_NumbersGame_Practice.swift */,
 				C7885C28222F442B005D2E3B /* VC_CogPuzzle_Practice.swift */,
 				C7C54E1B2237247A006565CB /* VC_VerticalPuzzle_Practice.swift */,
+				C7C54E5D223C3E4B006565CB /* VC_VerticallyChallenged_Practice.swift */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -303,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C73B6A5F22415BBB00064233 /* Vertically Challenged.png in Resources */,
 				C7018946219A392E006618B6 /* Matchbox25.png in Resources */,
 				C78E7E5920B4D9BC004119CC /* LaunchScreen.storyboard in Resources */,
 				C7D141492201FC6C00092C0A /* NumbersGame.png in Resources */,
@@ -345,6 +352,7 @@
 				C7D1414B2201FDFB00092C0A /* VC_NumbersGame_Practice.swift in Sources */,
 				C7C54E5A2239A0E2006565CB /* Defaults.swift in Sources */,
 				C78E7E6320B4E92B004119CC /* ViewController_Episode.swift in Sources */,
+				C7C54E5E223C3E4B006565CB /* VC_VerticallyChallenged_Practice.swift in Sources */,
 				C7C54E5C2239A997006565CB /* VC_Info_main.swift in Sources */,
 				C770F10521C0703600D4E7A8 /* VC_SpinPuzzle_Practice.swift in Sources */,
 				C7015D4C216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift in Sources */,
