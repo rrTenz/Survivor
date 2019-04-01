@@ -11,6 +11,8 @@ import GameKit
 
 class VC_ColorAndShape_Practice: UIViewController, GKGameCenterControllerDelegate {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
@@ -269,6 +271,9 @@ class VC_ColorAndShape_Practice: UIViewController, GKGameCenterControllerDelegat
             timerStarted = false
             timer.invalidate()
             
+            appDelegate.puzzlesCompleted += 1
+            appDelegate.pcc_ColorAndShape += 1
+            Defaults().save_Defaults(updateStreak: true)
             let timeString = String(format: "%.2f", timerCount)
             let alertController = UIAlertController(title: "You Win", message: "Good job!\nYou completed the puzzle!\n\nMoves: \(moveCount)\nSeconds: \(timeString)", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {

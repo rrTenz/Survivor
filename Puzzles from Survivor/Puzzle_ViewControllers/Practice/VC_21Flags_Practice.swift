@@ -9,6 +9,8 @@
 import UIKit
 
 class VC_21Flags_Practice: UIViewController {
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     @IBOutlet weak var Label_Status1: UILabel!
     @IBOutlet weak var Label_Status2: UILabel!

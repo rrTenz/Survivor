@@ -13,6 +13,8 @@ import GameKit
 
 class VC_SlidePuzzle_Practice: UIViewController, GKGameCenterControllerDelegate {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
@@ -321,6 +323,9 @@ class VC_SlidePuzzle_Practice: UIViewController, GKGameCenterControllerDelegate 
         
         //If we get here, then the puzzle is solved
         
+        appDelegate.puzzlesCompleted += 1
+        appDelegate.pcc_SlidePuzzle += 1
+        Defaults().save_Defaults(updateStreak: true)
         let alertController = UIAlertController(title: "You Win", message: "Good job!\nYou completed the puzzle!\n\nMoves: \(moveCount)\nSeconds: \(timerCount)", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in

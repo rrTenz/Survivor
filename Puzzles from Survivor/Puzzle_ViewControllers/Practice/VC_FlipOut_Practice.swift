@@ -17,6 +17,8 @@ struct Tile {
 
 class VC_FlipOut_Practice: UIViewController {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     @IBOutlet weak var BackgroundRing: UIView!
     
     var TileArray: [Tile] = []

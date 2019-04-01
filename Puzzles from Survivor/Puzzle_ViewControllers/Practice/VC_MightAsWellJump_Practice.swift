@@ -11,6 +11,8 @@ import GameKit
 
 class VC_MightAsWellJump_Practice: UIViewController, GKGameCenterControllerDelegate {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
@@ -531,6 +533,9 @@ class VC_MightAsWellJump_Practice: UIViewController, GKGameCenterControllerDeleg
             }
         }
         
+        appDelegate.puzzlesCompleted += 1
+        appDelegate.pcc_MightAsWellJump += 1
+        Defaults().save_Defaults(updateStreak: true)
         let alertController = UIAlertController(title: "You Win", message: "Good job!\nYou completed the puzzle!\n\nMoves: \(moveCount)\nSeconds: \(timerCount)", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in

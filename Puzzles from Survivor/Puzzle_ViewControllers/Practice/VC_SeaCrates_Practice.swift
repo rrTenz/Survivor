@@ -9,6 +9,8 @@
 import UIKit
 
 class VC_SeaCrates_Practice: UIViewController {
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     @IBOutlet weak var textField: UITextView!
     override func viewDidLoad() {

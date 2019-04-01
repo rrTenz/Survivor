@@ -11,6 +11,8 @@ import GameKit
 
 class VC_VerticallyChallenged_Practice: UIViewController, GKGameCenterControllerDelegate {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     let LEADERBOARD_ID_VERTCHALLENGED_TIME = "com.score_vertchallenged_time.puzzlesfromsurvivor"    //Best Time - Vertically Challenged
@@ -538,6 +540,9 @@ class VC_VerticallyChallenged_Practice: UIViewController, GKGameCenterController
         
         Label_YouWin.text = "You Win!"
         
+        appDelegate.puzzlesCompleted += 1
+        appDelegate.pcc_VerticallyChallenged += 1
+        Defaults().save_Defaults(updateStreak: true)
         timer.invalidate()
         let timeString = String(format: "%.1f", timerCount)
         let alertController = UIAlertController(title: "You Win", message: "Good job!\nYou completed the puzzle!\n\nMoves: \(moveCount)\nSeconds: \(timeString)", preferredStyle: .alert)

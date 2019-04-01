@@ -11,6 +11,8 @@ import GameKit
 
 class VC_NumbersGame_Practice: UIViewController, GKGameCenterControllerDelegate {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID   
     let LEADERBOARD_ID_NUMBERSGAME_TIME = "com.score_numbersgame_time.puzzlesfromsurvivor"    //Best Time - A Numbers Game
@@ -512,6 +514,9 @@ class VC_NumbersGame_Practice: UIViewController, GKGameCenterControllerDelegate 
                 if whichBag > 3 {
                     Label_YouWin.text = "You Win!"
                     
+                    appDelegate.puzzlesCompleted += 1
+                    appDelegate.pcc_NumbersGame += 1
+                    Defaults().save_Defaults(updateStreak: true)
                     timer.invalidate()
                     let timeString = String(format: "%.1f", timerCount)
                     let alertController = UIAlertController(title: "You Win", message: "Good job!\nYou completed the puzzle!\n\nMoves: \(moveCount)\nSeconds: \(timeString)", preferredStyle: .alert)

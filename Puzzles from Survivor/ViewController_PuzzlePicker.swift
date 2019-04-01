@@ -16,6 +16,7 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var labelPuzzle: UILabel!
     @IBOutlet weak var textView_PuzzleDescription: UITextView!
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var LockImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,22 +29,193 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         labelPuzzle.text = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name
         textView_PuzzleDescription.text = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Description
         image.image = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Image
+        LockImage.isHidden = true        
+        
+        label_Steak.text = "x\(appDelegate.streakCount)"
+        label_Necklace.text = "x\(appDelegate.immunityNecklaceCount)"
     }
     
+    func puzzleIsLocked() -> Bool {
+        if appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Locked == false || appDelegate.haveUnlocked_All {
+            return false
+        }
+        if appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Locked == true {
+            if appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name == "5 Piece Slide Puzzle" {
+                if appDelegate.haveUnlocked_5PiecePuzzle {
+                    return false
+                }else {
+                    return true
+                }
+            }
+        }
+        fatalError()
+    }
+    
+    let fontPercent: CGFloat = 0.03
     override func viewDidAppear(_ animated: Bool) {
         appDelegate.WatchVideo = ""
         appDelegate.isLearn = false
         appDelegate.isPractice = false
-        let screenSize = UIScreen.main.bounds
-        let screenHeight = screenSize.height
-        textView_PuzzleDescription.font = .systemFont(ofSize: screenHeight * 0.03)
         
         Defaults().load_Defaults()
-        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            if appDelegate.version != version {
-                Defaults().save_Defaults()
-                displayNewVersionAlert()
+        
+        if checkStreak() == false {
+            if checkFreeNecklace() == false {
+                if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                    if appDelegate.version != version {
+                        Defaults().save_Defaults(updateStreak: false)
+                        displayNewVersionAlert()
+                    }
+                }
             }
+        }
+        
+        puzzlePickerView.selectRow(appDelegate.lastPuzzle_index, inComponent: 0, animated: false)
+        appDelegate.PuzzleSelected = appDelegate.lastPuzzle_index
+        labelPuzzle.text = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name
+        textView_PuzzleDescription.text = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Description
+        let screenSize = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        textView_PuzzleDescription.font = .systemFont(ofSize: screenHeight * fontPercent)
+        image.image = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Image
+        
+        LockImage.isHidden = !puzzleIsLocked()
+        
+        label_Steak.text = "x\(appDelegate.streakCount)"
+        label_Necklace.text = "x\(appDelegate.immunityNecklaceCount)"
+    }
+    
+    var haveBeenGivenChanceToBuyNecklaces = false
+    func checkStreak() -> Bool {
+        var didDisplayAlert = false
+        
+        //Check to see if dateOfFirstCompletedPuzzle is the original 1970 value
+        if appDelegate.daysBetween2Dates(date1: appDelegate.dateOfFirstCompletedPuzzle, date2: Date(timeIntervalSince1970: 0)) == 0 {
+            //The beginning of a new streak
+//            print("--set dateOfFirstCompletedPuzzle to yesterday")
+//            appDelegate.dateOfFirstCompletedPuzzle = Calendar.current.date(byAdding: .day, value: -1, to: Date())!  //set to yesterday
+//            print("--set dateOfFirstCompletedPuzzle to today")
+//            appDelegate.dateOfFirstCompletedPuzzle = Date()  //set to today
+            print("--set dateOfFirstCompletedPuzzle to tomorrow")
+            appDelegate.dateOfFirstCompletedPuzzle = Calendar.current.date(byAdding: .day, value: 1, to: Date())!  //set to yesterday
+            appDelegate.giveFreeNecklace = true
+            button_Streak.setImage(UIImage(named: "fire_gray2"), for: .normal)
+        }else {
+            //let today = Date()
+            
+//            let formatter = DateFormatter()
+//            formatter.dateFormat = "yyyy/MM/dd HH:mm"
+//            let lastCompleted = formatter.date(from: "2019/3/27 12:00")
+            
+            appDelegate.UpdateStreakVariables(didCompletePuzzle: false)
+            if appDelegate.streakCount == 0 && appDelegate.immunityNecklaceCount <= 0 {
+                appDelegate.giveFreeNecklace = true
+            }
+            let dayDiff = appDelegate.daysBetween2Dates(date1: appDelegate.dateOfLastCompletedPuzzle, date2: Date())
+            
+            if dayDiff == 0 {
+                button_Streak.setImage(UIImage(named: "fire2"), for: .normal)
+            }else {
+                button_Streak.setImage(UIImage(named: "fire_gray2"), for: .normal)
+            }
+            
+            if dayDiff >= 2 {
+                let requiredNecklaces = dayDiff - 1
+                    
+                if appDelegate.immunityNecklaceCount >= requiredNecklaces {
+                    didDisplayAlert = true
+                    let alertController = UIAlertController(title: "Immunity Necklace", message: "Your streak of \(appDelegate.streakCount) day(s) has been lost\n\nWould you like to use\n\(requiredNecklaces) Immunity Necklace(s)\nto restore your streak?", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        NSLog("Yes Pressed")
+                        self.appDelegate.immunityNecklaceCount -= requiredNecklaces
+                        Defaults().save_Defaults(updateStreak: true)
+                        self.updateStreakLabelAndImage()
+                    }
+                    let noAction = UIAlertAction(title: "No", style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        NSLog("No Pressed")
+                        self.appDelegate.dateOfFirstCompletedPuzzle = Date() //set to today
+                        self.appDelegate.UpdateStreakVariables(didCompletePuzzle: false)
+                        self.updateStreakLabelAndImage()
+                        self.appDelegate.giveFreeNecklace = true
+                    }
+                    alertController.addAction(noAction)
+                    alertController.addAction(okAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }else if haveBeenGivenChanceToBuyNecklaces == false {
+                    haveBeenGivenChanceToBuyNecklaces = true
+                    didDisplayAlert = true
+                    let alertController = UIAlertController(title: "Torch Snuffed", message: "Your streak of \(appDelegate.streakCount) day(s) has been lost\n\nWould you like a chance to buy some\nImmunity Necklaces\nto restore your streak?\n\nYou will need \(dayDiff-1) necklace(s).", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        NSLog("Yes Pressed")
+                        self.goToStore()
+                        self.label_Steak.text = "x\(self.appDelegate.streakCount)"
+                        self.label_Necklace.text = "x\(self.appDelegate.immunityNecklaceCount)"
+                    }
+                    let noAction = UIAlertAction(title: "No", style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        NSLog("No Pressed")
+                        self.appDelegate.dateOfFirstCompletedPuzzle = Date() //set to today
+                        self.appDelegate.UpdateStreakVariables(didCompletePuzzle: false)
+                        self.updateStreakLabelAndImage()
+                        self.appDelegate.giveFreeNecklace = true
+                    }
+                    alertController.addAction(noAction)
+                    alertController.addAction(okAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }else if dayDiff >= 2 {
+                    self.appDelegate.dateOfFirstCompletedPuzzle = Date() //set to today
+                    self.appDelegate.UpdateStreakVariables(didCompletePuzzle: false)
+                    self.updateStreakLabelAndImage()
+                    self.appDelegate.giveFreeNecklace = true
+                }
+            }
+        }
+        return didDisplayAlert
+    }
+    
+    func checkFreeNecklace() -> Bool {
+        if appDelegate.giveFreeNecklace {
+            appDelegate.giveFreeNecklace = false
+            
+            var str = ""
+            if appDelegate.streakCount == 0 && appDelegate.immunityNecklaceCount <= 0 {
+                str = "You have been given a free\nImmunity Necklace\nwhich can keep your streak alive if you miss one day. You can go to the 'Store' to get more."
+                appDelegate.immunityNecklaceCount = 1
+            }else {
+                str = "Congratulations!\nYou have been given a free\nImmunity Necklace\nfor getting your streak to \(appDelegate.streakCount) days.\nKeep up the good work!"
+            }
+            
+            let alertController = UIAlertController(title: "Free Immunity Necklace", message: str, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+                NSLog("OK Pressed")
+            }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+            Defaults().save_Defaults(updateStreak: false)
+            return true
+        }
+        return false
+    }
+    
+    func goToStore() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "ViewController_Unlock")
+        self.present(controller, animated: true, completion: nil)
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController_Unlock") as? ViewController_Unlock {
+            present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    func updateStreakLabelAndImage() {
+        self.label_Steak.text = "x\(self.appDelegate.streakCount)"
+        self.label_Necklace.text = "x\(self.appDelegate.immunityNecklaceCount)"
+        if self.appDelegate.daysBetween2Dates(date1: appDelegate.dateOfLastCompletedPuzzle, date2: Date()) == 0 {
+            self.button_Streak.setImage(UIImage(named: "fire2"), for: .normal)
         }
     }
     
@@ -100,6 +272,7 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         // Dispose of any resources that can be recreated.
     }
     
+    @IBOutlet weak var puzzlePickerView: UIPickerView!
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -138,8 +311,9 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         textView_PuzzleDescription.text = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Description
         let screenSize = UIScreen.main.bounds
         let screenHeight = screenSize.height
-        textView_PuzzleDescription.font = .systemFont(ofSize: screenHeight * 0.03)
+        textView_PuzzleDescription.font = .systemFont(ofSize: screenHeight * fontPercent)
         image.image = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Image
+        LockImage.isHidden = !puzzleIsLocked()
     }
     
     @IBAction func Button_Learn(_ sender: Any) {
@@ -155,6 +329,8 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
     
     @IBAction func Button_Practice(_ sender: Any) {
         appDelegate.isPractice = true
+        appDelegate.lastPuzzle_index = puzzlePickerView.selectedRow(inComponent: 0)
+        Defaults().save_Defaults(updateStreak: false)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         switch appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name {
         case "Slide Puzzle":
@@ -254,8 +430,60 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_VerticallyChallenged_Practice") as? VC_VerticallyChallenged_Practice {
                 present(vc, animated: true, completion: nil)
             }
+        case "5 Piece Slide Puzzle":
+            if puzzleIsLocked() == false {
+                let controller = storyboard.instantiateViewController(withIdentifier: "VC_SlidePuzzle3_Practice")
+                self.present(controller, animated: true, completion: nil)
+                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_SlidePuzzle3_Practice") as? VC_SlidePuzzle3_Practice {
+                    present(vc, animated: true, completion: nil)
+                }
+            }else {
+                unlockAlert()
+            }
         default:
             print("!!!!!! oops !!!!!!")
+        }
+    }
+    
+    func unlockAlert() {
+        let alertController = UIAlertController(title: "Locked Puzzle", message: "This puzzle is locked. Press the 'Store' button to see options.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            NSLog("OK Pressed")
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBOutlet weak var label_Steak: UILabel!
+    @IBOutlet weak var button_Streak: UIButton!
+    @IBAction func button_Streak(_ sender: Any) {
+        let alertController = UIAlertController(title: "Fire Represents Life", message: "Your current streak is \(appDelegate.streakCount) day(s).\n\nTo keep your torch lit (streak alive), you must complete at least one puzzle every day. If you miss a day, your streak will be set back to 0. You can keep your streak alive even if you miss a day by purchasing Immunity Necklaces. There are some puzzles that don't count towards your streak (e.g. Five Piece Puzzle, 21 Flags, Flip Out).\n\nIf the flame icon is gray, you need to complete a puzzle today.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            NSLog("OK Pressed")
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBOutlet weak var label_Necklace: UILabel!
+    @IBAction func button_Necklace(_ sender: Any) {
+        let alertController = UIAlertController(title: "Immunity Necklaces", message: "You currently have \(appDelegate.immunityNecklaceCount) necklace(s).\n\nOne immunity necklace will keep your streak alive for one day. If you miss three days, you will need to use three necklaces to keep your streak alive.\n\nIf you buy a\nBowl of Rice\nand you miss a day, you will be given the option to buy\nImmunity Necklaces\n before you streak is set to 0.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            NSLog("OK Pressed")
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+        resetDefaults()
+    }
+    
+    func resetDefaults() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
         }
     }
     
