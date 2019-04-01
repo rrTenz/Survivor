@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    let DAYS_FOR_FREE_NECKCLACE = 15
+    let DAYS_FOR_FREE_NECKCLACE = 10
     public func UpdateStreakVariables(didCompletePuzzle: Bool) {
         //This function should get called when a puzzle has been completed
         

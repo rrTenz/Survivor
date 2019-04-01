@@ -85,7 +85,8 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         label_Necklace.text = "x\(appDelegate.immunityNecklaceCount)"
     }
     
-    var haveBeenGivenChanceToBuyNecklaces = false
+    //var haveBeenGivenChanceToBuyNecklaces = false
+    var haveBeenGivenChanceToBuyNecklaces = true
     func checkStreak() -> Bool {
         var didDisplayAlert = false
         
@@ -182,13 +183,14 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             
             var str = ""
             if appDelegate.streakCount == 0 && appDelegate.immunityNecklaceCount <= 0 {
-                str = "You have been given a free\nImmunity Necklace\nwhich can keep your streak alive if you miss one day. You can go to the 'Store' to get more."
+//                str = "You have been given one\nImmunity Necklace\nwhich can keep your streak alive if you miss one day. You can go to the 'Store' to get more."
+                str = "You have been given one\nImmunity Necklace\nwhich can keep your streak alive if you miss one day. You will get another necklace every \(appDelegate.DAYS_FOR_FREE_NECKCLACE) days."
                 appDelegate.immunityNecklaceCount = 1
             }else {
-                str = "Congratulations!\nYou have been given a free\nImmunity Necklace\nfor getting your streak to \(appDelegate.streakCount) days.\nKeep up the good work!"
+                str = "Congratulations!\nYou have been given another\nImmunity Necklace\nfor getting your streak to \(appDelegate.streakCount) days.\nKeep up the good work!"
             }
             
-            let alertController = UIAlertController(title: "Free Immunity Necklace", message: str, preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Immunity Necklace", message: str, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
                 UIAlertAction in
                 NSLog("OK Pressed")
@@ -458,7 +460,8 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var label_Steak: UILabel!
     @IBOutlet weak var button_Streak: UIButton!
     @IBAction func button_Streak(_ sender: Any) {
-        let alertController = UIAlertController(title: "Fire Represents Life", message: "Your current streak is \(appDelegate.streakCount) day(s).\n\nTo keep your torch lit (streak alive), you must complete at least one puzzle every day. If you miss a day, your streak will be set back to 0. You can keep your streak alive even if you miss a day by purchasing Immunity Necklaces. There are some puzzles that don't count towards your streak (e.g. Five Piece Puzzle, 21 Flags, Flip Out).\n\nIf the flame icon is gray, you need to complete a puzzle today.", preferredStyle: .alert)
+//        let alertController = UIAlertController(title: "Fire Represents Life", message: "Your current streak is \(appDelegate.streakCount) day(s).\n\nTo keep your torch lit (streak alive), you must complete at least one puzzle every day. If you miss a day, your streak will be set back to 0. You can keep your streak alive even if you miss a day by purchasing Immunity Necklaces. There are some puzzles that don't count towards your streak (e.g. Five Piece Puzzle, 21 Flags, Flip Out).\n\nIf the flame icon is gray, you need to complete a puzzle today.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Fire Represents Life", message: "Your current streak is \(appDelegate.streakCount) day(s).\n\nTo keep your torch lit (streak alive), you must complete at least one puzzle every day. If you miss a day, your streak will be set back to 0. You can keep your streak alive even if you miss a day by using an Immunity Necklaces. There are some puzzles that don't count towards your streak (e.g. Five Piece Puzzle, 21 Flags, Flip Out).\n\nIf the flame icon is gray, you need to complete a puzzle today.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("OK Pressed")
@@ -469,7 +472,8 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
     
     @IBOutlet weak var label_Necklace: UILabel!
     @IBAction func button_Necklace(_ sender: Any) {
-        let alertController = UIAlertController(title: "Immunity Necklaces", message: "You currently have \(appDelegate.immunityNecklaceCount) necklace(s).\n\nOne immunity necklace will keep your streak alive for one day. If you miss three days, you will need to use three necklaces to keep your streak alive.\n\nIf you buy a\nBowl of Rice\nand you miss a day, you will be given the option to buy\nImmunity Necklaces\n before you streak is set to 0.", preferredStyle: .alert)
+//        let alertController = UIAlertController(title: "Immunity Necklaces", message: "You currently have \(appDelegate.immunityNecklaceCount) necklace(s).\n\nOne immunity necklace will keep your streak alive for one day. If you miss three days, you will need to use three necklaces to keep your streak alive.\n\nIf you buy a\nBowl of Rice\nand you miss a day, you will be given the option to buy\nImmunity Necklaces\n before you streak is set to 0.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Immunity Necklaces", message: "You currently have \(appDelegate.immunityNecklaceCount) necklace(s).\n\nOne immunity necklace will keep your streak alive for one day. If you miss three days, you will need to use three necklaces to keep your streak alive.\n\nYou will get a new Immunity Necklace every \(appDelegate.DAYS_FOR_FREE_NECKCLACE) days.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("OK Pressed")

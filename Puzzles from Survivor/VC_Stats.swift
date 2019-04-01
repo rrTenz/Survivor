@@ -62,9 +62,9 @@ class VC_Stats: UIViewController, GKGameCenterControllerDelegate {
         textView.text = "Current Streak: \(appDelegate.streakCount)\n" +
             "Longest Streak: \(appDelegate.longestStreak)\n" +
             "Current Necklaces: \(appDelegate.immunityNecklaceCount)\n" +
-            "Necklaces Purchased: \(appDelegate.immunityNecklacesPurchased)\n" +
-            "Rice Bowls Purchased: \(appDelegate.bowlsOfRice)\n\n" +
-            "Puzzles Completed: \(appDelegate.puzzlesCompleted)\n" +
+            //"Necklaces Purchased: \(appDelegate.immunityNecklacesPurchased)\n" +
+            //"Rice Bowls Purchased: \(appDelegate.bowlsOfRice)\n\n" +
+            "Puzzles Completed: \(appDelegate.puzzlesCompleted)\n\n" +
             " - 5 Piece Slide Puzzle: \(appDelegate.pcc_SlidePuzzle3)\n" +
             " - Vertically Challenged: \(appDelegate.pcc_VerticallyChallenged)\n" +
             " - Vertical Puzzle: \(appDelegate.pcc_VerticalPuzzle)\n" +

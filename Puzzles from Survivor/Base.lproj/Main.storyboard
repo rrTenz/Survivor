@@ -28,7 +28,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Watch" image="_watch_"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <segue destination="5n2-8V-seh" kind="show" id="w8F-Xf-Lgy"/>
                                 </connections>
@@ -67,7 +66,6 @@
                                 <rect key="frame" x="405" y="679.5" width="214" height="77"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Learn" image="_learn_"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Learn:" destination="0tt-GH-bak" eventType="touchUpInside" id="GIO-kg-QTb"/>
                                 </connections>
@@ -76,16 +74,14 @@
                                 <rect key="frame" x="763.5" y="679.5" width="214" height="77"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Practice" image="_practice_"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Practice:" destination="0tt-GH-bak" eventType="touchUpInside" id="QU0-kb-BjE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFq-Jr-iFD">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFq-Jr-iFD">
                                 <rect key="frame" x="414.5" y="376.5" width="92.5" height="92"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Store" image="shop"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <segue destination="cGV-bw-vTx" kind="show" id="ALM-eO-7qw"/>
                                 </connections>
@@ -149,6 +145,7 @@
                         <constraints>
                             <constraint firstItem="eSO-Ji-kR6" firstAttribute="centerY" secondItem="sb7-fS-6K0" secondAttribute="centerY" multiplier="0.6" id="0Jv-T7-5Tb"/>
                             <constraint firstItem="K7j-5v-dNo" firstAttribute="centerY" secondItem="sb7-fS-6K0" secondAttribute="centerY" id="1FV-eV-slN"/>
+                            <constraint firstItem="EeV-ph-lkw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8r3-tX-pA2" secondAttribute="trailing" constant="8" symbolic="YES" id="1qJ-4g-NZh"/>
                             <constraint firstItem="eSO-Ji-kR6" firstAttribute="width" secondItem="sb7-fS-6K0" secondAttribute="width" multiplier="0.48" id="1xL-3A-Gt9"/>
                             <constraint firstItem="goR-Hd-UyM" firstAttribute="height" secondItem="mxc-Wq-2dc" secondAttribute="height" id="24t-B6-nhT"/>
                             <constraint firstItem="B22-eQ-r6e" firstAttribute="leading" secondItem="pQU-Z5-AcI" secondAttribute="leading" constant="3" id="2jh-87-2hP"/>
@@ -240,7 +237,6 @@
                                     <constraint firstAttribute="width" secondItem="ObS-oI-z1Z" secondAttribute="height" multiplier="69:64" id="fms-Rj-a87"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="button_back:" destination="5n2-8V-seh" eventType="touchUpInside" id="vkl-dS-QeS"/>
                                 </connections>
@@ -341,7 +337,6 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                                     <constraint firstAttribute="width" secondItem="L4X-R6-z92" secondAttribute="height" multiplier="69:64" id="K7o-1O-RPt"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="xMC-oI-4fr" eventType="touchUpInside" id="qTV-1x-9KY"/>
                                 </connections>
@@ -510,7 +505,6 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                                     <constraint firstAttribute="width" secondItem="1UU-xI-7yU" secondAttribute="height" multiplier="69:64" id="4aj-ET-lJH"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="pw3-mF-Rj9" eventType="touchUpInside" id="FFN-2O-Iag"/>
                                 </connections>
@@ -1307,7 +1301,6 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                                     <constraint firstAttribute="width" secondItem="yXk-Ls-Bc3" secondAttribute="height" multiplier="69:64" id="2gx-rg-RZe"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="BOt-5R-Bb4" eventType="touchUpInside" id="4Vp-iU-aSY"/>
                                 </connections>
@@ -1404,7 +1397,6 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                                     <constraint firstAttribute="width" secondItem="bYG-G0-EiF" secondAttribute="height" multiplier="69:64" id="8nh-rI-5OD"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="C3L-46-gZM" eventType="touchUpInside" id="2RG-8P-gar"/>
                                 </connections>
@@ -1802,7 +1794,6 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                                     <constraint firstAttribute="width" secondItem="Fat-vz-Jb2" secondAttribute="height" multiplier="69:64" id="fvd-UU-4I3"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <segue destination="VrM-nj-GdK" kind="show" id="Ncb-z4-zGm"/>
                                 </connections>
@@ -1896,7 +1887,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="urj-fw-u6i" secondAttribute="height" multiplier="69:64" id="diw-ND-gqu"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="RFT-6H-1eK" eventType="touchUpInside" id="mhq-Ha-Uw6"/>
                                 </connections>
@@ -2214,7 +2204,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="Onx-Gt-H5Q" secondAttribute="height" multiplier="69:64" id="w1T-Gd-Pja"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="Hn5-oW-Bx6" eventType="touchUpInside" id="Qy8-fW-frp"/>
                                 </connections>
@@ -3102,7 +3091,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="xhc-2a-e8c" secondAttribute="height" multiplier="69:64" id="DeB-zP-Yci"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="eIb-Zz-Tfu" eventType="touchUpInside" id="D8K-yE-9zh"/>
                                 </connections>
@@ -3335,7 +3323,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="wuP-IB-7oB" secondAttribute="height" multiplier="69:64" id="REz-7H-Tfh"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="kwv-B7-BBy" eventType="touchUpInside" id="fk0-Pr-IPd"/>
                                 </connections>
@@ -4422,7 +4409,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="v67-iQ-Bcv" secondAttribute="height" multiplier="69:64" id="KhN-Td-SDg"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="koP-LH-TCE" eventType="touchUpInside" id="pWb-FI-AVQ"/>
                                 </connections>
@@ -5277,7 +5263,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="Z2r-2U-0Re" secondAttribute="height" multiplier="69:64" id="fyG-Cg-Yau"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="WXY-1W-DCd" eventType="touchUpInside" id="qEx-Dg-Fz7"/>
                                 </connections>
@@ -5321,7 +5306,7 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spinPuzzle_board" translatesAutoresizingMaskIntoConstraints="NO" id="GUw-d8-rRW">
-                                <rect key="frame" x="51" y="149" width="922" height="470"/>
+                                <rect key="frame" x="51" y="149" width="922.00000000000023" height="470"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spin_0_0" translatesAutoresizingMaskIntoConstraints="NO" id="l42-OY-BnX">
                                 <rect key="frame" x="170" y="185" width="133" height="100"/>
@@ -5524,7 +5509,7 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flower_1_1" translatesAutoresizingMaskIntoConstraints="NO" id="fDB-Af-mWS">
-                                <rect key="frame" x="365" y="354" width="130" height="114.5"/>
+                                <rect key="frame" x="365" y="354" width="130.00000000000006" height="114.5"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfx-44-aha">
                                 <rect key="frame" x="393" y="375.5" width="74" height="71.5"/>
@@ -5960,7 +5945,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="CHo-6H-n1w" secondAttribute="height" multiplier="69:64" id="8MJ-oG-EUG"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="oce-WC-h20" eventType="touchUpInside" id="Tmu-6T-u4J"/>
                                 </connections>
@@ -6171,7 +6155,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="Pnh-e8-IwL" secondAttribute="height" multiplier="69:64" id="XNP-dZ-lbD"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="BRd-sN-tDI" eventType="touchUpInside" id="ANg-Rf-5W1"/>
                                 </connections>
@@ -8610,7 +8593,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="3VK-rE-t3m" secondAttribute="height" multiplier="69:64" id="ypY-dM-8uM"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="FfZ-KI-mjr" eventType="touchUpInside" id="jGL-sR-0EC"/>
                                 </connections>
@@ -11181,7 +11163,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="7XO-yP-krb" secondAttribute="height" multiplier="69:64" id="2Ua-gb-PMW"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="Uac-xU-0rW" eventType="touchUpInside" id="cGO-r4-31e"/>
                                 </connections>
@@ -11873,7 +11854,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="F0P-py-a0q" secondAttribute="height" multiplier="69:64" id="HGx-iL-msd"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="pDv-CD-0tC" eventType="touchUpInside" id="ayi-Xh-ooi"/>
                                 </connections>
@@ -12727,7 +12707,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="KJZ-Yl-0HX" secondAttribute="height" multiplier="69:64" id="vOe-NM-PWT"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <segue destination="0tt-GH-bak" kind="show" id="Fat-ir-0OY"/>
                                 </connections>
@@ -12844,7 +12823,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="AWX-Fz-oJj" secondAttribute="height" multiplier="69:64" id="inE-BW-gXK"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="4FM-1X-5ux" eventType="touchUpInside" id="Xvr-Uf-66s"/>
                                 </connections>
@@ -13301,7 +13279,7 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vc12" translatesAutoresizingMaskIntoConstraints="NO" id="Hoh-eb-OX5">
-                                        <rect key="frame" x="597.5" y="354.5" width="77" height="60.5"/>
+                                        <rect key="frame" x="597.5" y="354.5" width="77.000000000000057" height="60.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Hoh-eb-OX5" secondAttribute="height" multiplier="196:154" id="v85-pg-3qn"/>
                                         </constraints>
@@ -13758,7 +13736,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="YWi-f7-Eeq" secondAttribute="height" multiplier="69:64" id="y1K-xg-W8J"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_Back:" destination="gmZ-QQ-Hd3" eventType="touchUpInside" id="fp9-d1-Kf3"/>
                                 </connections>
@@ -14117,7 +14094,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="JRw-zQ-L7Q" secondAttribute="height" multiplier="69:64" id="Cmk-CN-ORb"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <segue destination="0tt-GH-bak" kind="show" id="J1L-rd-Mh0"/>
                                 </connections>
@@ -14224,7 +14200,6 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                     <constraint firstAttribute="width" secondItem="Jbb-Du-qRa" secondAttribute="height" multiplier="1:1" id="hsV-Lt-fQl"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <segue destination="0tt-GH-bak" kind="show" id="iAa-zf-SUc"/>
                                 </connections>
