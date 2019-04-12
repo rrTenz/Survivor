@@ -5306,7 +5306,7 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spinPuzzle_board" translatesAutoresizingMaskIntoConstraints="NO" id="GUw-d8-rRW">
-                                <rect key="frame" x="51" y="149" width="922.00000000000023" height="470"/>
+                                <rect key="frame" x="51" y="149" width="922" height="470"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spin_0_0" translatesAutoresizingMaskIntoConstraints="NO" id="l42-OY-BnX">
                                 <rect key="frame" x="170" y="185" width="133" height="100"/>
@@ -5509,7 +5509,7 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flower_1_1" translatesAutoresizingMaskIntoConstraints="NO" id="fDB-Af-mWS">
-                                <rect key="frame" x="365" y="354" width="130.00000000000006" height="114.5"/>
+                                <rect key="frame" x="365" y="354" width="130" height="114.5"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfx-44-aha">
                                 <rect key="frame" x="393" y="375.5" width="74" height="71.5"/>
@@ -13279,7 +13279,7 @@ https://www.cbs.com/shows/survivor/  Videos from these YouTube channels have
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vc12" translatesAutoresizingMaskIntoConstraints="NO" id="Hoh-eb-OX5">
-                                        <rect key="frame" x="597.5" y="354.5" width="77.000000000000057" height="60.5"/>
+                                        <rect key="frame" x="597.5" y="354.5" width="77" height="60.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Hoh-eb-OX5" secondAttribute="height" multiplier="196:154" id="v85-pg-3qn"/>
                                         </constraints>

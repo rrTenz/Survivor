@@ -32,7 +32,7 @@ class Constants {
      * ???? https://www.youtube.com/watch?v=7KmsnS7rJMo
      */
     
-    static let SlidePuzzle_5 = PuzzleSimple(Name: "5 Piece Slide Puzzle", Description: "In this slide puzzle you must surround the square block with the 4 corner pieces.", VideoCode: "FjSWaEKjJOQ", VideoCode_Learn: "uA0gu_lBuiI", Image: #imageLiteral(resourceName: "SlidePuzzle_5Piece.png"), Locked: false)
+    static let SlidePuzzle_5 = PuzzleSimple(Name: "5 Piece Slide Puzzle", Description: "In this slide puzzle you must surround the square block with the 4 corner pieces.", VideoCode: "0NA5h78sd-U", VideoCode_Learn: "wEau2mI1QZE", Image: #imageLiteral(resourceName: "SlidePuzzle_5Piece.png"), Locked: false)
     static let VerticallyChallenged = PuzzleSimple(Name: "Vertically Challenged", Description: "Use the 20 pieces to solve a vertical puzzle.", VideoCode: "FjSWaEKjJOQ", VideoCode_Learn: "uA0gu_lBuiI", Image: #imageLiteral(resourceName: "Vertically Challenged.png"), Locked: false)
     static let VerticalPuzzle = PuzzleSimple(Name: "Vertical Puzzle", Description: "Use the 20 pieces to solve a vertical puzzle.", VideoCode: "WSg7hJp__X8", VideoCode_Learn: "QX6jU62rFAY", Image: #imageLiteral(resourceName: "VerticalPuzzle.png"), Locked: false)
     static let CogPuzzle = PuzzleSimple(Name: "Cog Puzzle", Description: "There are 9 different cog that need to be placed on the frame and 2 cogs that cannot be moved. There are more than nine places that the cogs can be placed. They must be arranged in such a way that the cogs work together to turn the last set cog.", VideoCode: "9172L11tgZY", VideoCode_Learn: "LjmG3tGyKHI", Image: #imageLiteral(resourceName: "CogPuzzle.png"), Locked: false)
