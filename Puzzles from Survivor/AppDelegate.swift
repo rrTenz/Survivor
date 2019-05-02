@@ -62,14 +62,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //This function should get called when a puzzle has been completed
         
         //Check to see if dateOfFirstCompletedPuzzle is the original 1970 value
-        if daysBetween2Dates(date1: dateOfFirstCompletedPuzzle, date2: Date(timeIntervalSince1970: 0)) == 0 {
+        if daysBetween2Dates(date1: Date(timeIntervalSince1970: 0), date2: dateOfFirstCompletedPuzzle) == 0 {
 //            print("--set dateOfFirstCompletedPuzzle to yesterday")
 //            dateOfFirstCompletedPuzzle = Calendar.current.date(byAdding: .day, value: -1, to: Date())!  //set to yesterday
 //            print("--set dateOfFirstCompletedPuzzle to today")
 //            dateOfFirstCompletedPuzzle = Date()  //set to today
             print("--set dateOfFirstCompletedPuzzle to tomorrow")
             dateOfFirstCompletedPuzzle = Calendar.current.date(byAdding: .day, value: 1, to: Date())!  //set to tomorrow
-            giveFreeNecklace = true
+            giveFreeAmulet = true
         }
         
         if didCompletePuzzle {
@@ -82,7 +82,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("streakCount \(streakCount)")
         
         if streakCount_prev < streakCount && streakCount % DAYS_FOR_FREE_NECKCLACE == 0 {
-            giveFreeNecklace = true
+            giveFreeAmulet = true
+            didEarnAmulet = true
         }
         
         Defaults().save_Defaults(updateStreak: false)
@@ -91,21 +92,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func daysBetween2Dates(date1: Date, date2: Date) -> Int {
         let calendar = NSCalendar.current
         
-        print("dateOfFirstCompletedPuzzle \(dateOfFirstCompletedPuzzle)")
-        print("dateOfLastCompletedPuzzle \(dateOfLastCompletedPuzzle)")
+        print("date1 \(date1)")
+        print("date2 \(date2)")
         
         // Replace the hour (time) of both dates with 00:00
-        let date1_mod = calendar.startOfDay(for: dateOfFirstCompletedPuzzle)
-        let date2_mod = calendar.startOfDay(for: dateOfLastCompletedPuzzle)
+        let date1_mod = calendar.startOfDay(for: date1)
+        let date2_mod = calendar.startOfDay(for: date2)
         
         print("date1_mod \(date1_mod)")
         print("date2_mod \(date2_mod)")
         
-        let components = calendar.dateComponents([.day], from: date1, to: date2)
+        let components = calendar.dateComponents([.day], from: date1_mod, to: date2_mod)
         
         print("components \(components)")
+        print("day diff \(abs(components.day!))")
         
-        return components.day!
+        return abs(components.day!)
     }
 
     //Saved variables
@@ -115,13 +117,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var longestStreak = 0
     var dateOfFirstCompletedPuzzle = Date(timeIntervalSince1970: 0)
     var dateOfLastCompletedPuzzle = Date()
-    var immunityNecklaceCount = 0
-    var immunityNecklacesPurchased = 0
+    var amuletCount = 0
+    var amuletsPurchased = 0
     var bowlsOfRice = 0
     var haveUnlocked_All = false
     var haveUnlocked_5PiecePuzzle = false
+    var haveUnlocked_FireAndIce = false
+    var haveUnlocked_VerticalPuzzle = false
     var promoCodesUsed_Array: [String] = []
-    var giveFreeNecklace = false
+    var giveFreeAmulet = false
+    var didEarnAmulet = false
     //puzzle completed count
     var puzzlesCompleted = 0 //-----
     var pcc_SlidePuzzle = 0
@@ -147,9 +152,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var WatchVideo = "" //If this string is empty, use the array. If it has a Code, watch this video
     var isLearn = false
     var isPractice = false
-    var haveBeenGivenChanceToBuyNecklaces = false
+    var haveBeenGivenChanceToBuyAmulets = false
     
     //In App Purchases - Product IDs
-    let IAP_5_Piece_Puzzle = "com.rrtenz.puzzlesfromsurvivor.5_Piece_Puzzle"
+    let IAP_5_Piece_Puzzle = "com.rrtenz.puzzlesfromsurvivor2.5_Piece_Puzzle"
+    
+    //Global Game Center
+    let LEADERBOARD_puzzlesCompleted = "com.puzzlesCompleted.puzzlesfromsurvivor2"                   //Completed Count: All Puzzles Completed
+    let LEADERBOARD_pcc_SlidePuzzle = "com.pcc_SlidePuzzle.puzzlesfromsurvivor2"                     //Completed Count: Slide Puzzle
+    let LEADERBOARD_pcc_SeaCrates = "com.pcc_SeaCrates.puzzlesfromsurvivor2"                         //Completed Count: Instant Insanity
+    let LEADERBOARD_pcc_Hanoi = "com.pcc_Hanoi.puzzlesfromsurvivor2"                                 //Completed Count: Hanoi
+    let LEADERBOARD_pcc_MightAsWellJump = "com.pcc_MightAsWellJump.puzzlesfromsurvivor2"             //Completed Count: Turn Table Puzzle
+    let LEADERBOARD_pcc_SlidePuzzle2 = "com.pcc_SlidePuzzle2.puzzlesfromsurvivor2"                   //Completed Count: 8 Pieve Slide Puzzle
+    let LEADERBOARD_pcc_ColorAndShape = "com.pcc_ColorAndShape.puzzlesfromsurvivor2"                 //Completed Count: Color and Shape
+    let LEADERBOARD_pcc_Matchbox25 = "com.pcc_Matchbox25.puzzlesfromsurvivor2"                       //Completed Count: 1 to 25
+    let LEADERBOARD_pcc_SpinPuzzle = "com.pcc_SpinPuzzle.puzzlesfromsurvivor2"                       //Completed Count: Spin Puzzle
+    let LEADERBOARD_pcc_CombinationLock = "com.pcc_CombinationLock.puzzlesfromsurvivor2"             //Completed Count: Combination Lock
+    let LEADERBOARD_pcc_NumbersGame = "com.pcc_NumbersGame.puzzlesfromsurvivor2"                     //Completed Count: 1 to 100
+    let LEADERBOARD_pcc_CogPuzzle = "com.pcc_CogPuzzle.puzzlesfromsurvivor2"                         //Completed Count: Cog Puzzle
+    let LEADERBOARD_pcc_VerticalPuzzle = "com.pcc_VerticalPuzzle.puzzlesfromsurvivor2"               //Completed Count: Vertical Puzzle
+    let LEADERBOARD_pcc_VerticallyChallenged = "com.pcc_VerticallyChallenged.puzzlesfromsurvivor2"   //Completed Count: Fire and Ice
+    let LEADERBOARD_pcc_SlidePuzzle3 = "com.pcc_SlidePuzzle3.puzzlesfromsurvivor2"                   //Completed Count: 5 Piece Slide Puzzle
+    
 }
 

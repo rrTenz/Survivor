@@ -18,6 +18,9 @@ class ViewController_Puzzle: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        appDelegate.lastPuzzle_index = appDelegate.PuzzleSelected
+        Defaults().save_Defaults(updateStreak: false)
+        
         var code = appDelegate.WatchVideo
         if code == "" {
             code = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].VideoCode

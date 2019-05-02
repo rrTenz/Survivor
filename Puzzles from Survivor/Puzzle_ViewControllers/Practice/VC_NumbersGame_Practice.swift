@@ -15,8 +15,8 @@ class VC_NumbersGame_Practice: UIViewController, GKGameCenterControllerDelegate 
     
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID   
-    let LEADERBOARD_ID_NUMBERSGAME_TIME = "com.score_numbersgame_time.puzzlesfromsurvivor"    //Best Time - A Numbers Game
-    let LEADERBOARD_ID_NUMBERSGAME_MOVES = "com.score_numbersgame_moves.puzzlesfromsurvivor"  //Fewest Moves - A Numbers Game
+    let LEADERBOARD_ID_NUMBERSGAME_TIME = "com.score_numbersgame_time.puzzlesfromsurvivor2"    //Best Time - 1 to 100
+    let LEADERBOARD_ID_NUMBERSGAME_MOVES = "com.score_numbersgame_moves.puzzlesfromsurvivor2"  //Fewest Moves - 1 to 100
     
     var gameViewWidth: CGFloat = 0.0
     var blockWidth: CGFloat = 0.0
@@ -555,6 +555,9 @@ class VC_NumbersGame_Practice: UIViewController, GKGameCenterControllerDelegate 
     func submitScore() {
         self.submitScoreToGC(score: Int(self.timerCount * 10), leaderBoardID: self.LEADERBOARD_ID_NUMBERSGAME_TIME)
         self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_NUMBERSGAME_MOVES)
+        
+        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_NumbersGame), leaderBoardID: appDelegate.LEADERBOARD_pcc_NumbersGame)
     }
     
 }

@@ -16,8 +16,8 @@ class VC_CombinationLock_Practice: UIViewController, UIPickerViewDelegate, UIPic
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
-    let LEADERBOARD_ID_COMBO_TIME = "com.score_combo_time.puzzlesfromsurvivor"    //Best Time - Combination Lock
-    let LEADERBOARD_ID_COMBO_MOVES = "com.score_combo_moves.puzzlesfromsurvivor"  //Fewest Moves - Combination Lock
+    let LEADERBOARD_ID_COMBO_TIME = "com.score_combo_time.puzzlesfromsurvivor2"    //Best Time - Combination Lock
+    let LEADERBOARD_ID_COMBO_MOVES = "com.score_combo_moves.puzzlesfromsurvivor2"  //Fewest Moves - Combination Lock
     
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var Label_MoveCount: UILabel!
@@ -109,7 +109,7 @@ class VC_CombinationLock_Practice: UIViewController, UIPickerViewDelegate, UIPic
             
             let screenSize = UIScreen.main.bounds
             let screenHeight = screenSize.height
-            pickerLabel?.font = UIFont(name: "Helvetica Neue", size: screenHeight * 0.05)
+            pickerLabel?.font = UIFont(name: "Helvetica Neue", size: screenHeight * 0.04)
             pickerLabel?.textAlignment = NSTextAlignment.center
         }
         
@@ -256,6 +256,9 @@ class VC_CombinationLock_Practice: UIViewController, UIPickerViewDelegate, UIPic
     func submitScore() {
         self.submitScoreToGC(score: Int(self.timerCount * 100), leaderBoardID: self.LEADERBOARD_ID_COMBO_TIME)
         self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_COMBO_MOVES)
+        
+        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_CombinationLock), leaderBoardID: appDelegate.LEADERBOARD_pcc_CombinationLock)
     }
     
     @IBAction func Button_Back(_ sender: Any) {

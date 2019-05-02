@@ -16,8 +16,8 @@ class VC_SlidePuzzle2_Practice: UIViewController, GKGameCenterControllerDelegate
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
-    let LEADERBOARD_ID_SLIDE8_TIME = "com.score_slide8_time.puzzlesfromsurvivor"    //Best Time - 8 Piece Slide Puzzle
-    let LEADERBOARD_ID_SLIDE8_MOVES = "com.score_slide8_moves.puzzlesfromsurvivor"  //Fewest Moves - 8 Piece Slide Puzzle
+    let LEADERBOARD_ID_SLIDE8_TIME = "com.score_slide8_time.puzzlesfromsurvivor2"    //Best Time - 8 Piece Slide Puzzle
+    let LEADERBOARD_ID_SLIDE8_MOVES = "com.score_slide8_moves.puzzlesfromsurvivor2"  //Fewest Moves - 8 Piece Slide Puzzle
     
     @IBOutlet weak var BorderTop: UIImageView!
     @IBOutlet weak var BorderMidLeft: UIImageView!
@@ -388,5 +388,8 @@ class VC_SlidePuzzle2_Practice: UIViewController, GKGameCenterControllerDelegate
     func submitScore() {
         self.submitScoreToGC(score: Int(self.timerCount * 100), leaderBoardID: self.LEADERBOARD_ID_SLIDE8_TIME)
         self.submitScoreToGC(score: Int(self.moveCount), leaderBoardID: self.LEADERBOARD_ID_SLIDE8_MOVES)
+        
+        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_SlidePuzzle2), leaderBoardID: appDelegate.LEADERBOARD_pcc_SlidePuzzle2)
     }
 }

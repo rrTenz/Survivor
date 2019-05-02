@@ -16,8 +16,8 @@ class VC_ColorAndShape_Practice: UIViewController, GKGameCenterControllerDelegat
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
-    let LEADERBOARD_ID_COLOR_AND_SHAPE_TIME = "com.score_color_and_shape_time.puzzlesfromsurvivor"    //Best Time - Color and Shape
-    let LEADERBOARD_ID_COLOR_AND_SHAPE_MOVES = "com.score_color_and_shape_moves.puzzlesfromsurvivor"  //Fewest Moves - Color and Shape
+    let LEADERBOARD_ID_COLOR_AND_SHAPE_TIME = "com.score_color_and_shape_time.puzzlesfromsurvivor2"    //Best Time - Color and Shape
+    let LEADERBOARD_ID_COLOR_AND_SHAPE_MOVES = "com.score_color_and_shape_moves.puzzlesfromsurvivor2"  //Fewest Moves - Color and Shape
     
     @IBOutlet weak var View_Scratch_0: UIView!
     @IBOutlet weak var View_Scratch_1: UIView!
@@ -304,6 +304,9 @@ class VC_ColorAndShape_Practice: UIViewController, GKGameCenterControllerDelegat
     func submitScore() {
         self.submitScoreToGC(score: Int(self.timerCount * 100), leaderBoardID: self.LEADERBOARD_ID_COLOR_AND_SHAPE_TIME)
         self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_COLOR_AND_SHAPE_MOVES)
+        
+        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_ColorAndShape), leaderBoardID: appDelegate.LEADERBOARD_pcc_ColorAndShape)
     }
     
     func moveBlockToHolder(block: Block) -> Bool{

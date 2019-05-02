@@ -34,25 +34,11 @@ class VC_Stats: UIViewController, GKGameCenterControllerDelegate {
     
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
-    let LEADERBOARD_puzzlesCompleted = "com.puzzlesCompleted.puzzlesfromsurvivor"                   //Completed Count: All Puzzles Completed
-    let LEADERBOARD_pcc_SlidePuzzle = "com.pcc_SlidePuzzle.puzzlesfromsurvivor"                     //Completed Count: Slide Puzzle
-    let LEADERBOARD_pcc_SeaCrates = "com.pcc_SeaCrates.puzzlesfromsurvivor"                         //Completed Count: Sea Crates
-    let LEADERBOARD_pcc_Hanoi = "com.pcc_Hanoi.puzzlesfromsurvivor"                                 //Completed Count: Hanoi
-    let LEADERBOARD_pcc_MightAsWellJump = "com.pcc_MightAsWellJump.puzzlesfromsurvivor"             //Completed Count: Might As Well Jump
-    let LEADERBOARD_pcc_SlidePuzzle2 = "com.pcc_SlidePuzzle2.puzzlesfromsurvivor"                   //Completed Count: 8 Pieve Slide Puzzle
-    let LEADERBOARD_pcc_ColorAndShape = "com.pcc_ColorAndShape.puzzlesfromsurvivor"                 //Completed Count: Color and Shape
-    let LEADERBOARD_pcc_Matchbox25 = "com.pcc_Matchbox25.puzzlesfromsurvivor"                       //Completed Count: Matchbox 25
-    let LEADERBOARD_pcc_SpinPuzzle = "com.pcc_SpinPuzzle.puzzlesfromsurvivor"                       //Completed Count: Spin Puzzle
-    let LEADERBOARD_pcc_CombinationLock = "com.pcc_CombinationLock.puzzlesfromsurvivor"             //Completed Count: Combination Lock
-    let LEADERBOARD_pcc_NumbersGame = "com.pcc_NumbersGame.puzzlesfromsurvivor"                     //Completed Count: Numbers Game
-    let LEADERBOARD_pcc_CogPuzzle = "com.pcc_CogPuzzle.puzzlesfromsurvivor"                         //Completed Count: Cog Puzzle
-    let LEADERBOARD_pcc_VerticalPuzzle = "com.pcc_VerticalPuzzle.puzzlesfromsurvivor"               //Completed Count: Vertical Puzzle
-    let LEADERBOARD_pcc_VerticallyChallenged = "com.pcc_VerticallyChallenged.puzzlesfromsurvivor"   //Completed Count: Vertically Challenged
-    let LEADERBOARD_pcc_SlidePuzzle3 = "com.pcc_SlidePuzzle3.puzzlesfromsurvivor"                   //Completed Count: 5 Piece Slide Puzzle
     
-    let LEADERBOARD_streakCount = "com.streakCount.puzzlesfromsurvivor"                             //Longest Streak
-    let LEADERBOARD_bowlsOfRice = "com.bowlsOfRice.puzzlesfromsurvivor"                             //Bowls of Rice
-    let LEADERBOARD_immunityNecklaceCount = "com.immunityNecklaceCount.puzzlesfromsurvivor"         //Immunity Necklaces
+    let LEADERBOARD_streakCount = "com.streakCount.puzzlesfromsurvivor2"                             //Longest Streak
+    let LEADERBOARD_bowlsOfRice = "com.bowlsOfRice.puzzlesfromsurvivor2"                             //Bowls of Rice
+    let LEADERBOARD_currentAmuletCount = "com.currentAmuletCount.puzzlesfromsurvivor2"               //Current Amulets
+    let LEADERBOARD_amuletsPurchasedCount = "com.amuletsPurchasedCount.puzzlesfromsurvivor2"         //Amulets Purchased
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,24 +47,24 @@ class VC_Stats: UIViewController, GKGameCenterControllerDelegate {
         
         textView.text = "Current Streak: \(appDelegate.streakCount)\n" +
             "Longest Streak: \(appDelegate.longestStreak)\n" +
-            "Current Necklaces: \(appDelegate.immunityNecklaceCount)\n" +
-            //"Necklaces Purchased: \(appDelegate.immunityNecklacesPurchased)\n" +
-            //"Rice Bowls Purchased: \(appDelegate.bowlsOfRice)\n\n" +
-            "Puzzles Completed: \(appDelegate.puzzlesCompleted)\n\n" +
+            "Current Amulets: \(appDelegate.amuletCount)\n" +
+            "Amulets Purchased: \(appDelegate.amuletsPurchased)\n" +
+            "Rice Bowls Purchased: \(appDelegate.bowlsOfRice)\n\n" +
+            "Puzzles Completed: \(appDelegate.puzzlesCompleted)\n" +
             " - 5 Piece Slide Puzzle: \(appDelegate.pcc_SlidePuzzle3)\n" +
-            " - Vertically Challenged: \(appDelegate.pcc_VerticallyChallenged)\n" +
+            " - Fire and Ice: \(appDelegate.pcc_VerticallyChallenged)\n" +
             " - Vertical Puzzle: \(appDelegate.pcc_VerticalPuzzle)\n" +
             " - Cog Puzzle: \(appDelegate.pcc_CogPuzzle)\n" +
-            " - A Numbers Game: \(appDelegate.pcc_NumbersGame)\n" +
+            " - 1 to 100: \(appDelegate.pcc_NumbersGame)\n" +
             " - Combination Lock: \(appDelegate.pcc_CombinationLock)\n" +
             " - Spin Puzzle: \(appDelegate.pcc_SpinPuzzle)\n" +
-            " - Might As Well Jump: \(appDelegate.pcc_MightAsWellJump)\n" +
+            " - Turn Table Puzzle: \(appDelegate.pcc_MightAsWellJump)\n" +
             " - Slide Puzzle: \(appDelegate.pcc_SlidePuzzle)\n" +
-            " - Matchbox 25: \(appDelegate.pcc_Matchbox25)\n" +
+            " - 1 to 25: \(appDelegate.pcc_Matchbox25)\n" +
             " - The Color and the Shape: \(appDelegate.pcc_ColorAndShape)\n" +
             " - 8 Piece Slide Puzzle: \(appDelegate.pcc_SlidePuzzle2)\n" +
-            " - Tower of Hanoi: \(appDelegate.pcc_Hanoi)\n" +
-            " - Sea Crates: \(appDelegate.pcc_SeaCrates)\n"
+            " - Tower of Hanoi: \(appDelegate.pcc_Hanoi)\n"// +
+           // " - Instant Insanity: \(appDelegate.pcc_SeaCrates)\n"
     }
     
     // MARK: - AUTHENTICATE LOCAL PLAYER
@@ -136,27 +122,28 @@ class VC_Stats: UIViewController, GKGameCenterControllerDelegate {
     }
     
     @IBAction func button_Submit(_ sender: Any) {
-        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: self.LEADERBOARD_puzzlesCompleted)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_SlidePuzzle), leaderBoardID: self.LEADERBOARD_pcc_SlidePuzzle)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_SeaCrates), leaderBoardID: self.LEADERBOARD_pcc_SeaCrates)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_Hanoi), leaderBoardID: self.LEADERBOARD_pcc_Hanoi)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_MightAsWellJump), leaderBoardID: self.LEADERBOARD_pcc_MightAsWellJump)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_SlidePuzzle2), leaderBoardID: self.LEADERBOARD_pcc_SlidePuzzle2)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_ColorAndShape), leaderBoardID: self.LEADERBOARD_pcc_ColorAndShape)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_Matchbox25), leaderBoardID: self.LEADERBOARD_pcc_Matchbox25)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_SpinPuzzle), leaderBoardID: self.LEADERBOARD_pcc_SpinPuzzle)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_CombinationLock), leaderBoardID: self.LEADERBOARD_pcc_CombinationLock)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_NumbersGame), leaderBoardID: self.LEADERBOARD_pcc_NumbersGame)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_CogPuzzle), leaderBoardID: self.LEADERBOARD_pcc_CogPuzzle)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_VerticalPuzzle), leaderBoardID: self.LEADERBOARD_pcc_VerticalPuzzle)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_VerticallyChallenged), leaderBoardID: self.LEADERBOARD_pcc_VerticallyChallenged)
-        self.submitScoreToGC(score: Int(appDelegate.pcc_SlidePuzzle3), leaderBoardID: self.LEADERBOARD_pcc_SlidePuzzle3)
+        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_SlidePuzzle), leaderBoardID: appDelegate.LEADERBOARD_pcc_SlidePuzzle)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_SeaCrates), leaderBoardID: appDelegate.LEADERBOARD_pcc_SeaCrates)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_Hanoi), leaderBoardID: appDelegate.LEADERBOARD_pcc_Hanoi)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_MightAsWellJump), leaderBoardID: appDelegate.LEADERBOARD_pcc_MightAsWellJump)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_SlidePuzzle2), leaderBoardID: appDelegate.LEADERBOARD_pcc_SlidePuzzle2)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_ColorAndShape), leaderBoardID: appDelegate.LEADERBOARD_pcc_ColorAndShape)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_Matchbox25), leaderBoardID: appDelegate.LEADERBOARD_pcc_Matchbox25)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_SpinPuzzle), leaderBoardID: appDelegate.LEADERBOARD_pcc_SpinPuzzle)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_CombinationLock), leaderBoardID: appDelegate.LEADERBOARD_pcc_CombinationLock)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_NumbersGame), leaderBoardID: appDelegate.LEADERBOARD_pcc_NumbersGame)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_CogPuzzle), leaderBoardID: appDelegate.LEADERBOARD_pcc_CogPuzzle)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_VerticalPuzzle), leaderBoardID: appDelegate.LEADERBOARD_pcc_VerticalPuzzle)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_VerticallyChallenged), leaderBoardID: appDelegate.LEADERBOARD_pcc_VerticallyChallenged)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_SlidePuzzle3), leaderBoardID: appDelegate.LEADERBOARD_pcc_SlidePuzzle3)
         
         self.submitScoreToGC(score: Int(appDelegate.longestStreak), leaderBoardID: self.LEADERBOARD_streakCount)
         self.submitScoreToGC(score: Int(appDelegate.bowlsOfRice), leaderBoardID: self.LEADERBOARD_bowlsOfRice)
-        self.submitScoreToGC(score: Int(appDelegate.immunityNecklacesPurchased), leaderBoardID: self.LEADERBOARD_immunityNecklaceCount)
+        self.submitScoreToGC(score: Int(appDelegate.amuletCount), leaderBoardID: self.LEADERBOARD_currentAmuletCount)
+        self.submitScoreToGC(score: Int(appDelegate.amuletsPurchased), leaderBoardID: self.LEADERBOARD_amuletsPurchasedCount)
         
-        self.checkGCLeaderboard(leaderBoardID: self.LEADERBOARD_puzzlesCompleted)
+        self.checkGCLeaderboard(leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
     }
     
 

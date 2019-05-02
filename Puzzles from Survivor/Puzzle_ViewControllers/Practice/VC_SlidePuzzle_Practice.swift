@@ -18,13 +18,14 @@ class VC_SlidePuzzle_Practice: UIViewController, GKGameCenterControllerDelegate 
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
-    let LEADERBOARD_ID_SLIDE_TIME = "com.score_slide_time.puzzlesfromsurvivor"    //Best Time - Slide Puzzle
-    let LEADERBOARD_ID_SLIDE_MOVES = "com.score_slide_moves.puzzlesfromsurvivor"  //Fewest Moves - Slide Puzzle
+    let LEADERBOARD_ID_SLIDE_TIME = "com.score_slide_time.puzzlesfromsurvivor2"    //Best Time - Slide Puzzle
+    let LEADERBOARD_ID_SLIDE_MOVES = "com.score_slide_moves.puzzlesfromsurvivor2"  //Fewest Moves - Slide Puzzle
 
     @IBOutlet weak var gameView: UIView!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var Label_MoveCount: UILabel!
     @IBOutlet weak var Label_YouWin: UILabel!
+    @IBOutlet weak var Image_SolutionPreview: UIImageView!
     
     var allImgViews: [UIImageView] = []
     var allCenters: [CGPoint] = []
@@ -37,45 +38,10 @@ class VC_SlidePuzzle_Practice: UIViewController, GKGameCenterControllerDelegate 
     var timerCount = 0
     var moveCount = 0
     
+    var imageIndex = -1
+    let imageArray = ["vp_parrots", "vp_farmers", "vp_Last Supper", "vp_lions", "vp_monaLisa_tall", "vp_puppies", "vp_StarryNight", "vp_SundayAfternoon"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.gameViewWidth = self.gameView.frame.size.height
-        self.blockWidth = gameViewWidth / 6
-        
-        var xCen = blockWidth / 2
-        var yCen = blockWidth / 2
-        
-        allImgViews = []
-        var index = 1
-        for _ in 0..<4 {
-            for _ in 0..<4 {
-                let myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: blockWidth, height: blockWidth))
-                
-                let currentCenter = CGPoint(x: xCen, y: yCen)
-                allCenters.append(currentCenter)
-                allIndexes.append(index - 1)
-                myImageView.center = currentCenter
-                
-                if index < 10 {
-                    myImageView.image = UIImage(named: "0\(index)")
-                }else {
-                    myImageView.image = UIImage(named: "\(index)")
-                }
-                index += 1
-                allImgViews.append(myImageView)
-                myImageView.isUserInteractionEnabled = true
-                self.gameView.addSubview(myImageView)
-                
-                xCen += blockWidth
-            }
-            xCen = blockWidth / 2
-            yCen += blockWidth
-        }
-        
-        emptySpot = allCenters.last!
-        allImgViews[15].removeFromSuperview()
-        allImgViews.removeLast()
         
         ranodomizeBlocks()
         
@@ -168,7 +134,7 @@ class VC_SlidePuzzle_Practice: UIViewController, GKGameCenterControllerDelegate 
             timerStarted = true
             timer.invalidate()
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(inrementTimer), userInfo: nil, repeats: true)
-            Button_Done_outlet.setTitle("Done Jeff", for: .normal)
+            Button_Done_outlet.setTitle("Done", for: .normal)
         }
     }
     
@@ -185,20 +151,74 @@ class VC_SlidePuzzle_Practice: UIViewController, GKGameCenterControllerDelegate 
     var emptySpot = CGPoint(x: 0, y: 0)
     func ranodomizeBlocks() {
         
-/*  This is not always a solvable puzzle
-        var allCenters_copy = allCenters
-        var randLocInt: Int
-        var randLoc: CGPoint
+        self.gameViewWidth = self.gameView.frame.size.height
+        self.blockWidth = gameViewWidth / 6
         
-        for any in allImgViews {
-            randLocInt = Int(arc4random() % UInt32(allCenters_copy.count))
-            randLoc = allCenters_copy[randLocInt]
-            
-            any.center = randLoc
-            allCenters_copy.remove(at: randLocInt)
+        var xCen = blockWidth / 2
+        var yCen = blockWidth / 2
+        
+        var xLoc = 0
+        var yLoc = 0
+        if imageIndex == -1 {
+            imageIndex = Int.random(in: 0...7)
+        }else {
+            imageIndex += 1
+            if imageIndex > 7 {
+                imageIndex = 0
+            }
         }
-        emptySpot = allCenters_copy[0]  //the last spot is the empty one
- */
+        let imageName = imageArray[imageIndex]
+        let cgImage = UIImage(named: imageName)?.cgImage
+        let imageWidth = (UIImage(named: imageName)?.size.width)! / 4.0
+        let imageHeight = (UIImage(named: imageName)?.size.height)! / 4.0
+        Image_SolutionPreview.image = UIImage(named: imageName)
+        
+        for image in allImgViews {
+            image.removeFromSuperview()
+        }
+        
+        allImgViews.removeAll()
+        allIndexes.removeAll()
+        allCenters.removeAll()
+        var index = 1
+        for _ in 0..<4 {
+            for _ in 0..<4 {
+                let myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: blockWidth, height: blockWidth))
+                
+                let currentCenter = CGPoint(x: xCen, y: yCen)
+                allCenters.append(currentCenter)
+                allIndexes.append(index - 1)
+                myImageView.center = currentCenter
+                
+                let toRect = CGRect(x: xLoc, y: yLoc, width: Int(imageWidth), height: Int(imageHeight))
+                let croppedCgImage: CGImage = (cgImage?.cropping(to: toRect)!)!
+                
+                myImageView.image = UIImage(cgImage: croppedCgImage)
+                
+                //                if index < 10 {
+                //                    myImageView.image = UIImage(named: "0\(index)")
+                //                }else {
+                //                    myImageView.image = UIImage(named: "\(index)")
+                //                }
+                index += 1
+                allImgViews.append(myImageView)
+                myImageView.isUserInteractionEnabled = true
+                self.gameView.addSubview(myImageView)
+                
+                xCen += blockWidth
+                xLoc += Int(imageWidth)
+            }
+            xCen = blockWidth / 2
+            yCen += blockWidth
+            xLoc = 0
+            yLoc += Int(imageHeight)
+        }
+        
+        emptySpot = allCenters.last!
+        allImgViews[15].removeFromSuperview()
+        allImgViews.removeLast()
+        
+        
         for _ in 0...1000 {
             let randIndex = Int(arc4random() % UInt32(allImgViews.count))
             let myTouch = allImgViews[randIndex]
@@ -359,5 +379,8 @@ class VC_SlidePuzzle_Practice: UIViewController, GKGameCenterControllerDelegate 
     func submitScore() {
         self.submitScoreToGC(score: self.timerCount, leaderBoardID: self.LEADERBOARD_ID_SLIDE_TIME)
         self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_SLIDE_MOVES)
+        
+        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_SlidePuzzle), leaderBoardID: appDelegate.LEADERBOARD_pcc_SlidePuzzle)
     }
 }

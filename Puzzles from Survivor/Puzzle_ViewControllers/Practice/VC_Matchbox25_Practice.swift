@@ -16,8 +16,8 @@ class VC_Matchbox25_Practice: UIViewController, GKGameCenterControllerDelegate {
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
-    let LEADERBOARD_ID_MATCHBOX25_TIME = "com.score_matchbox25_time.puzzlesfromsurvivor"    //Best Time - Matchbox 25
-    let LEADERBOARD_ID_MATCHBOX25_MOVES = "com.score_matchbox25_moves.puzzlesfromsurvivor"  //Fewest Moves - Matchbox 25    
+    let LEADERBOARD_ID_MATCHBOX25_TIME = "com.score_matchbox25_time.puzzlesfromsurvivor2"    //Best Time - 1 to 25
+    let LEADERBOARD_ID_MATCHBOX25_MOVES = "com.score_matchbox25_moves.puzzlesfromsurvivor2"  //Fewest Moves - 1 to 25
     
     
     @IBOutlet weak var gameView: UIView!
@@ -268,6 +268,9 @@ class VC_Matchbox25_Practice: UIViewController, GKGameCenterControllerDelegate {
     func submitScore() {
         self.submitScoreToGC(score: Int(self.timerCount * 100), leaderBoardID: self.LEADERBOARD_ID_MATCHBOX25_TIME)
         self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_MATCHBOX25_MOVES)
+        
+        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_Matchbox25), leaderBoardID: appDelegate.LEADERBOARD_pcc_Matchbox25)
     }
     
     @IBOutlet weak var Label_0: UILabel!

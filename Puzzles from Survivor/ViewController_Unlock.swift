@@ -17,8 +17,10 @@ enum RegisteredPurchase: String {
     case UnlockAll = "unlockAll"
     case AutoRenewable = "AutoRenewable"
     case BowlOfRice = "BowlOfRice"
-    case ImmunityNecklace_3 = "ImmunityNecklace_3"
-    case ImmunityNecklace_10 = "ImmunityNecklace_10"
+    case Amulet_3 = "ImmunityNecklace_3"
+    case Amulet_10 = "ImmunityNecklace_10"
+    case Fire_And_Ice = "Fire_And_Ice"
+    case Vertical_Puzzle = "Vertical_Puzzle"
     case CannotAfford = ""
 }
 
@@ -51,22 +53,28 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var myArray = ["Unlock All Current and Future Puzzles",
-                   "Immunity Necklace (3) - Keep your streak alive 3 time (3 days)",
-                   "Immunity Necklace (10) - Keep your streak alive 3 time (3 days)",
                    "5 Piece Slide Puzzle",
-                   "Buy rrTenz a Bowl of Rice",
+                   "Fire and Ice Puzzle",
+                   "Vertical Puzzle",
+                   "Amulets (3) - Keep your streak alive 3 time (3 days)",
+                   "Amulets (10) - Keep your streak alive 3 time (3 days)",
+                   "Bowl of Rice",
                    "I can't afford it :("]
     var RegisteredPurchaseArray: [RegisteredPurchase] = [.UnlockAll,
-                                                         .ImmunityNecklace_3,
-                                                         .ImmunityNecklace_10,
                                                          .Slide_5_Piece,
+                                                         .Fire_And_Ice,
+                                                         .Vertical_Puzzle,
+                                                         .Amulet_3,
+                                                         .Amulet_10,
                                                          .BowlOfRice,
                                                          .CannotAfford]
     
     
-    let bundleID = "com.rrtenz.puzzlesfromsurvivor"
+    let bundleID = "com.rrtenz.puzzlesfromsurvivor2"
     
     var SlidePuzzle_5 = RegisteredPurchase.Slide_5_Piece
+    var FireAndIce = RegisteredPurchase.Fire_And_Ice
+    var VerticalPuzzle = RegisteredPurchase.Vertical_Puzzle
     var UnlockAll = RegisteredPurchase.UnlockAll
     var getInfoIndex = 0
     var verifyPurchaseIndex = 0
@@ -196,21 +204,42 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
                 var alertMessage = ""
                 enum PromoCodeType: Int {
                     case UnlockAll = 0
-                    case ImmunityNecklace = 1
+                    case Amulet = 1
                     case FirstDayOfStreak = 2
                     case BowlOfRice = 3
                     case Slide_5_Piece = 4
                     case LongestStreak = 5
-                    case NecklacesPurchased = 6
+                    case AmuletsPurchased = 6
+                    case FireAndIce = 7
+                    case VerticalPuzzle = 8
+                    case CompletedCount_add = 9
+                    case CompletedCount_set = 10
+                }
+                enum CompletedCount: Int {
+                    case SlidePuzzle = 0
+                    case SeaCrates = 1
+                    case Hanoi = 2
+                    case MightAsWellJump = 3
+                    case SlidePuzzle2 = 4
+                    case ColorAndShape = 5
+                    case Matchbox25 = 6
+                    case SpinPuzzle = 7
+                    case CombinationLock = 8
+                    case NumbersGame = 9
+                    case CogPuzzle = 10
+                    case VerticalPuzzle = 11
+                    case VerticallyChallenged = 12
+                    case SlidePuzzle3 = 13
+                    case Total = 99
                 }
                 if let typeEnum = PromoCodeType(rawValue: type) {
                     switch typeEnum {
                     case .UnlockAll:
                         alertMessage = "All current and future puzzles have been unlocked"
                         appDelegate.haveUnlocked_All = true
-                    case .ImmunityNecklace:
-                        alertMessage = "'Immunity Necklace' count\nhas changed from\n\(appDelegate.immunityNecklaceCount) to \(val)"
-                        appDelegate.immunityNecklaceCount = val
+                    case .Amulet:
+                        alertMessage = "'Amulet' count\nhas changed from\n\(appDelegate.amuletCount) to \(val)"
+                        appDelegate.amuletCount = val
                     case .FirstDayOfStreak:
                         let formatter = DateFormatter()
                         formatter.dateFormat = "yyyy/MM/dd HH:mm"
@@ -227,9 +256,132 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
                     case .LongestStreak:
                         alertMessage = "'Longest Streak' count\nhas changed from\n\(appDelegate.longestStreak) to \(val)"
                         appDelegate.longestStreak = val
-                    case .NecklacesPurchased:
-                        alertMessage = "'Necklaces Purchased' count\nhas changed from\n\(appDelegate.immunityNecklacesPurchased) to \(val)"
-                        appDelegate.immunityNecklacesPurchased = val
+                    case .AmuletsPurchased:
+                        alertMessage = "'Amulets Purchased' count\nhas changed from\n\(appDelegate.amuletsPurchased) to \(val)"
+                        appDelegate.amuletsPurchased = val
+                    case .FireAndIce:
+                        alertMessage = "Fire and Ice\nhas been unlocked"
+                        appDelegate.haveUnlocked_FireAndIce = true
+                    case .VerticalPuzzle:
+                        alertMessage = "Vertical Puzzle\nhas been unlocked"
+                        appDelegate.haveUnlocked_VerticalPuzzle = true
+                    case .CompletedCount_add, .CompletedCount_set:
+                        print("Completed Count Promo Code")
+                        if let puzzleEnum = CompletedCount(rawValue: val / 1000) {
+                            alertTitle = "Updated Completed Count"
+                            let count = val % 1000
+                            switch puzzleEnum {
+                            case .SlidePuzzle:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_SlidePuzzle += count
+                                }else {
+                                    appDelegate.pcc_SlidePuzzle = count
+                                }
+                                alertMessage = "Slide Puzzle Count: \(appDelegate.pcc_SlidePuzzle)"
+                            case .SeaCrates:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_SeaCrates += count
+                                }else {
+                                    appDelegate.pcc_SeaCrates = count
+                                }
+                                alertMessage = "Instant Insanity Count: \(appDelegate.pcc_SeaCrates)"
+                            case .Hanoi:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_Hanoi += count
+                                }else {
+                                    appDelegate.pcc_Hanoi = count
+                                }
+                                alertMessage = "Tower or Hanoi Count: \(appDelegate.pcc_Hanoi)"
+                            case .MightAsWellJump:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_MightAsWellJump += count
+                                }else {
+                                    appDelegate.pcc_MightAsWellJump = count
+                                }
+                                alertMessage = "Turn Table Puzzle Count: \(appDelegate.pcc_MightAsWellJump)"
+                            case .SlidePuzzle2:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_SlidePuzzle2 += count
+                                }else {
+                                    appDelegate.pcc_SlidePuzzle2 = count
+                                }
+                                alertMessage = "8 Piece Slide Puzzle Count: \(appDelegate.pcc_SlidePuzzle2)"
+                            case .ColorAndShape:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_ColorAndShape += count
+                                }else {
+                                    appDelegate.pcc_ColorAndShape = count
+                                }
+                                alertMessage = "The Color and the Shape Count: \(appDelegate.pcc_ColorAndShape)"
+                            case .Matchbox25:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_Matchbox25 += count
+                                }else {
+                                    appDelegate.pcc_Matchbox25 = count
+                                }
+                                alertMessage = "1 to 25 Count: \(appDelegate.pcc_Matchbox25)"
+                            case .SpinPuzzle:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_SpinPuzzle += count
+                                }else {
+                                    appDelegate.pcc_SpinPuzzle = count
+                                }
+                                alertMessage = "Spin Puzzle Count: \(appDelegate.pcc_SpinPuzzle)"
+                            case .CombinationLock:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_CombinationLock += count
+                                }else {
+                                    appDelegate.pcc_CombinationLock = count
+                                }
+                                alertMessage = "Combination Lock Count: \(appDelegate.pcc_CombinationLock)"
+                            case .NumbersGame:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_NumbersGame += count
+                                }else {
+                                    appDelegate.pcc_NumbersGame = count
+                                }
+                                alertMessage = "1 to 100 Count: \(appDelegate.pcc_NumbersGame)"
+                            case .CogPuzzle:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_CogPuzzle += count
+                                }else {
+                                    appDelegate.pcc_CogPuzzle = count
+                                }
+                                alertMessage = "Cog Puzzle Count: \(appDelegate.pcc_CogPuzzle)"
+                            case .VerticalPuzzle:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_VerticalPuzzle += count
+                                }else {
+                                    appDelegate.pcc_VerticalPuzzle = count
+                                }
+                                alertMessage = "Vertical Puzzle Count: \(appDelegate.pcc_VerticalPuzzle)"
+                            case .VerticallyChallenged:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_VerticallyChallenged += count
+                                }else {
+                                    appDelegate.pcc_VerticallyChallenged = count
+                                }
+                                alertMessage = "Fire and Ice Count: \(appDelegate.pcc_VerticallyChallenged)"
+                            case .SlidePuzzle3:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_SlidePuzzle3 += count
+                                }else {
+                                    appDelegate.pcc_SlidePuzzle3 = count
+                                }
+                                alertMessage = "5 Piece Slide Puzzle Count: \(appDelegate.pcc_SlidePuzzle3)"
+                            case .Total:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.puzzlesCompleted += count
+                                }else {
+                                    appDelegate.puzzlesCompleted = count
+                                }
+                                alertMessage = "Puzzles Completed Count: \(appDelegate.puzzlesCompleted)"
+                            }
+                            update_puzzlesCompleted()
+                        }else {
+                            alertTitle = "Invalid Puzzle Type Value"
+                            alertMessage = "The Promo Code could not be applied"
+                        }
                     }
                     appDelegate.promoCodesUsed_Array.append(promo)
                     Defaults().save_Defaults(updateStreak: false)
@@ -250,6 +402,10 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    func update_puzzlesCompleted() {
+        appDelegate.puzzlesCompleted = appDelegate.pcc_SlidePuzzle + appDelegate.pcc_Hanoi + appDelegate.pcc_MightAsWellJump + appDelegate.pcc_SlidePuzzle2 + appDelegate.pcc_ColorAndShape + appDelegate.pcc_Matchbox25 + appDelegate.pcc_SpinPuzzle + appDelegate.pcc_CombinationLock + appDelegate.pcc_NumbersGame + appDelegate.pcc_CogPuzzle + appDelegate.pcc_VerticalPuzzle + appDelegate.pcc_VerticallyChallenged + appDelegate.pcc_SlidePuzzle3
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myArray.count
@@ -265,7 +421,7 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
         print("do something \(indexPath.row) \(myArray[indexPath.row])")
         
         if myArray.count - 1 == indexPath.row {
-            showAlert(alert: alertWithTitle(title: "No Money?", message: "I am trying to make\n'Puzzles from Survivor'\navailable to as many people as possible. However I have locked some puzzles and am asking for a contribution because I do need some money to keep this project going.\n\nIf you don't have the money or can't get mom or dad's permission to make a purchase, send me an email, ask nicely, and I will give you a code to unlock the puzzles for free (especially if you send a screen shot of a possitive reveiw)."))
+            showAlert(alert: alertWithTitle(title: "No Money?", message: "I am trying to make\n'Puzzle Cluster'\navailable to as many people as possible. However I have locked some puzzles and am asking for a contribution because I do need some money to keep this project going.\n\nIf you don't have the money or can't get mom or dad's permission to make a purchase, here are a few ways to get a free promo code:\n\n1. Give my app a possitive review\n2. Follow rrTenz Games on Facebook\n3. Subscribe to Survivor Geek on YouTube\n4. Share the app's link on social media\n\nTake a screen shot and email it to rrtenz@gmail.com\nIf you do at least 3 of those things, I will send you a code to unlock all current and future puzzles!"))
         }else {
             purchase(purchase: RegisteredPurchaseArray[indexPath.row])
         }
@@ -309,22 +465,30 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
                     print("Purchase complete: Slide_5_Piece \(self.appDelegate.haveUnlocked_5PiecePuzzle)")
                     self.appDelegate.haveUnlocked_5PiecePuzzle = true
                     print("                   Slide_5_Piece \(self.appDelegate.haveUnlocked_5PiecePuzzle)")
+                case self.bundleID + "." + RegisteredPurchase.Fire_And_Ice.rawValue:
+                    print("Purchase complete: Fire and Ice \(self.appDelegate.haveUnlocked_FireAndIce)")
+                    self.appDelegate.haveUnlocked_FireAndIce = true
+                    print("                   Fire and Ice \(self.appDelegate.haveUnlocked_FireAndIce)")
+                case self.bundleID + "." + RegisteredPurchase.Vertical_Puzzle.rawValue:
+                    print("Purchase complete: Vertical Puzzle \(self.appDelegate.haveUnlocked_VerticalPuzzle)")
+                    self.appDelegate.haveUnlocked_VerticalPuzzle = true
+                    print("                   Vertical Puzzle \(self.appDelegate.haveUnlocked_VerticalPuzzle)")
                 case self.bundleID + "." + RegisteredPurchase.UnlockAll.rawValue:
                     print("Purchase complete: UnlockAll \(self.appDelegate.haveUnlocked_All)")
                     self.appDelegate.haveUnlocked_All = true
                     print("                   UnlockAll \(self.appDelegate.haveUnlocked_All)")
                 case self.bundleID + "." + RegisteredPurchase.AutoRenewable.rawValue:
                     print("Purchase complete: AutoRenewable !!!!!!!")
-                case self.bundleID + "." + RegisteredPurchase.ImmunityNecklace_3.rawValue:
-                    print("Purchase complete: ImmunityNecklace_3 \(self.appDelegate.immunityNecklaceCount)")
-                    self.appDelegate.immunityNecklaceCount += 3
-                    self.appDelegate.immunityNecklacesPurchased += 3
-                    print("                   ImmunityNecklace_3 \(self.appDelegate.immunityNecklaceCount)")
-                case self.bundleID + "." + RegisteredPurchase.ImmunityNecklace_10.rawValue:
-                    print("Purchase complete: ImmunityNecklace_10 \(self.appDelegate.immunityNecklaceCount)")
-                    self.appDelegate.immunityNecklaceCount += 10
-                    self.appDelegate.immunityNecklacesPurchased += 10
-                    print("                   ImmunityNecklace_10 \(self.appDelegate.immunityNecklaceCount)")
+                case self.bundleID + "." + RegisteredPurchase.Amulet_3.rawValue:
+                    print("Purchase complete: Amulet_3 \(self.appDelegate.amuletCount)")
+                    self.appDelegate.amuletCount += 3
+                    self.appDelegate.amuletsPurchased += 3
+                    print("                   Amulet_3 \(self.appDelegate.amuletCount)")
+                case self.bundleID + "." + RegisteredPurchase.Amulet_10.rawValue:
+                    print("Purchase complete: Amulet_10 \(self.appDelegate.amuletCount)")
+                    self.appDelegate.amuletCount += 10
+                    self.appDelegate.amuletsPurchased += 10
+                    print("                   Amulet_10 \(self.appDelegate.amuletCount)")
                 default:
                     print("Purchase complete: Unknown Purchase !!!!!")
                 }

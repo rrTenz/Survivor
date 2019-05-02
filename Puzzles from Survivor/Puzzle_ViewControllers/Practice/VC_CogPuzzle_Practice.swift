@@ -15,8 +15,8 @@ class VC_CogPuzzle_Practice: UIViewController, GKGameCenterControllerDelegate {
     
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
-    let LEADERBOARD_ID_COGPUZZLE_TIME = "com.score_cogpuzzle_time.puzzlesfromsurvivor"    //Best Time - Cog Puzzle
-    let LEADERBOARD_ID_COGPUZZLE_MOVES = "com.score_cogpuzzle_moves.puzzlesfromsurvivor"  //Fewest Moves - Cog Puzzle
+    let LEADERBOARD_ID_COGPUZZLE_TIME = "com.score_cogpuzzle_time.puzzlesfromsurvivor2"    //Best Time - Cog Puzzle
+    let LEADERBOARD_ID_COGPUZZLE_MOVES = "com.score_cogpuzzle_moves.puzzlesfromsurvivor2"  //Fewest Moves - Cog Puzzle
     
     var cogImageArray: [UIImageView] = []
     var cogButtonArray_top: [UIButton] = []
@@ -628,6 +628,9 @@ class VC_CogPuzzle_Practice: UIViewController, GKGameCenterControllerDelegate {
     func submitScore() {
         self.submitScoreToGC(score: Int(self.timerCount * 10), leaderBoardID: self.LEADERBOARD_ID_COGPUZZLE_TIME)
         self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_COGPUZZLE_MOVES)
+        
+        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_CogPuzzle), leaderBoardID: appDelegate.LEADERBOARD_pcc_CogPuzzle)
     }
 }
 

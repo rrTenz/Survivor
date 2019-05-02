@@ -19,13 +19,15 @@ internal class Defaults {
     let key_longestStreak = "key_longestStreak"
     let key_dateOfFirstCompletedPuzzle = "key_dateOfFirstCompletedPuzzle"
     let key_dateOfLastCompletedPuzzle = "key_dateOfLastCompletedPuzzle"
-    let key_immunityNecklaceCount = "key_immunityNecklaceCount"
-    let key_immunityNecklacesPurchased = "key_immunityNecklacesPurchased"
+    let key_amuletCount = "key_amuletCount"
+    let key_amuletsPurchased = "key_amuletsPurchased"
     let key_bowlsOfRice = "key_bowlsOfRice"
     let key_haveUnlocked_All = "key_haveUnlocked_All"
     let key_haveUnlocked_5PiecePuzzle = "key_haveUnlocked_5PiecePuzzle"
+    let key_haveUnlocked_FireAndIce = "key_haveUnlocked_FireAndIce"
+    let key_haveUnlocked_VerticalPuzzle = "key_haveUnlocked_VerticalPuzzle"
     let key_promoCodesUsed_Array = "key_promoCodesUsed_Array"
-    let key_giveFreeNecklace = "key_giveFreeNecklace"
+    let key_giveFreeAmulet = "key_giveFreeAmulet"
     
     let key_puzzlesCompleted = "key_puzzlesCompleted"
     
@@ -69,17 +71,19 @@ internal class Defaults {
         }else {
             appDelegate.dateOfLastCompletedPuzzle = defaults.object(forKey: key_dateOfLastCompletedPuzzle) as! Date
         }
-        appDelegate.immunityNecklaceCount = defaults.integer(forKey: key_immunityNecklaceCount)
-        appDelegate.immunityNecklacesPurchased = defaults.integer(forKey: key_immunityNecklacesPurchased)
+        appDelegate.amuletCount = defaults.integer(forKey: key_amuletCount)
+        appDelegate.amuletsPurchased = defaults.integer(forKey: key_amuletsPurchased)
         appDelegate.bowlsOfRice = defaults.integer(forKey: key_bowlsOfRice)
         appDelegate.haveUnlocked_All = defaults.bool(forKey: key_haveUnlocked_All)
         appDelegate.haveUnlocked_5PiecePuzzle = defaults.bool(forKey: key_haveUnlocked_5PiecePuzzle)
+        appDelegate.haveUnlocked_FireAndIce = defaults.bool(forKey: key_haveUnlocked_FireAndIce)
+        appDelegate.haveUnlocked_VerticalPuzzle = defaults.bool(forKey: key_haveUnlocked_VerticalPuzzle)
         if defaults.object(forKey: key_promoCodesUsed_Array) == nil {
             print("key_promoCodesUsed_Array has not been saved")
         }else {
             appDelegate.promoCodesUsed_Array = defaults.object(forKey: key_promoCodesUsed_Array) as! [String]
         }
-        appDelegate.giveFreeNecklace = defaults.bool(forKey: key_giveFreeNecklace)
+        appDelegate.giveFreeAmulet = defaults.bool(forKey: key_giveFreeAmulet)
         
         appDelegate.puzzlesCompleted = defaults.integer(forKey: key_puzzlesCompleted)
         
@@ -117,13 +121,15 @@ internal class Defaults {
         defaults.set(appDelegate.longestStreak, forKey: key_longestStreak)
         defaults.set(appDelegate.dateOfFirstCompletedPuzzle, forKey: key_dateOfFirstCompletedPuzzle)
         defaults.set(appDelegate.dateOfLastCompletedPuzzle, forKey: key_dateOfLastCompletedPuzzle)
-        defaults.set(appDelegate.immunityNecklaceCount, forKey: key_immunityNecklaceCount)
-        defaults.set(appDelegate.immunityNecklacesPurchased, forKey: key_immunityNecklacesPurchased)
+        defaults.set(appDelegate.amuletCount, forKey: key_amuletCount)
+        defaults.set(appDelegate.amuletsPurchased, forKey: key_amuletsPurchased)
         defaults.set(appDelegate.bowlsOfRice, forKey: key_bowlsOfRice)
         defaults.set(appDelegate.haveUnlocked_All, forKey: key_haveUnlocked_All)
         defaults.set(appDelegate.haveUnlocked_5PiecePuzzle, forKey: key_haveUnlocked_5PiecePuzzle)
+        defaults.set(appDelegate.haveUnlocked_FireAndIce, forKey: key_haveUnlocked_FireAndIce)
+        defaults.set(appDelegate.haveUnlocked_VerticalPuzzle, forKey: key_haveUnlocked_VerticalPuzzle)
         defaults.set(appDelegate.promoCodesUsed_Array, forKey: key_promoCodesUsed_Array)
-        defaults.set(appDelegate.giveFreeNecklace, forKey: key_giveFreeNecklace)
+        defaults.set(appDelegate.giveFreeAmulet, forKey: key_giveFreeAmulet)
 
         
         defaults.set(appDelegate.puzzlesCompleted, forKey: key_puzzlesCompleted)

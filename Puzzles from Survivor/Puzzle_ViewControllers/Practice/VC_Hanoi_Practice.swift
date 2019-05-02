@@ -16,8 +16,8 @@ class VC_Hanoi_Practice: UIViewController, GKGameCenterControllerDelegate {
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
-    let LEADERBOARD_ID_HANOI_TIME = "com.score_hanoi_time.puzzlesfromsurvivor"    //Best Time - Tower of Hanoi
-    let LEADERBOARD_ID_HANOI_MOVES = "com.score_hanoi_moves.puzzlesfromsurvivor"  //Fewest Moves - Tower of Hanoi
+    let LEADERBOARD_ID_HANOI_TIME = "com.score_hanoi_time.puzzlesfromsurvivor2"    //Best Time - Tower of Hanoi
+    let LEADERBOARD_ID_HANOI_MOVES = "com.score_hanoi_moves.puzzlesfromsurvivor2"  //Fewest Moves - Tower of Hanoi
     
     @IBOutlet weak var Label_Block_0_0: UILabel!
     @IBOutlet weak var Label_Block_0_1: UILabel!
@@ -309,6 +309,9 @@ class VC_Hanoi_Practice: UIViewController, GKGameCenterControllerDelegate {
     func submitScore() {
         self.submitScoreToGC(score: Int(self.timerCount * 100), leaderBoardID: self.LEADERBOARD_ID_HANOI_TIME)
         self.submitScoreToGC(score: self.MoveCount, leaderBoardID: self.LEADERBOARD_ID_HANOI_MOVES)
+        
+        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_Hanoi), leaderBoardID: appDelegate.LEADERBOARD_pcc_Hanoi)
     }
     
     

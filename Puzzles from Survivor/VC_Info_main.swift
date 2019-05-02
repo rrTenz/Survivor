@@ -18,7 +18,7 @@ class VC_Info_main: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     @IBAction func button_Email(_ sender: Any) {
-        self.sendEmail(body: "", subject: "Puzzles from Survivor - Questions/Comments")
+        self.sendEmail(body: "", subject: "Puzzle Cluster - Questions/Comments")
     }
     
     func sendEmail(body: String, subject: String) {

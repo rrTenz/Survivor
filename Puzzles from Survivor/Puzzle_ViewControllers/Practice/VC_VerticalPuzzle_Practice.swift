@@ -15,10 +15,12 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
     
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
-    let LEADERBOARD_ID_VERTPUZZLE_TIME_0 = "com.score_vertpuzzle_time.puzzlesfromsurvivor"    //Best Time - Vertical Puzzle (Fish)
-    let LEADERBOARD_ID_VERTPUZZLE_MOVES_0 = "com.score_vartpuzzle_moves.puzzlesfromsurvivor"  //Fewest Moves - Vertical Puzzle (Fish)
-    let LEADERBOARD_ID_VERTPUZZLE_TIME_1 = "com.score_vertpuzzle_time_1.puzzlesfromsurvivor"    //Best Time - Vertical Puzzle (Dragon)
-    let LEADERBOARD_ID_VERTPUZZLE_MOVES_1 = "com.score_vartpuzzle_moves_1.puzzlesfromsurvivor"  //Fewest Moves - Vertical Puzzle (Dragon)
+//    let LEADERBOARD_ID_VERTPUZZLE_TIME_0 = "com.score_vertpuzzle_time.puzzlesfromsurvivor2"    //Best Time - Vertical Puzzle (Fish)
+//    let LEADERBOARD_ID_VERTPUZZLE_MOVES_0 = "com.score_vartpuzzle_moves.puzzlesfromsurvivor2"  //Fewest Moves - Vertical Puzzle (Fish)
+//    let LEADERBOARD_ID_VERTPUZZLE_TIME_1 = "com.score_vertpuzzle_time_1.puzzlesfromsurvivor2"    //Best Time - Vertical Puzzle (Dragon)
+//    let LEADERBOARD_ID_VERTPUZZLE_MOVES_1 = "com.score_vartpuzzle_moves_1.puzzlesfromsurvivor2"  //Fewest Moves - Vertical Puzzle (Dragon)
+    let LEADERBOARD_ID_VERTPUZZLE_TIME_2 = "com.score_vertpuzzle_time_2.puzzlesfromsurvivor2"    //Best Time - Vertical Puzzle
+    let LEADERBOARD_ID_VERTPUZZLE_MOVES_2 = "com.score_vartpuzzle_moves_2.puzzlesfromsurvivor2"  //Fewest Moves - Vertical Puzzle
     
     struct PuzzlePiece {
         var name = ""
@@ -37,9 +39,21 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        pickPuzzle()
+        //pickPuzzle()
+        self.gameNumber = 2
+        if self.imageIndex == -1 {
+            self.imageIndex = Int.random(in: 0...7)
+        }else {
+            self.imageIndex += 1
+            if self.imageIndex > 7 {
+                self.imageIndex = 0
+            }
+        }
+        self.NewGame()
     }
     
+    var imageIndex = -1
+    let imageArray = ["vp_parrots", "vp_farmers", "vp_Last Supper", "vp_lions", "vp_monaLisa_tall", "vp_puppies", "vp_StarryNight", "vp_SundayAfternoon"]
     func pickPuzzle() {
         let alertController = UIAlertController(title: "Dragon or Fish?", message: "Which vertical puzzle would you like to do?", preferredStyle: .alert)
         let dragonAction = UIAlertAction(title: "Dragon", style: UIAlertAction.Style.cancel) {
@@ -56,8 +70,24 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
             self.gameNumber = 0
             self.NewGame()
         }
+        let randomAction = UIAlertAction(title: "Random", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            NSLog("Random Pressed")
+            
+            self.gameNumber = 2
+            if self.imageIndex == -1 {
+                self.imageIndex = Int.random(in: 0...7)
+            }else {
+                self.imageIndex += 1
+                if self.imageIndex > 7 {
+                    self.imageIndex = 0
+                }
+            }
+            self.NewGame()
+        }
         alertController.addAction(fishAction)
         alertController.addAction(dragonAction)
+        alertController.addAction(randomAction)
         self.present(alertController, animated: true, completion: nil)
         
     }
@@ -134,7 +164,17 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
     }
     
     @IBAction func Button_NewGame(_ sender: Any) {
-        pickPuzzle()
+        //pickPuzzle()
+        self.gameNumber = 2
+        if self.imageIndex == -1 {
+            self.imageIndex = Int.random(in: 0...7)
+        }else {
+            self.imageIndex += 1
+            if self.imageIndex > 7 {
+                self.imageIndex = 0
+            }
+        }
+        self.NewGame()
     }
     
     var Pieces_top: [PuzzlePiece] = []
@@ -149,17 +189,19 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
         Label_MoveCount.text = "\(moveCount)"
         Label_YouWin.text = ""
         
-        switch gameNumber {
-        case 0:
-            gameString = "p"
-            gameBackground.image = UIImage(named: "VP_background")
-        case 1:
-            gameString = "v"
-            gameBackground.image = UIImage(named: "VP2_background")
-        default:
-            gameString = "p"
-            gameBackground.image = UIImage(named: "VP_background")
-        }
+//        switch gameNumber {
+//        case 0:
+//            gameString = "p"
+//            gameBackground.image = UIImage(named: "VP_background")
+//        case 1:
+//            gameString = "v"
+//            gameBackground.image = UIImage(named: "VP2_background")
+//        default:
+//            gameString = ""
+//            gameBackground.image = UIImage(named: "VP_background")
+//        }
+        gameString = ""
+        gameBackground.image = UIImage(named: "VP_background")
         
         timerCount = 0.0
         timerLabel.text = String(format: "%.1f", timerCount)
@@ -191,47 +233,125 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
         
         Piece_onDeck = PuzzlePiece(name: "transparent", isFlipped: false, index: -1)
         
+        Populate_splitImage_Array()
+        
         updateUI()
+    }
+    
+    var splitImage_Array: [UIImage] = []
+    var splitImage_Array_flipped: [UIImage] = []
+    func Populate_splitImage_Array() {
+        
+        
+        let imageName = imageArray[imageIndex]
+        let cgImage = UIImage(named: imageName)?.cgImage
+        let imageWidth = (UIImage(named: imageName)?.size.width)! / 20.0
+        let imageHeight = (UIImage(named: imageName)?.size.height)!
+        
+        splitImage_Array.removeAll()
+        splitImage_Array_flipped.removeAll()
+        var i = 0
+        for _ in ButtonArray_top {
+            let toRect = CGRect(x: Int(imageWidth * CGFloat(i)), y: 0, width: Int(imageWidth), height: Int(imageHeight))
+            let croppedCgImage: CGImage = (cgImage?.cropping(to: toRect)!)!
+            splitImage_Array.append(UIImage(cgImage: croppedCgImage))
+            splitImage_Array_flipped.append(flipImageLeftRight(splitImage_Array[i])!)
+            i += 1
+        }
     }
     
     func updateUI() {
         var i = 0
         for button in ButtonArray_top {
-            var imgName = "\(Pieces_top[i].name)"
             var alpha: CGFloat = 1.0
-            if Pieces_top[i].index >= 0 {
-                if Pieces_top[i].isFlipped {
-                    imgName = "\(Pieces_top[i].name)_f"
+            if gameNumber == 2 && Pieces_top[i].name != "transparent" {    //Random image
+                alpha = 1.0
+                var myImage = UIImage()
+                if Pieces_top[i].index >= 0 {
+                    let num = Int(Pieces_top[i].name)!
+                    myImage = splitImage_Array[num]
+                    if Pieces_top[i].isFlipped {
+                        myImage = splitImage_Array_flipped[num]
+                    }
+                }else {
+                    myImage = UIImage(named: "blank_green")!
+                    alpha = 0.3
                 }
-            }else {
-                imgName = "blank_green"
-                alpha = 0.3
+                button.setImage(myImage, for: .normal)
+            }else {                 //Dragon or Fish
+                var imgName = "\(Pieces_top[i].name)"
+                alpha = 1.0
+                if Pieces_top[i].index >= 0 {
+                    if Pieces_top[i].isFlipped {
+                        imgName = "\(Pieces_top[i].name)_f"
+                    }
+                }else {
+                    imgName = "blank_green"
+                    alpha = 0.3
+                }
+                button.setImage(UIImage(named: imgName), for: .normal)
             }
-            button.setImage(UIImage(named: imgName), for: .normal)
             button.alpha = alpha
+            
             i += 1
         }
         
         i = 0
         for button in ButtonArray_bot {
-            var imgName = "\(Pieces_bot[i].name)"
-            if Pieces_bot[i].isFlipped {
-                imgName = "\(Pieces_bot[i].name)_f"
+            if gameNumber == 2 && Pieces_bot[i].name != "transparent" {    //Random image
+                var myImage = UIImage()
+                let num = Int(Pieces_bot[i].name)!
+                myImage = splitImage_Array[num]
+                if Pieces_bot[i].isFlipped {
+                    myImage = splitImage_Array_flipped[num]
+                }
+                button.setImage(myImage, for: .normal)                
+            }else {                 //Dragon or Fish
+                var imgName = "\(Pieces_bot[i].name)"
+                if Pieces_bot[i].isFlipped {
+                    imgName = "\(Pieces_bot[i].name)_f"
+                }
+                button.setImage(UIImage(named: imgName), for: .normal)
             }
-            button.setImage(UIImage(named: imgName), for: .normal)
             i += 1
         }
         
-        var imgName = "\(Piece_onDeck.name)"
-        if Piece_onDeck.isFlipped {
-            imgName = "\(Piece_onDeck.name)_f"
+        if gameNumber == 2 && Piece_onDeck.name != "transparent" {    //Random image
+            var myImage = UIImage()
+            let num = Int(Piece_onDeck.name)!
+            myImage = splitImage_Array[num]
+            if Piece_onDeck.isFlipped {
+                myImage = splitImage_Array_flipped[num]
+            }
+            onDeck.setImage(myImage, for: .normal)
+        }else {                 //Dragon or Fish
+            var imgName = "\(Piece_onDeck.name)"
+            if Piece_onDeck.isFlipped {
+                imgName = "\(Piece_onDeck.name)_f"
+            }
+            onDeck.setImage(UIImage(named: imgName), for: .normal)
         }
-        onDeck.setImage(UIImage(named: imgName), for: .normal)
         
         moveCount += 1
         Label_MoveCount.text = "\(moveCount)"
         
         checkForWin()
+    }
+    
+    func flipImageLeftRight(_ image: UIImage) -> UIImage? {
+        
+        UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
+        let context = UIGraphicsGetCurrentContext()!
+        context.translateBy(x: image.size.width, y: image.size.height)
+        context.scaleBy(x: -image.scale, y: -image.scale)
+        
+        context.draw(image.cgImage!, in: CGRect(origin:CGPoint.zero, size: image.size))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
     
     var hasWon = false
@@ -423,7 +543,7 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
                 if validCount == 20 {
                     hasWon = true
                 }
-            }else if gameNumber == 1 {
+            }else if gameNumber >= 1 {
                 //Look for standard solution
                 for i in 0..<20 {
                     if Pieces_top[i].index == i && !Pieces_top[i].isFlipped {
@@ -476,11 +596,13 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
                 NSLog("Submit Pressed")
                 
                 self.submitScore()
-                if self.gameNumber == 0 {
-                    self.checkGCLeaderboard(leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_0)
-                }else if self.gameNumber == 1 {
-                    self.checkGCLeaderboard(leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_1)
-                }
+//                if self.gameNumber == 0 {
+//                    self.checkGCLeaderboard(leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_0)
+//                }else if self.gameNumber == 1 {
+//                    self.checkGCLeaderboard(leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_1)
+//                }else {
+                    self.checkGCLeaderboard(leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_2)
+//                }
             }
             alertController.addAction(okAction)
             alertController.addAction(submitScoreAction)
@@ -491,13 +613,19 @@ class VC_VerticalPuzzle_Practice: UIViewController, GKGameCenterControllerDelega
     }
     
     func submitScore() {
-        if self.gameNumber == 0 {
-            self.submitScoreToGC(score: Int(self.timerCount * 10), leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_0)
-            self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_MOVES_0)
-        }else if self.gameNumber == 1 {
-            self.submitScoreToGC(score: Int(self.timerCount * 10), leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_1)
-            self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_MOVES_1)
-        }
+//        if self.gameNumber == 0 {
+//            self.submitScoreToGC(score: Int(self.timerCount * 10), leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_0)
+//            self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_MOVES_0)
+//        }else if self.gameNumber == 1 {
+//            self.submitScoreToGC(score: Int(self.timerCount * 10), leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_1)
+//            self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_MOVES_1)
+//        }else {
+            self.submitScoreToGC(score: Int(self.timerCount * 10), leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_TIME_2)
+            self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_VERTPUZZLE_MOVES_2)
+        
+        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_VerticalPuzzle), leaderBoardID: appDelegate.LEADERBOARD_pcc_VerticalPuzzle)
+//       }
     }
     
     @objc func inrementTimer() {

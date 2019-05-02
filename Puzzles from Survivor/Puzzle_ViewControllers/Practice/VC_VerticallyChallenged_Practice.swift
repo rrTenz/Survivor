@@ -15,8 +15,8 @@ class VC_VerticallyChallenged_Practice: UIViewController, GKGameCenterController
     
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
-    let LEADERBOARD_ID_VERTCHALLENGED_TIME = "com.score_vertchallenged_time.puzzlesfromsurvivor"    //Best Time - Vertically Challenged
-    let LEADERBOARD_ID_VERTCHALLENGED_MOVES = "com.score_vartchallenged_moves.puzzlesfromsurvivor"  //Fewest Moves - Vertically Challenged
+    let LEADERBOARD_ID_VERTCHALLENGED_TIME = "com.score_vertchallenged_time.puzzlesfromsurvivor2"    //Best Time - Fire and Ice
+    let LEADERBOARD_ID_VERTCHALLENGED_MOVES = "com.score_vartchallenged_moves.puzzlesfromsurvivor2"  //Fewest Moves - Fire and Ice
     
     var ButtonArray_left: [UIButton] = []
     var ButtonArray_right: [UIButton] = []
@@ -252,7 +252,7 @@ class VC_VerticallyChallenged_Practice: UIViewController, GKGameCenterController
             }else {
                 ButtonArray_right[index].setImage(UIImage(named: "blob_green"), for: .normal)
             }
-            ButtonArray_right[index].alpha = 0.3
+            ButtonArray_right[index].alpha = 0.5
         }else {
             ButtonArray_right[index].isHidden = true
         }
@@ -270,6 +270,9 @@ class VC_VerticallyChallenged_Practice: UIViewController, GKGameCenterController
     func submitScore() {
         self.submitScoreToGC(score: Int(self.timerCount * 10), leaderBoardID: self.LEADERBOARD_ID_VERTCHALLENGED_TIME)
         self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_VERTCHALLENGED_MOVES)
+        
+        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_VerticallyChallenged), leaderBoardID: appDelegate.LEADERBOARD_pcc_VerticallyChallenged)
     }
     
     @objc func inrementTimer() {

@@ -15,8 +15,8 @@ class VC_SlidePuzzle3_Practice: UIViewController, GKGameCenterControllerDelegate
     
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
-    let LEADERBOARD_ID_SLIDEPUZZLE_3_TIME = "com.score_slidepuzzle3_time.puzzlesfromsurvivor"    //Best Time - 5 Piece Slide Puzzle
-    let LEADERBOARD_ID_SLIDEPUZZLE_3_MOVES = "com.score_slidepuzzle3_moves.puzzlesfromsurvivor"  //Fewest Moves - 5 Piece Slide Puzzle
+    let LEADERBOARD_ID_SLIDEPUZZLE_3_TIME = "com.score_slidepuzzle3_time.puzzlesfromsurvivor2"    //Best Time - 5 Piece Slide Puzzle
+    let LEADERBOARD_ID_SLIDEPUZZLE_3_MOVES = "com.score_slidepuzzle3_moves.puzzlesfromsurvivor2"  //Fewest Moves - 5 Piece Slide Puzzle
 
     var buttonMultiArray = [[UIButton]]()
     var occupiedMultiArray = [[Bool]]()
@@ -338,6 +338,9 @@ class VC_SlidePuzzle3_Practice: UIViewController, GKGameCenterControllerDelegate
     func submitScore() {
         self.submitScoreToGC(score: Int(self.timerCount * 10), leaderBoardID: self.LEADERBOARD_ID_SLIDEPUZZLE_3_TIME)
         self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_SLIDEPUZZLE_3_MOVES)
+        
+        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_SlidePuzzle3), leaderBoardID: appDelegate.LEADERBOARD_pcc_SlidePuzzle3)
     }
     
     @IBAction func button_up(_ sender: Any) {

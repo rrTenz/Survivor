@@ -32,7 +32,7 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         LockImage.isHidden = true        
         
         label_Steak.text = "x\(appDelegate.streakCount)"
-        label_Necklace.text = "x\(appDelegate.immunityNecklaceCount)"
+        label_Necklace.text = "x\(appDelegate.amuletCount)"
     }
     
     func puzzleIsLocked() -> Bool {
@@ -42,6 +42,18 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         if appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Locked == true {
             if appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name == "5 Piece Slide Puzzle" {
                 if appDelegate.haveUnlocked_5PiecePuzzle {
+                    return false
+                }else {
+                    return true
+                }
+            }else if appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name == "Fire and Ice" {
+                if appDelegate.haveUnlocked_FireAndIce {
+                    return false
+                }else {
+                    return true
+                }
+            }else if appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name == "Vertical Puzzle" {
+                if appDelegate.haveUnlocked_VerticalPuzzle {
                     return false
                 }else {
                     return true
@@ -60,7 +72,7 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         Defaults().load_Defaults()
         
         if checkStreak() == false {
-            if checkFreeNecklace() == false {
+            if checkFreeAmulet() == false {
                 if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
                     if appDelegate.version != version {
                         Defaults().save_Defaults(updateStreak: false)
@@ -82,16 +94,16 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         LockImage.isHidden = !puzzleIsLocked()
         
         label_Steak.text = "x\(appDelegate.streakCount)"
-        label_Necklace.text = "x\(appDelegate.immunityNecklaceCount)"
+        label_Necklace.text = "x\(appDelegate.amuletCount)"
     }
     
-    //var haveBeenGivenChanceToBuyNecklaces = false
-    var haveBeenGivenChanceToBuyNecklaces = true
+    //var haveBeenGivenChanceToBuyAmulets = false
+    var haveBeenGivenChanceToBuyAmulets = true
     func checkStreak() -> Bool {
         var didDisplayAlert = false
         
         //Check to see if dateOfFirstCompletedPuzzle is the original 1970 value
-        if appDelegate.daysBetween2Dates(date1: appDelegate.dateOfFirstCompletedPuzzle, date2: Date(timeIntervalSince1970: 0)) == 0 {
+        if appDelegate.daysBetween2Dates(date1: Date(timeIntervalSince1970: 0), date2: appDelegate.dateOfFirstCompletedPuzzle) == 0 {
             //The beginning of a new streak
 //            print("--set dateOfFirstCompletedPuzzle to yesterday")
 //            appDelegate.dateOfFirstCompletedPuzzle = Calendar.current.date(byAdding: .day, value: -1, to: Date())!  //set to yesterday
@@ -99,7 +111,7 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
 //            appDelegate.dateOfFirstCompletedPuzzle = Date()  //set to today
             print("--set dateOfFirstCompletedPuzzle to tomorrow")
             appDelegate.dateOfFirstCompletedPuzzle = Calendar.current.date(byAdding: .day, value: 1, to: Date())!  //set to yesterday
-            appDelegate.giveFreeNecklace = true
+            appDelegate.giveFreeAmulet = true
             button_Streak.setImage(UIImage(named: "fire_gray2"), for: .normal)
         }else {
             //let today = Date()
@@ -109,8 +121,8 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
 //            let lastCompleted = formatter.date(from: "2019/3/27 12:00")
             
             appDelegate.UpdateStreakVariables(didCompletePuzzle: false)
-            if appDelegate.streakCount == 0 && appDelegate.immunityNecklaceCount <= 0 {
-                appDelegate.giveFreeNecklace = true
+            if appDelegate.streakCount == 0 && appDelegate.amuletCount <= 0 {
+                appDelegate.giveFreeAmulet = true
             }
             let dayDiff = appDelegate.daysBetween2Dates(date1: appDelegate.dateOfLastCompletedPuzzle, date2: Date())
             
@@ -121,15 +133,15 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             }
             
             if dayDiff >= 2 {
-                let requiredNecklaces = dayDiff - 1
+                let requiredAmulets = dayDiff - 1
                     
-                if appDelegate.immunityNecklaceCount >= requiredNecklaces {
+                if appDelegate.amuletCount >= requiredAmulets {
                     didDisplayAlert = true
-                    let alertController = UIAlertController(title: "Immunity Necklace", message: "Your streak of \(appDelegate.streakCount) day(s) has been lost\n\nWould you like to use\n\(requiredNecklaces) Immunity Necklace(s)\nto restore your streak?", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Save Streak?", message: "Your streak of \(appDelegate.streakCount) day(s) has been lost\n\nWould you like to use\n\(requiredAmulets) Amulet(s)\nto restore your streak?", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default) {
                         UIAlertAction in
                         NSLog("Yes Pressed")
-                        self.appDelegate.immunityNecklaceCount -= requiredNecklaces
+                        self.appDelegate.amuletCount -= requiredAmulets
                         Defaults().save_Defaults(updateStreak: true)
                         self.updateStreakLabelAndImage()
                     }
@@ -139,21 +151,21 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
                         self.appDelegate.dateOfFirstCompletedPuzzle = Date() //set to today
                         self.appDelegate.UpdateStreakVariables(didCompletePuzzle: false)
                         self.updateStreakLabelAndImage()
-                        self.appDelegate.giveFreeNecklace = true
+                        self.appDelegate.giveFreeAmulet = true
                     }
                     alertController.addAction(noAction)
                     alertController.addAction(okAction)
                     self.present(alertController, animated: true, completion: nil)
-                }else if haveBeenGivenChanceToBuyNecklaces == false {
-                    haveBeenGivenChanceToBuyNecklaces = true
+                }else if haveBeenGivenChanceToBuyAmulets == false && appDelegate.bowlsOfRice > 0{
+                    haveBeenGivenChanceToBuyAmulets = true
                     didDisplayAlert = true
-                    let alertController = UIAlertController(title: "Torch Snuffed", message: "Your streak of \(appDelegate.streakCount) day(s) has been lost\n\nWould you like a chance to buy some\nImmunity Necklaces\nto restore your streak?\n\nYou will need \(dayDiff-1) necklace(s).", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Torch Snuffed", message: "Your streak of \(appDelegate.streakCount) day(s) has been lost\n\nWould you like a chance to buy some\nAmulets\nto restore your streak?\n\nYou will need \(dayDiff-1) amulets(s).", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default) {
                         UIAlertAction in
                         NSLog("Yes Pressed")
                         self.goToStore()
                         self.label_Steak.text = "x\(self.appDelegate.streakCount)"
-                        self.label_Necklace.text = "x\(self.appDelegate.immunityNecklaceCount)"
+                        self.label_Necklace.text = "x\(self.appDelegate.amuletCount)"
                     }
                     let noAction = UIAlertAction(title: "No", style: UIAlertAction.Style.default) {
                         UIAlertAction in
@@ -161,45 +173,49 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
                         self.appDelegate.dateOfFirstCompletedPuzzle = Date() //set to today
                         self.appDelegate.UpdateStreakVariables(didCompletePuzzle: false)
                         self.updateStreakLabelAndImage()
-                        self.appDelegate.giveFreeNecklace = true
+                        self.appDelegate.giveFreeAmulet = true
                     }
                     alertController.addAction(noAction)
                     alertController.addAction(okAction)
                     self.present(alertController, animated: true, completion: nil)
                 }else if dayDiff >= 2 {
+                    haveBeenGivenChanceToBuyAmulets = true
                     self.appDelegate.dateOfFirstCompletedPuzzle = Date() //set to today
                     self.appDelegate.UpdateStreakVariables(didCompletePuzzle: false)
                     self.updateStreakLabelAndImage()
-                    self.appDelegate.giveFreeNecklace = true
+                    self.appDelegate.giveFreeAmulet = true
                 }
             }
         }
         return didDisplayAlert
     }
     
-    func checkFreeNecklace() -> Bool {
-        if appDelegate.giveFreeNecklace {
-            appDelegate.giveFreeNecklace = false
+    func checkFreeAmulet() -> Bool {
+        if appDelegate.giveFreeAmulet {
+            appDelegate.giveFreeAmulet = false
             
             var str = ""
-            if appDelegate.streakCount == 0 && appDelegate.immunityNecklaceCount <= 0 {
-//                str = "You have been given one\nImmunity Necklace\nwhich can keep your streak alive if you miss one day. You can go to the 'Store' to get more."
-                str = "You have been given one\nImmunity Necklace\nwhich can keep your streak alive if you miss one day. You will get another necklace every \(appDelegate.DAYS_FOR_FREE_NECKCLACE) days."
-                appDelegate.immunityNecklaceCount = 1
-            }else {
-                str = "Congratulations!\nYou have been given another\nImmunity Necklace\nfor getting your streak to \(appDelegate.streakCount) days.\nKeep up the good work!"
+            if appDelegate.streakCount <= 0 && appDelegate.amuletCount <= 0 {
+                str = "You have been given one\nAmulet\nwhich can keep your streak alive if you miss one day. You will get another amulet every \(appDelegate.DAYS_FOR_FREE_NECKCLACE) days. You can go to the 'Store' to get more."
+                appDelegate.amuletCount = 1
+            }else if appDelegate.didEarnAmulet {
+                appDelegate.didEarnAmulet = false
+                str = "Congratulations!\nYou have been given a free\nAmulet\nfor getting your streak to \(appDelegate.streakCount) days.\nKeep up the good work!"
+                appDelegate.amuletCount += 1
             }
             
-            let alertController = UIAlertController(title: "Immunity Necklace", message: str, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
-                UIAlertAction in
-                NSLog("OK Pressed")
+            if str.count > 0 {
+                let alertController = UIAlertController(title: "Free Amulet", message: str, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                    UIAlertAction in
+                    NSLog("OK Pressed")
+                }
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+                
+                Defaults().save_Defaults(updateStreak: false)
+                return true
             }
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: nil)
-            
-            Defaults().save_Defaults(updateStreak: false)
-            return true
         }
         return false
     }
@@ -215,7 +231,7 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
     
     func updateStreakLabelAndImage() {
         self.label_Steak.text = "x\(self.appDelegate.streakCount)"
-        self.label_Necklace.text = "x\(self.appDelegate.immunityNecklaceCount)"
+        self.label_Necklace.text = "x\(self.appDelegate.amuletCount)"
         if self.appDelegate.daysBetween2Dates(date1: appDelegate.dateOfLastCompletedPuzzle, date2: Date()) == 0 {
             self.button_Streak.setImage(UIImage(named: "fire2"), for: .normal)
         }
@@ -230,7 +246,7 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         let sendEmail = UIAlertAction(title: "Send Email", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("Send Email")
-            self.sendEmail(body: "", subject: "Puzzles from Survivor - Questions/Comments")
+            self.sendEmail(body: "", subject: "Puzzle Cluster - Questions/Comments")
         }
         let goToFacebook = UIAlertAction(title: "Facebook", style: UIAlertAction.Style.default) {
             UIAlertAction in
@@ -283,7 +299,35 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         return "\(appDelegate.puzzleArraySimple[row].Name)"
     }
     
+    var last5_index = [-1, -1, -1, -1, -1]
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        #if false
+        last5_index[0] = last5_index[1]
+        last5_index[1] = last5_index[2]
+        last5_index[2] = last5_index[3]
+        last5_index[3] = last5_index[4]
+        last5_index[4] = row
+        
+        if last5_index[0] >= 0 && last5_index[1] >= 0 && last5_index[2] >= 0 && last5_index[3] >= 0 && last5_index[4] >= 0 {
+            //print("\(last5_index[0]) \(last5_index[1]) \(last5_index[2]) \(last5_index[3]) \(last5_index[4])")
+            
+            var movingIndex = -1
+            if last5_index[3] + 1 == last5_index[4] ||
+                (last5_index[3] == 1 && last5_index[4] == 0) ||
+                (last5_index[3] - 1 == last5_index[4] && appDelegate.puzzleArraySimple.count - last5_index[3] <= 4) {
+                movingIndex = last5_index[4]
+            }else if last5_index[3] + 5 == last5_index[4] {
+                movingIndex = last5_index[3]
+            }
+            if movingIndex == -1 {
+                //print("   No fit")
+            }else {
+                //print("  **  \(movingIndex) \(appDelegate.puzzleArraySimple[movingIndex].Name) ***")
+                updateImageAndText(movingIndex)
+            }
+        }
+        #endif
         
         var pickerLabel = view as? UILabel;
         
@@ -308,6 +352,10 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        updateImageAndText(row)
+    }
+    
+    func updateImageAndText(_ row: Int) {
         appDelegate.PuzzleSelected = row
         labelPuzzle.text = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name
         textView_PuzzleDescription.text = appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Description
@@ -336,7 +384,6 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         switch appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name {
         case "Slide Puzzle":
-            //UIApplication.shared.openURL(NSURL(string: "https://www.proprofs.com/games/puzzle/sliding/survivor-cagayan-sliding-puzzle/")! as URL)
             let controller = storyboard.instantiateViewController(withIdentifier: "VC_SlidePuzzle_Practice")
             self.present(controller, animated: true, completion: nil)
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_SlidePuzzle_Practice") as? VC_SlidePuzzle_Practice {
@@ -354,7 +401,7 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_FivePiece_Practice") as? VC_FivePiece_Practice {
                 present(vc, animated: true, completion: nil)
             }
-        case "Sea Crates":
+        case "Instant Insanity":
             let controller = storyboard.instantiateViewController(withIdentifier: "VC_SeaCrates_Practice")
             self.present(controller, animated: true, completion: nil)
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_SeaCrates_Practice") as? VC_SeaCrates_Practice {
@@ -372,7 +419,7 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_21Flags_Practice") as? VC_21Flags_Practice {
                 present(vc, animated: true, completion: nil)
             }
-        case "Might as Well Jump":
+        case "Turn Table Puzzle":
             let controller = storyboard.instantiateViewController(withIdentifier: "VC_MightAsWellJump_Practice")
             self.present(controller, animated: true, completion: nil)
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_MightAsWellJump_Practice") as? VC_MightAsWellJump_Practice {
@@ -384,7 +431,7 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_ColorAndShape_Practice") as? VC_ColorAndShape_Practice {
                 present(vc, animated: true, completion: nil)
             }
-        case "Matchbox 25":
+        case "1 to 25":
             let controller = storyboard.instantiateViewController(withIdentifier: "VC_Matchbox25_Practice")
             self.present(controller, animated: true, completion: nil)
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_Matchbox25_Practice") as? VC_Matchbox25_Practice {
@@ -402,13 +449,13 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_CombinationLock_Practice") as? VC_CombinationLock_Practice {
                 present(vc, animated: true, completion: nil)
             }
-        case "Flip Out":
+        case "Don't Get Hexed":
             let controller = storyboard.instantiateViewController(withIdentifier: "VC_FlipOut_Practice")
             self.present(controller, animated: true, completion: nil)
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_FlipOut_Practice") as? VC_FlipOut_Practice {
                 present(vc, animated: true, completion: nil)
             }
-        case "A Numbers Game":
+        case "1 to 100":
             let controller = storyboard.instantiateViewController(withIdentifier: "VC_NumbersGame_Practice")
             self.present(controller, animated: true, completion: nil)
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_NumbersGame_Practice") as? VC_NumbersGame_Practice {
@@ -421,17 +468,25 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
                 present(vc, animated: true, completion: nil)
             }
         case "Vertical Puzzle":
-            let controller = storyboard.instantiateViewController(withIdentifier: "VC_VerticalPuzzle_Practice")
-            self.present(controller, animated: true, completion: nil)
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_VerticalPuzzle_Practice") as? VC_VerticalPuzzle_Practice {
-                present(vc, animated: true, completion: nil)
+            if puzzleIsLocked() == false {
+                let controller = storyboard.instantiateViewController(withIdentifier: "VC_VerticalPuzzle_Practice")
+                self.present(controller, animated: true, completion: nil)
+                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_VerticalPuzzle_Practice") as? VC_VerticalPuzzle_Practice {
+                    present(vc, animated: true, completion: nil)
+                }
+            }else {
+                unlockAlert()
             }
-        case "Vertically Challenged":
-            let controller = storyboard.instantiateViewController(withIdentifier: "VC_VerticallyChallenged_Practice")
-            self.present(controller, animated: true, completion: nil)
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_VerticallyChallenged_Practice") as? VC_VerticallyChallenged_Practice {
-                present(vc, animated: true, completion: nil)
-            }
+        case "Fire and Ice":
+            if puzzleIsLocked() == false {
+                let controller = storyboard.instantiateViewController(withIdentifier: "VC_VerticallyChallenged_Practice")
+                self.present(controller, animated: true, completion: nil)
+                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_VerticallyChallenged_Practice") as? VC_VerticallyChallenged_Practice {
+                    present(vc, animated: true, completion: nil)
+                }
+            }else {
+                unlockAlert()
+                }
         case "5 Piece Slide Puzzle":
             if puzzleIsLocked() == false {
                 let controller = storyboard.instantiateViewController(withIdentifier: "VC_SlidePuzzle3_Practice")
@@ -460,8 +515,7 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var label_Steak: UILabel!
     @IBOutlet weak var button_Streak: UIButton!
     @IBAction func button_Streak(_ sender: Any) {
-//        let alertController = UIAlertController(title: "Fire Represents Life", message: "Your current streak is \(appDelegate.streakCount) day(s).\n\nTo keep your torch lit (streak alive), you must complete at least one puzzle every day. If you miss a day, your streak will be set back to 0. You can keep your streak alive even if you miss a day by purchasing Immunity Necklaces. There are some puzzles that don't count towards your streak (e.g. Five Piece Puzzle, 21 Flags, Flip Out).\n\nIf the flame icon is gray, you need to complete a puzzle today.", preferredStyle: .alert)
-        let alertController = UIAlertController(title: "Fire Represents Life", message: "Your current streak is \(appDelegate.streakCount) day(s).\n\nTo keep your torch lit (streak alive), you must complete at least one puzzle every day. If you miss a day, your streak will be set back to 0. You can keep your streak alive even if you miss a day by using an Immunity Necklaces. There are some puzzles that don't count towards your streak (e.g. Five Piece Puzzle, 21 Flags, Flip Out).\n\nIf the flame icon is gray, you need to complete a puzzle today.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Keep the Flame Alive", message: "Your current streak is \(appDelegate.streakCount) day(s).\n\nTo keep your streak alive, you must complete at least one puzzle every day. If you miss a day, your streak will be set back to 0. You can keep your streak alive even if you miss a day by using an Amulet. There are some puzzles that don't count towards your streak (e.g. Five Piece Puzzle, 21 Flags, Don't Get Hexed).\n\nIf the flame icon is gray, you need to complete a puzzle today.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("OK Pressed")
@@ -472,24 +526,23 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
     
     @IBOutlet weak var label_Necklace: UILabel!
     @IBAction func button_Necklace(_ sender: Any) {
-//        let alertController = UIAlertController(title: "Immunity Necklaces", message: "You currently have \(appDelegate.immunityNecklaceCount) necklace(s).\n\nOne immunity necklace will keep your streak alive for one day. If you miss three days, you will need to use three necklaces to keep your streak alive.\n\nIf you buy a\nBowl of Rice\nand you miss a day, you will be given the option to buy\nImmunity Necklaces\n before you streak is set to 0.", preferredStyle: .alert)
-        let alertController = UIAlertController(title: "Immunity Necklaces", message: "You currently have \(appDelegate.immunityNecklaceCount) necklace(s).\n\nOne immunity necklace will keep your streak alive for one day. If you miss three days, you will need to use three necklaces to keep your streak alive.\n\nYou will get a new Immunity Necklace every \(appDelegate.DAYS_FOR_FREE_NECKCLACE) days.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Amulets", message: "You currently have \(appDelegate.amuletCount) amulet(s).\n\nOne amulet will keep your streak alive for one day. If you miss three days, you will need to use three amulets to keep your streak alive.\n\nIf you buy a\nBowl of Rice\nand you miss a day, you will be given the option to buy\nAmulets\n before you streak is set to 0.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("OK Pressed")
         }
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
-        resetDefaults()
+        //resetDefaults()
     }
     
-    func resetDefaults() {
-        let defaults = UserDefaults.standard
-        let dictionary = defaults.dictionaryRepresentation()
-        dictionary.keys.forEach { key in
-            defaults.removeObject(forKey: key)
-        }
-    }
+//    func resetDefaults() {
+//        let defaults = UserDefaults.standard
+//        let dictionary = defaults.dictionaryRepresentation()
+//        dictionary.keys.forEach { key in
+//            defaults.removeObject(forKey: key)
+//        }
+//    }
     
     /*
     // MARK: - Navigation

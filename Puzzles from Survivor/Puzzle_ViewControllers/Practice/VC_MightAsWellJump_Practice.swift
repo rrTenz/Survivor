@@ -16,11 +16,11 @@ class VC_MightAsWellJump_Practice: UIViewController, GKGameCenterControllerDeleg
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
-    let LEADERBOARD_ID_WHEEL = "com.score_wheel.puzzlesfromsurvivor"    //Might as Well Jump
-    let LEADERBOARD_ID_WHEEL_TIME_STANDARD = "com.score_wheel_time_standard.puzzlesfromsurvivor"    //Best Time (Standard) - Might as Well Jump
-    let LEADERBOARD_ID_WHEEL_MOVES_STANDARD = "com.score_wheel_moves_standard.puzzlesfromsurvivor"  //Fewest Moves (Standard) - Might as Well Jump
-    let LEADERBOARD_ID_WHEEL_TIME_RANDOM = "com.score_wheel_time_random.puzzlesfromsurvivor"        //Best Time (Random) - Might as Well Jump
-    let LEADERBOARD_ID_WHEEL_MOVES_RANDOM = "com.score_wheel_moves_random.puzzlesfromsurvivor"      //Fewest Moves (Random) - Might as Well Jump
+    let LEADERBOARD_ID_WHEEL = "com.score_wheel.puzzlesfromsurvivor2"    //Turn Table Puzzle
+    let LEADERBOARD_ID_WHEEL_TIME_STANDARD = "com.score_wheel_time_standard.puzzlesfromsurvivor2"    //Best Time (Standard) - Turn Table Puzzle
+    let LEADERBOARD_ID_WHEEL_MOVES_STANDARD = "com.score_wheel_moves_standard.puzzlesfromsurvivor2"  //Fewest Moves (Standard) - Turn Table Puzzle
+    let LEADERBOARD_ID_WHEEL_TIME_RANDOM = "com.score_wheel_time_random.puzzlesfromsurvivor2"        //Best Time (Random) - Turn Table Puzzle
+    let LEADERBOARD_ID_WHEEL_MOVES_RANDOM = "com.score_wheel_moves_random.puzzlesfromsurvivor2"      //Fewest Moves (Random) - Turn Table Puzzle
     
     
     @IBOutlet weak var View_Wheel: UIView!
@@ -212,7 +212,7 @@ class VC_MightAsWellJump_Practice: UIViewController, GKGameCenterControllerDeleg
                 // Get the default leaderboard ID
                 localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
                     if error != nil { print(error ?? "Default Error")
-                    } else { self.gcDefaultLeaderBoard = leaderboardIdentifer! }
+                     } else { self.gcDefaultLeaderBoard = leaderboardIdentifer! }
                 })
                 
             } else {
@@ -353,7 +353,7 @@ class VC_MightAsWellJump_Practice: UIViewController, GKGameCenterControllerDeleg
         moveCount = 0
         Label_MoveCount.text = "\(moveCount)"
         
-        Button_Done_outlet.setTitle("Done Jeff", for: .normal)
+        Button_Done_outlet.setTitle("Done", for: .normal)
     }
     
     @objc func inrementTimer() {
@@ -381,7 +381,7 @@ class VC_MightAsWellJump_Practice: UIViewController, GKGameCenterControllerDeleg
             timerStarted = true
             timer.invalidate()
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(inrementTimer), userInfo: nil, repeats: true)
-            Button_Done_outlet.setTitle("Done Jeff", for: .normal)
+            Button_Done_outlet.setTitle("Done", for: .normal)
         }
     }
     
@@ -578,6 +578,9 @@ class VC_MightAsWellJump_Practice: UIViewController, GKGameCenterControllerDeleg
             self.submitScoreToGC(score: self.timerCount, leaderBoardID: self.LEADERBOARD_ID_WHEEL_TIME_RANDOM)
             self.submitScoreToGC(score: self.moveCount, leaderBoardID: self.LEADERBOARD_ID_WHEEL_MOVES_RANDOM)
         }
+        
+        self.submitScoreToGC(score: Int(appDelegate.puzzlesCompleted), leaderBoardID: appDelegate.LEADERBOARD_puzzlesCompleted)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_MightAsWellJump), leaderBoardID: appDelegate.LEADERBOARD_pcc_MightAsWellJump)
     }
     
     @objc
