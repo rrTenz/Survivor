@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyStoreKit
 import StoreKit
 
 var sharedSecret = "001c3876819a475cb7aae185ce2b8722"
@@ -48,17 +47,17 @@ class NetworkActivityIndicatorManager: NSObject {
     
 }
 
-class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewDataSource, SKPaymentTransactionObserver {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    var myArray = ["Unlock All Current and Future Puzzles",
-                   "5 Piece Slide Puzzle",
-                   "Fire and Ice Puzzle",
-                   "Vertical Puzzle",
-                   "Amulets (3) - Keep your streak alive 3 time (3 days)",
-                   "Amulets (10) - Keep your streak alive 3 time (3 days)",
-                   "Bowl of Rice",
+    var myArray = ["$2.99 - Unlock All - Unlocks all current and future puzzles",
+                   "$0.99 - 5 Piece Slide Puzzle - Unlock 5 Piece Slide Puzzle",
+                   "$0.99 - Fire and Ice - Unlock Fire and Ice Puzzle",
+                   "$0.99 - Vertical Puzzle - Unlock Vertical Puzzle",
+                   "$0.99 - 3 Amulets - Keep your streak alive 3 time (3 days)",
+                   "$1.99 - 10 Amulets - Keep your streak alive 3 time (3 days)",
+                   "$0.99 - Bowl of Rice - Get option to buy Amulets before streak reset",
                    "I can't afford it :("]
     var RegisteredPurchaseArray: [RegisteredPurchase] = [.UnlockAll,
                                                          .Slide_5_Piece,
@@ -81,14 +80,30 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SKPaymentQueue.default().add(self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         getInfoIndex = 0
         getInfo(purchase: RegisteredPurchaseArray[getInfoIndex])
+        promoPressCount = 0
     }
     
-    @IBAction func Button_enterPromoCode(_ sender: Any) {   //https://stackoverflow.com/questions/26567413/get-input-value-from-textfield-in-ios-alert-in-swift
+    var promoPressCount = 0
+    @IBAction func Button_enterPromoCode(_ sender: Any) {
+        if promoPressCount < 6 {
+            print("increment")
+            promoPressCount += 1
+        }else {
+            print("show")
+            showPromoAlert()
+            promoPressCount = 5
+        }
+        print(promoPressCount)
+    }
+    
+    func showPromoAlert() {  //https://stackoverflow.com/questions/26567413/get-input-value-from-textfield-in-ios-alert-in-swift
         //Step : 1
         let alert = UIAlertController(title: "Promo Code", message: "Enter your promo code", preferredStyle: UIAlertController.Style.alert)
         //Step : 2
@@ -121,6 +136,7 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
         //alert.addAction(UIAlertAction(title: "Cancel", style: .default) { (alertAction) in })
         
         self.present(alert, animated:true, completion: nil)
+        
     }
     
     func subToInt(_ start: Int, _ end: Int) -> Int {
@@ -418,6 +434,11 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.appDelegate.haveInitPurchases == false {
+            print("Initializing in-app purchase")
+            return
+        }
+        
         print("do something \(indexPath.row) \(myArray[indexPath.row])")
         
         if myArray.count - 1 == indexPath.row {
@@ -428,146 +449,84 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func getInfo(purchase: RegisteredPurchase) {
-        NetworkActivityIndicatorManager.NetworkOperationStarted()
-        SwiftyStoreKit.retrieveProductsInfo([bundleID + "." + purchase.rawValue], completion: {
-            result in
-            NetworkActivityIndicatorManager.NetworkOperationFinished()
-            
-            if let product = result.retrievedProducts.first {
-                let priceString = product.localizedPrice!
-                self.myArray[self.getInfoIndex] = "\(priceString) - \(product.localizedTitle) - \(product.localizedDescription)"
-                
-                if self.getInfoIndex < self.RegisteredPurchaseArray.count - 2 {
-                    self.getInfoIndex += 1
-                    self.getInfo(purchase: self.RegisteredPurchaseArray[self.getInfoIndex])
-                }
-                self.tableView.reloadData()
-            }else {
-                self.showAlert(alert: self.alertForProductRetrievalInfo(result: result))
-            }
-        })
+        
     }
     
     func purchase(purchase: RegisteredPurchase) {
-        NetworkActivityIndicatorManager.NetworkOperationStarted()
-        SwiftyStoreKit.purchaseProduct(bundleID + "." + purchase.rawValue, completion: {
-            result in
-            NetworkActivityIndicatorManager.NetworkOperationFinished()
-            
-            if case .success(let product) = result {
-                
-                switch product.productId {
-                case self.bundleID + "." + RegisteredPurchase.BowlOfRice.rawValue:
-                    print("Purchase complete: BowlOfRice \(self.appDelegate.bowlsOfRice)")
-                    self.appDelegate.bowlsOfRice += 1
-                    print("                   BowlOfRice \(self.appDelegate.bowlsOfRice)")
-                case self.bundleID + "." + RegisteredPurchase.Slide_5_Piece.rawValue:
-                    print("Purchase complete: Slide_5_Piece \(self.appDelegate.haveUnlocked_5PiecePuzzle)")
-                    self.appDelegate.haveUnlocked_5PiecePuzzle = true
-                    print("                   Slide_5_Piece \(self.appDelegate.haveUnlocked_5PiecePuzzle)")
-                case self.bundleID + "." + RegisteredPurchase.Fire_And_Ice.rawValue:
-                    print("Purchase complete: Fire and Ice \(self.appDelegate.haveUnlocked_FireAndIce)")
-                    self.appDelegate.haveUnlocked_FireAndIce = true
-                    print("                   Fire and Ice \(self.appDelegate.haveUnlocked_FireAndIce)")
-                case self.bundleID + "." + RegisteredPurchase.Vertical_Puzzle.rawValue:
-                    print("Purchase complete: Vertical Puzzle \(self.appDelegate.haveUnlocked_VerticalPuzzle)")
-                    self.appDelegate.haveUnlocked_VerticalPuzzle = true
-                    print("                   Vertical Puzzle \(self.appDelegate.haveUnlocked_VerticalPuzzle)")
-                case self.bundleID + "." + RegisteredPurchase.UnlockAll.rawValue:
-                    print("Purchase complete: UnlockAll \(self.appDelegate.haveUnlocked_All)")
-                    self.appDelegate.haveUnlocked_All = true
-                    print("                   UnlockAll \(self.appDelegate.haveUnlocked_All)")
-                case self.bundleID + "." + RegisteredPurchase.AutoRenewable.rawValue:
-                    print("Purchase complete: AutoRenewable !!!!!!!")
-                case self.bundleID + "." + RegisteredPurchase.Amulet_3.rawValue:
-                    print("Purchase complete: Amulet_3 \(self.appDelegate.amuletCount)")
-                    self.appDelegate.amuletCount += 3
-                    self.appDelegate.amuletsPurchased += 3
-                    print("                   Amulet_3 \(self.appDelegate.amuletCount)")
-                case self.bundleID + "." + RegisteredPurchase.Amulet_10.rawValue:
-                    print("Purchase complete: Amulet_10 \(self.appDelegate.amuletCount)")
-                    self.appDelegate.amuletCount += 10
-                    self.appDelegate.amuletsPurchased += 10
-                    print("                   Amulet_10 \(self.appDelegate.amuletCount)")
-                default:
-                    print("Purchase complete: Unknown Purchase !!!!!")
-                }
-                Defaults().save_Defaults(updateStreak: false)
-                
-            }
-            self.showAlert(alert: self.alertForPurchaseResult(result: result))
-        })
+        if SKPaymentQueue.canMakePayments() {
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = bundleID + "." + purchase.rawValue
+            SKPaymentQueue.default().add(paymentRequest)
+        }else {
+            showAlert(alert: alertWithTitle(title: "Cannot Make Purchase", message: "You are not able to make purchases."))
+        }
     }
     
     func restorePurchases() {
-        NetworkActivityIndicatorManager.NetworkOperationStarted()
-        SwiftyStoreKit.restorePurchases(completion: {
-            result in
-            NetworkActivityIndicatorManager.NetworkOperationFinished()
-            
-            for product in result.restoredPurchases {
-                if product.needsFinishTransaction {
-                    SwiftyStoreKit.finishTransaction(product.transaction)
-                }
-            }
-            
-            self.showAlert(alert: self.alertForRestorePurchase(result: result))
-            
-        })
+        
     }
-    //27:06
-//        func verifyReceipt() {
-//            NetworkActivityIndicatorManager.NetworkOperationStarted()
-//            SwiftyStoreKit.verifyreceipt (using: sharedSecret, completion: {
-//                result in
-//                NetworkActivityIndicatorManager.NetworkOperationFinished()
-//
-//                self.showAlert(alert: self.alertForVerifyReceipt(result: result))
-//
-//                if case.error
-//
-//            })
-//        }
     
     func verifyPurchase(product: RegisteredPurchase) {
-            NetworkActivityIndicatorManager.NetworkOperationStarted()
-            let validator = AppleReceiptValidator(service: .production)
-            SwiftyStoreKit.verifyReceipt(using: validator, completion: {
-                result in
-                NetworkActivityIndicatorManager.NetworkOperationFinished()
-                
-                switch result {
-                case .success(receipt: let receipt):
-                    let productID = self.bundleID + "." + product.rawValue
-                    
-                    if product == .AutoRenewable {
-                        let purchaseResult = SwiftyStoreKit.verifySubscription(ofType: .autoRenewable, productId: productID, inReceipt: receipt, validUntil: Date())
-                        self.showAlert(alert: self.alertForVerifySubscription(result: purchaseResult))
-                    }else {
-                        let purchaseResult = SwiftyStoreKit.verifyPurchase(productId: productID, inReceipt: receipt)
-                        self.showAlert(alert: self.alertForVerifyPurchase(result: purchaseResult))
-                    }
-                case .error(error: let recError):
-                    self.showAlert(alert: self.alertForVerifyReceipt(result: result))
-                    if case .noReceiptData = recError {
-                        self.refreshReceipt()
-                    }
-                }
-                
-                if self.verifyPurchaseIndex < self.RegisteredPurchaseArray.count - 2 {
-                    self.verifyPurchaseIndex += 1
-                    self.verifyPurchase(product: self.RegisteredPurchaseArray[self.verifyPurchaseIndex])
-                }
-    
-            })
-        }
+        
+    }
     
     func refreshReceipt() {
-        SwiftyStoreKit.fetchReceipt(forceRefresh: true, completion: {
-            result in
-            
-            //self.showAlert(alert: self.alertForRefreshReceipt(result: result))
-        })
+        
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            if transaction.transactionState == .purchased {
+                print("transaction successful \(String(describing: transaction.transactionIdentifier))")
+                //showAlert(alert: alertWithTitle(title: "Thank you!", message: "You purchase was successful.\n\(transaction.payment)"))
+                
+                if self.appDelegate.haveInitPurchases {
+                    switch transaction.payment.productIdentifier {
+                    case self.bundleID + "." + RegisteredPurchase.BowlOfRice.rawValue:
+                        print("Purchase complete: BowlOfRice \(self.appDelegate.bowlsOfRice)")
+                        self.appDelegate.bowlsOfRice += 1
+                        print("                   BowlOfRice \(self.appDelegate.bowlsOfRice)")
+                    case self.bundleID + "." + RegisteredPurchase.Slide_5_Piece.rawValue:
+                        print("Purchase complete: Slide_5_Piece \(self.appDelegate.haveUnlocked_5PiecePuzzle)")
+                        self.appDelegate.haveUnlocked_5PiecePuzzle = true
+                        print("                   Slide_5_Piece \(self.appDelegate.haveUnlocked_5PiecePuzzle)")
+                    case self.bundleID + "." + RegisteredPurchase.Fire_And_Ice.rawValue:
+                        print("Purchase complete: Fire and Ice \(self.appDelegate.haveUnlocked_FireAndIce)")
+                        self.appDelegate.haveUnlocked_FireAndIce = true
+                        print("                   Fire and Ice \(self.appDelegate.haveUnlocked_FireAndIce)")
+                    case self.bundleID + "." + RegisteredPurchase.Vertical_Puzzle.rawValue:
+                        print("Purchase complete: Vertical Puzzle \(self.appDelegate.haveUnlocked_VerticalPuzzle)")
+                        self.appDelegate.haveUnlocked_VerticalPuzzle = true
+                        print("                   Vertical Puzzle \(self.appDelegate.haveUnlocked_VerticalPuzzle)")
+                    case self.bundleID + "." + RegisteredPurchase.UnlockAll.rawValue:
+                        print("Purchase complete: UnlockAll \(self.appDelegate.haveUnlocked_All)")
+                        self.appDelegate.haveUnlocked_All = true
+                        print("                   UnlockAll \(self.appDelegate.haveUnlocked_All)")
+                    case self.bundleID + "." + RegisteredPurchase.AutoRenewable.rawValue:
+                        print("Purchase complete: AutoRenewable !!!!!!!")
+                    case self.bundleID + "." + RegisteredPurchase.Amulet_3.rawValue:
+                        print("Purchase complete: Amulet_3 \(self.appDelegate.amuletCount)")
+                        self.appDelegate.amuletCount += 3
+                        self.appDelegate.amuletsPurchased += 3
+                        print("                   Amulet_3 \(self.appDelegate.amuletCount)")
+                    case self.bundleID + "." + RegisteredPurchase.Amulet_10.rawValue:
+                        print("Purchase complete: Amulet_10 \(self.appDelegate.amuletCount)")
+                        self.appDelegate.amuletCount += 10
+                        self.appDelegate.amuletsPurchased += 10
+                        print("                   Amulet_10 \(self.appDelegate.amuletCount)")
+                    default:
+                        print("Purchase complete: Unknown Purchase !!!!!")
+                    }
+                    Defaults().save_Defaults(updateStreak: false)
+                }
+
+
+            }else if transaction.transactionState == .failed {
+                print("transaction failed \(String(describing: transaction.transactionIdentifier))")
+                //showAlert(alert: alertWithTitle(title: "Purchase failed", message: "You purchase could not be completed."))
+            }
+        }
+        self.appDelegate.haveInitPurchases = true
     }
 }
 
@@ -586,79 +545,5 @@ extension ViewController_Unlock {
         }
     }
     
-    func alertForProductRetrievalInfo(result: RetrieveResults) -> UIAlertController {
-        if let product = result.retrievedProducts.first {
-            let priceString = product.localizedPrice!
-            return alertWithTitle(title: product.localizedTitle, message: "\(product.localizedDescription) - \(priceString)")
-        }else if let invalidProductID = result.invalidProductIDs.first {
-            return alertWithTitle(title: "Could not retreive product info", message: "Invalid product indentifier: \(invalidProductID)")
-        }else {
-            let errorString = result.error?.localizedDescription ?? "Unknown Error. Please contact support"
-            return alertWithTitle(title: "Could not retreive product info", message: errorString)
-        }
-    }
     
-    func alertForPurchaseResult(result: PurchaseResult) -> UIAlertController {
-        switch result {
-        case .success(purchase: let product):
-            print("Purchase Successful: \(product.productId)")
-            
-            ////////////
-            
-            return alertWithTitle(title: "Thank You", message: "Purchase completed")
-            
-        case .error(error: let error):  //41:00
-            print("Purchase failed: \(error)")
-            return alertWithTitle(title: "Purchase failed", message: "\(error.localizedDescription)")
-        }
-    }
-    
-    func alertForRestorePurchase(result: RestoreResults) -> UIAlertController {
-        if result.restoreFailedPurchases.count > 0 {
-            print("Restore Failed: \(result.restoreFailedPurchases)")
-            return alertWithTitle(title: "Restore Failed", message: "Unknown Error. Please contact support.")
-        }else if result.restoredPurchases.count > 0 {
-            return alertWithTitle(title: "Purchases Restored", message: "All purchases have been restored.")
-        }else {
-            return alertWithTitle(title: "Nothing to Restore", message: "No previous purchases were made.")
-        }
-    }
-    
-    func alertForVerifyReceipt(result: VerifyReceiptResult) -> UIAlertController {
-        switch result {
-        case.success(receipt: _):
-            return alertWithTitle(title: "Receipt Verified", message: "Receipt Verified Remotely")
-        case .error(error: let error):
-            switch error {
-            case .noReceiptData:
-                return alertWithTitle(title: "Reciept Verification", message: "No receipt data found, application will try to get a new one. Try Again.")
-            default:
-                return alertWithTitle(title: "Reciept Verification", message: "Receipt Verification failed.")
-            }
-        }
-    }
-    
-    func alertForVerifyPurchase(result: VerifyPurchaseResult) -> UIAlertController {
-        switch result {
-        case .purchased(item: _):
-            return alertWithTitle(title: "Product is Purchased", message: "Product is Purchased was purchased and will not expire")
-        case .notPurchased:
-            return alertWithTitle(title: "Product not Purchased", message: "Product has never been purchased")
-        }
-    }
-    
-    func alertForVerifySubscription(result: VerifySubscriptionResult) -> UIAlertController {
-        switch result {
-        case .purchased(item: _):
-            return alertWithTitle(title: "Product is Purchased", message: "Product is Purchased was purchased and will not expire")
-        case .notPurchased:
-            return alertWithTitle(title: "Product not Purchased", message: "Product has never been purchased")
-        case .expired(expiryDate: _, items: _  ):
-            return alertWithTitle(title: "Expired Subscription", message: "Your subscription has expired")
-        }
-    }
-    
-    func alertForRefreshReceipt(result: SKReceiptRefreshRequest) -> UIAlertController {
-        return alertWithTitle(title: "Refresh Receipt", message: "Trying to refresh receipt")
-    }
 }

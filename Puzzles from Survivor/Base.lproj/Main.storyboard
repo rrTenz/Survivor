@@ -1791,7 +1791,7 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQo-gT-CVD">
                                 <rect key="frame" x="34" y="112.5" width="1298" height="409.5"/>
                                 <color key="backgroundColor" white="1" alpha="0.60429152399999997" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">First and foremost, we have to give a huge shout out to the creators of such amazing reality TV shows. In my opinion, and the opinion of many other, they have managed to create the best shows in TV history.   Videos from these YouTube channels have been featured:    CBS   Steven Burrell   Survivor Montage   Survivor Scholars   Gresham College   pocket83   MindYourDecisions   Survivor Geek    If you have question, concerns, or comments please reach out to me. Also let me know if you have a suggestions for what puzzle(s) I should add to the app in future versions. My email is rrtenz@gmail.com</mutableString>
+                                <string key="text">First and foremost, we have to give a huge shout out to the creators of such amazing reality TV shows. In my opinion, and the opinion of many other, they have managed to create the best shows in TV history.   Videos from these YouTube channels have been featured:    CBS   Steven Burrell   Survivor Montage   Survivor Scholars   Gresham College   pocket83   MindYourDecisions   Survivor Geek    If you have question, concerns, or comments please reach out to me. Also let me know if you have a suggestions for what puzzle(s) I should add to the app in future versions. My email is rrtenz@gmail.com</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular-widthClass=regular">
@@ -14063,12 +14063,10 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shop" translatesAutoresizingMaskIntoConstraints="NO" id="gHl-aZ-wH4">
                                 <rect key="frame" x="1239.5" y="20" width="110.5" height="102.5"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oS1-EV-AMc">
-                                <rect key="frame" x="565.5" y="933.5" width="235" height="48"/>
-                                <state key="normal" title="Enter Promo Code"/>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                </variation>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oS1-EV-AMc">
+                                <rect key="frame" x="0.0" y="896" width="1366" height="123"/>
+                                <state key="normal" image="transparent"/>
+                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <action selector="Button_enterPromoCode:" destination="cGV-bw-vTx" eventType="touchUpInside" id="KQU-eE-BSd"/>
                                 </connections>
@@ -14114,6 +14112,7 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                             <constraint firstItem="iCD-Lr-DuR" firstAttribute="width" secondItem="WhI-uv-Mcm" secondAttribute="width" id="VO0-26-uaT"/>
                             <constraint firstItem="JRw-zQ-L7Q" firstAttribute="top" secondItem="Nl3-2W-BA4" secondAttribute="top" id="Ycx-kg-rLA"/>
                             <constraint firstItem="Ifg-b4-xLC" firstAttribute="centerY" secondItem="WhI-uv-Mcm" secondAttribute="centerY" id="Yho-vD-RLl"/>
+                            <constraint firstItem="oS1-EV-AMc" firstAttribute="width" secondItem="iCD-Lr-DuR" secondAttribute="width" id="aeo-XM-jRK"/>
                             <constraint firstItem="gHl-aZ-wH4" firstAttribute="height" secondItem="JRw-zQ-L7Q" secondAttribute="height" id="eS9-0o-ces"/>
                             <constraint firstItem="MN8-rW-0JY" firstAttribute="centerX" secondItem="WhI-uv-Mcm" secondAttribute="centerX" id="kRk-qB-OgX"/>
                             <constraint firstItem="Ifg-b4-xLC" firstAttribute="centerX" secondItem="WhI-uv-Mcm" secondAttribute="centerX" id="nyV-Pt-unI"/>
@@ -14123,6 +14122,7 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                             <constraint firstItem="iCD-Lr-DuR" firstAttribute="centerY" secondItem="WhI-uv-Mcm" secondAttribute="centerY" id="uQ8-lM-nR4"/>
                             <constraint firstItem="Nl3-2W-BA4" firstAttribute="trailing" secondItem="gHl-aZ-wH4" secondAttribute="trailing" constant="16" id="ujZ-AN-T60"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JRw-zQ-L7Q" secondAttribute="trailing" constant="20" symbolic="YES" id="vpT-tH-c2z"/>
+                            <constraint firstItem="oS1-EV-AMc" firstAttribute="height" secondItem="iCD-Lr-DuR" secondAttribute="height" multiplier="0.12" id="yWk-2B-Qyt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nl3-2W-BA4"/>
                     </view>

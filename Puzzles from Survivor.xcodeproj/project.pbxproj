@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A04AA9F7E85487DBDF3739E /* Pods_Puzzles_from_Survivor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A0764B6A2FDFD8CB7799A1 /* Pods_Puzzles_from_Survivor.framework */; };
 		C7015D4C216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7015D4B216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift */; };
 		C7018944219A1E7D006618B6 /* VC_Matchbox25_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7018943219A1E7D006618B6 /* VC_Matchbox25_Practice.swift */; };
 		C70415492267BD1200B7B7D9 /* SlidePuzzle_5Piece.png in Resources */ = {isa = PBXBuildFile; fileRef = C70415482267BD1200B7B7D9 /* SlidePuzzle_5Piece.png */; };
@@ -63,8 +62,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		22A0764B6A2FDFD8CB7799A1 /* Pods_Puzzles_from_Survivor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Puzzles_from_Survivor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3DDF3CF7EB04A505952C357 /* Pods-Puzzles from Survivor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzles from Survivor.release.xcconfig"; path = "Target Support Files/Pods-Puzzles from Survivor/Pods-Puzzles from Survivor.release.xcconfig"; sourceTree = "<group>"; };
 		C7015D4B216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_SlidePuzzle2_Practice.swift; sourceTree = "<group>"; };
 		C7018943219A1E7D006618B6 /* VC_Matchbox25_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_Matchbox25_Practice.swift; sourceTree = "<group>"; };
 		C70415482267BD1200B7B7D9 /* SlidePuzzle_5Piece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SlidePuzzle_5Piece.png; sourceTree = "<group>"; };
@@ -119,7 +116,6 @@
 		C7E17D8722790280006B390F /* ColorAndShape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorAndShape.png; sourceTree = "<group>"; };
 		C7ED4E3C215D3BC4000B0ADA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		C7F64D932194F67400108338 /* VC_ColorAndShape_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_ColorAndShape_Practice.swift; sourceTree = "<group>"; };
-		D59932C25AB46EE28ECC77B4 /* Pods-Puzzles from Survivor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzles from Survivor.debug.xcconfig"; path = "Target Support Files/Pods-Puzzles from Survivor/Pods-Puzzles from Survivor.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +125,6 @@
 			files = (
 				C7ED4E3D215D3BC4000B0ADA /* GameKit.framework in Frameworks */,
 				C731DA8522498C9F00F25B51 /* StoreKit.framework in Frameworks */,
-				9A04AA9F7E85487DBDF3739E /* Pods_Puzzles_from_Survivor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,8 +134,6 @@
 		0DF94B15E197EF4501B3C329 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D59932C25AB46EE28ECC77B4 /* Pods-Puzzles from Survivor.debug.xcconfig */,
-				B3DDF3CF7EB04A505952C357 /* Pods-Puzzles from Survivor.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -266,7 +259,6 @@
 			children = (
 				C731DA8422498C9F00F25B51 /* StoreKit.framework */,
 				C7ED4E3C215D3BC4000B0ADA /* GameKit.framework */,
-				22A0764B6A2FDFD8CB7799A1 /* Pods_Puzzles_from_Survivor.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -278,11 +270,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C78E7E5D20B4D9BC004119CC /* Build configuration list for PBXNativeTarget "Puzzles from Survivor" */;
 			buildPhases = (
-				A646876707C0DA0EB25DA00A /* [CP] Check Pods Manifest.lock */,
 				C78E7E4720B4D9BA004119CC /* Sources */,
 				C78E7E4820B4D9BA004119CC /* Frameworks */,
 				C78E7E4920B4D9BA004119CC /* Resources */,
-				5F34F5EA86B31B3F5BC7CFA8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -365,53 +355,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		5F34F5EA86B31B3F5BC7CFA8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Puzzles from Survivor/Pods-Puzzles from Survivor-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Puzzles from Survivor/Pods-Puzzles from Survivor-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A646876707C0DA0EB25DA00A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Puzzles from Survivor-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C78E7E4720B4D9BA004119CC /* Sources */ = {
@@ -588,7 +531,6 @@
 		};
 		C78E7E5E20B4D9BC004119CC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D59932C25AB46EE28ECC77B4 /* Pods-Puzzles from Survivor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -608,7 +550,6 @@
 		};
 		C78E7E5F20B4D9BC004119CC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3DDF3CF7EB04A505952C357 /* Pods-Puzzles from Survivor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
