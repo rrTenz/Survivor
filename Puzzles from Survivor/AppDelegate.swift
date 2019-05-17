@@ -107,7 +107,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("components \(components)")
         print("day diff \(abs(components.day!))")
         
-        return abs(components.day!)
+        if components.day! < 0 {
+            return 0
+        }
+        return components.day!
     }
 
     //Saved variables

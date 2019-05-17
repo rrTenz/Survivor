@@ -40,6 +40,7 @@
 		C7603F26213F2FFD008731C5 /* ViewController_Information.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7603F25213F2FFD008731C5 /* ViewController_Information.swift */; };
 		C760462C21E6A7180005592A /* VC_CombinationLock_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C760462B21E6A7180005592A /* VC_CombinationLock_Practice.swift */; };
 		C770F10521C0703600D4E7A8 /* VC_SpinPuzzle_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C770F10421C0703600D4E7A8 /* VC_SpinPuzzle_Practice.swift */; };
+		C776E956227CD64B001D5B91 /* VC_EasterEgg.swift in Sources */ = {isa = PBXBuildFile; fileRef = C776E955227CD64B001D5B91 /* VC_EasterEgg.swift */; };
 		C7885C29222F442B005D2E3B /* VC_CogPuzzle_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7885C28222F442B005D2E3B /* VC_CogPuzzle_Practice.swift */; };
 		C78E7E4F20B4D9BA004119CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78E7E4E20B4D9BA004119CC /* AppDelegate.swift */; };
 		C78E7E5120B4D9BA004119CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78E7E5020B4D9BA004119CC /* ViewController.swift */; };
@@ -97,6 +98,7 @@
 		C7603F25213F2FFD008731C5 /* ViewController_Information.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_Information.swift; sourceTree = "<group>"; };
 		C760462B21E6A7180005592A /* VC_CombinationLock_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_CombinationLock_Practice.swift; sourceTree = "<group>"; };
 		C770F10421C0703600D4E7A8 /* VC_SpinPuzzle_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_SpinPuzzle_Practice.swift; sourceTree = "<group>"; };
+		C776E955227CD64B001D5B91 /* VC_EasterEgg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_EasterEgg.swift; sourceTree = "<group>"; };
 		C7885C28222F442B005D2E3B /* VC_CogPuzzle_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_CogPuzzle_Practice.swift; sourceTree = "<group>"; };
 		C78E7E4B20B4D9BA004119CC /* Puzzles from Survivor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Puzzles from Survivor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78E7E4E20B4D9BA004119CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 1; };
@@ -252,6 +254,7 @@
 				C7C54E5B2239A997006565CB /* VC_Info_main.swift */,
 				C7603F25213F2FFD008731C5 /* ViewController_Information.swift */,
 				C731DA882249920C00F25B51 /* ViewController_Unlock.swift */,
+				C776E955227CD64B001D5B91 /* VC_EasterEgg.swift */,
 				C758015E224D577000FBFE81 /* VC_Stats.swift */,
 				C78E7E5220B4D9BA004119CC /* Main.storyboard */,
 				C78E7E5520B4D9BC004119CC /* Assets.xcassets */,
@@ -436,6 +439,7 @@
 				C770F10521C0703600D4E7A8 /* VC_SpinPuzzle_Practice.swift in Sources */,
 				C7015D4C216FEBA90055464A /* VC_SlidePuzzle2_Practice.swift in Sources */,
 				C7603F1C2139C872008731C5 /* VC_SeaCrates_Learn.swift in Sources */,
+				C776E956227CD64B001D5B91 /* VC_EasterEgg.swift in Sources */,
 				C760462C21E6A7180005592A /* VC_CombinationLock_Practice.swift in Sources */,
 				C758015F224D577000FBFE81 /* VC_Stats.swift in Sources */,
 				C7DC216620BDFE6C0009F737 /* ViewController_Puzzle.swift in Sources */,

@@ -131,7 +131,7 @@ class VC_VerticallyChallenged_Practice: UIViewController, GKGameCenterController
         timerCount = 0.0
         timerLabel.text = String(format: "%.1f", timerCount)
         timer.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: TIMER_INCREMENT, target: self, selector: #selector(inrementTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: TIMER_INCREMENT, target: self, selector: #selector(incrementTimer), userInfo: nil, repeats: true)
         
         var i = 0
         puzzlePieceArray_right.removeAll()
@@ -275,7 +275,7 @@ class VC_VerticallyChallenged_Practice: UIViewController, GKGameCenterController
         self.submitScoreToGC(score: Int(appDelegate.pcc_VerticallyChallenged), leaderBoardID: appDelegate.LEADERBOARD_pcc_VerticallyChallenged)
     }
     
-    @objc func inrementTimer() {
+    @objc func incrementTimer() {
         timerCount += TIMER_INCREMENT
         timerLabel.text = String(format: "%.1f", timerCount)
     }

@@ -1791,7 +1791,7 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQo-gT-CVD">
                                 <rect key="frame" x="34" y="112.5" width="1298" height="409.5"/>
                                 <color key="backgroundColor" white="1" alpha="0.60429152399999997" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">First and foremost, we have to give a huge shout out to the creators of such amazing reality TV shows. In my opinion, and the opinion of many other, they have managed to create the best shows in TV history.   Videos from these YouTube channels have been featured:    CBS   Steven Burrell   Survivor Montage   Survivor Scholars   Gresham College   pocket83   MindYourDecisions   Survivor Geek    If you have question, concerns, or comments please reach out to me. Also let me know if you have a suggestions for what puzzle(s) I should add to the app in future versions. My email is rrtenz@gmail.com</mutableString>
+                                <string key="text">First and foremost, we have to give a huge shout out to the creators of such amazing reality TV shows. In my opinion, and the opinion of many other, they have managed to create the best shows in TV history.   Videos from these YouTube channels have been featured:    CBS   Steven Burrell   Survivor Montage   Survivor Scholars   Gresham College   pocket83   MindYourDecisions   Survivor Geek    If you have question, concerns, or comments please reach out to me. Also let me know if you have a suggestions for what puzzle(s) I should add to the app in future versions. My email is rrtenz@gmail.com</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular-widthClass=regular">
@@ -2179,7 +2179,7 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                                 </variation>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn Table Puzzle - Practice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRY-zT-XkM">
-                                <rect key="frame" x="917.5" y="40.5" width="214.5" height="21"/>
+                                <rect key="frame" x="917.5" y="40.5" width="214" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -14057,20 +14057,30 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                                 </constraints>
                                 <state key="normal" title="Back" image="back_1150397"/>
                                 <connections>
+                                    <action selector="button_Back:" destination="cGV-bw-vTx" eventType="touchUpInside" id="sHz-aJ-EKP"/>
                                     <segue destination="0tt-GH-bak" kind="show" id="J1L-rd-Mh0"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shop" translatesAutoresizingMaskIntoConstraints="NO" id="gHl-aZ-wH4">
                                 <rect key="frame" x="1239.5" y="20" width="110.5" height="102.5"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oS1-EV-AMc">
-                                <rect key="frame" x="565.5" y="933.5" width="235" height="48"/>
-                                <state key="normal" title="Enter Promo Code"/>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                </variation>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oS1-EV-AMc">
+                                <rect key="frame" x="0.0" y="896" width="1366" height="123"/>
+                                <state key="normal" image="transparent"/>
                                 <connections>
                                     <action selector="Button_enterPromoCode:" destination="cGV-bw-vTx" eventType="touchUpInside" id="KQU-eE-BSd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9O-ob-jhV">
+                                <rect key="frame" x="56.5" y="934.5" width="92" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Restore"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                </variation>
+                                <connections>
+                                    <action selector="Restore_button:" destination="cGV-bw-vTx" eventType="touchUpInside" id="9f1-7g-9vj"/>
+                                    <action selector="button_Submit:" destination="dKR-uy-Ky0" eventType="touchUpInside" id="Fwe-6s-zQa"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ifg-b4-xLC">
@@ -14100,22 +14110,40 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 </variation>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifC-dc-UlR">
+                                <rect key="frame" x="1255.5" y="906" width="78.5" height="102.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ifC-dc-UlR" secondAttribute="height" multiplier="290:380" id="fT2-OI-2aV"/>
+                                </constraints>
+                                <state key="normal" image="egg"/>
+                                <connections>
+                                    <action selector="button_Egg:" destination="cGV-bw-vTx" eventType="touchUpInside" id="IPC-wX-5sf"/>
+                                    <segue destination="UIl-eT-Hbm" kind="show" id="jWZ-Mw-V6d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ifg-b4-xLC" firstAttribute="height" secondItem="iCD-Lr-DuR" secondAttribute="height" multiplier="0.75" id="6BT-hj-Bpi"/>
                             <constraint firstItem="MN8-rW-0JY" firstAttribute="centerY" secondItem="WhI-uv-Mcm" secondAttribute="centerY" multiplier="0.2" id="7OS-MD-lTx"/>
+                            <constraint firstItem="ifC-dc-UlR" firstAttribute="height" secondItem="gHl-aZ-wH4" secondAttribute="height" id="AJs-It-tel"/>
                             <constraint firstItem="oS1-EV-AMc" firstAttribute="centerY" secondItem="WhI-uv-Mcm" secondAttribute="centerY" multiplier="1.87" id="BGw-6b-hQ5"/>
+                            <constraint firstItem="ifC-dc-UlR" firstAttribute="centerY" secondItem="oS1-EV-AMc" secondAttribute="centerY" id="CT2-y5-XlS"/>
                             <constraint firstItem="JRw-zQ-L7Q" firstAttribute="leading" secondItem="Nl3-2W-BA4" secondAttribute="leading" constant="16" id="HfV-WH-HlZ"/>
                             <constraint firstItem="JRw-zQ-L7Q" firstAttribute="height" secondItem="WhI-uv-Mcm" secondAttribute="height" multiplier="0.1" id="Jyd-TS-kN6"/>
+                            <constraint firstItem="oS1-EV-AMc" firstAttribute="height" secondItem="iCD-Lr-DuR" secondAttribute="height" multiplier="0.12" id="O6Z-q3-uNo"/>
                             <constraint firstItem="gHl-aZ-wH4" firstAttribute="centerY" secondItem="JRw-zQ-L7Q" secondAttribute="centerY" id="QPb-1n-Gxu"/>
                             <constraint firstItem="gHl-aZ-wH4" firstAttribute="width" secondItem="JRw-zQ-L7Q" secondAttribute="width" id="UaX-1P-D6f"/>
                             <constraint firstItem="Ifg-b4-xLC" firstAttribute="width" secondItem="iCD-Lr-DuR" secondAttribute="width" multiplier="0.9" id="Udc-aF-GLe"/>
                             <constraint firstItem="iCD-Lr-DuR" firstAttribute="width" secondItem="WhI-uv-Mcm" secondAttribute="width" id="VO0-26-uaT"/>
+                            <constraint firstItem="T9O-ob-jhV" firstAttribute="centerY" secondItem="ifC-dc-UlR" secondAttribute="centerY" id="Wft-bc-xXc"/>
                             <constraint firstItem="JRw-zQ-L7Q" firstAttribute="top" secondItem="Nl3-2W-BA4" secondAttribute="top" id="Ycx-kg-rLA"/>
                             <constraint firstItem="Ifg-b4-xLC" firstAttribute="centerY" secondItem="WhI-uv-Mcm" secondAttribute="centerY" id="Yho-vD-RLl"/>
                             <constraint firstItem="gHl-aZ-wH4" firstAttribute="height" secondItem="JRw-zQ-L7Q" secondAttribute="height" id="eS9-0o-ces"/>
+                            <constraint firstItem="T9O-ob-jhV" firstAttribute="centerX" secondItem="WhI-uv-Mcm" secondAttribute="centerX" multiplier="0.15" id="fDc-Hu-cXz"/>
+                            <constraint firstItem="ifC-dc-UlR" firstAttribute="centerX" secondItem="gHl-aZ-wH4" secondAttribute="centerX" id="hH2-5o-qKc"/>
                             <constraint firstItem="MN8-rW-0JY" firstAttribute="centerX" secondItem="WhI-uv-Mcm" secondAttribute="centerX" id="kRk-qB-OgX"/>
+                            <constraint firstItem="oS1-EV-AMc" firstAttribute="width" secondItem="iCD-Lr-DuR" secondAttribute="width" id="mh2-vL-NU4"/>
                             <constraint firstItem="Ifg-b4-xLC" firstAttribute="centerX" secondItem="WhI-uv-Mcm" secondAttribute="centerX" id="nyV-Pt-unI"/>
                             <constraint firstItem="iCD-Lr-DuR" firstAttribute="height" secondItem="WhI-uv-Mcm" secondAttribute="height" id="pDR-44-i29"/>
                             <constraint firstItem="oS1-EV-AMc" firstAttribute="centerX" secondItem="WhI-uv-Mcm" secondAttribute="centerX" id="pxL-o8-tWr"/>
@@ -14127,6 +14155,7 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                         <viewLayoutGuide key="safeArea" id="Nl3-2W-BA4"/>
                     </view>
                     <connections>
+                        <outlet property="EasterEgg_outlet" destination="ifC-dc-UlR" id="bNq-RB-mCt"/>
                         <outlet property="tableView" destination="Ifg-b4-xLC" id="Fod-R7-pMj"/>
                     </connections>
                 </viewController>
@@ -14210,6 +14239,183 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
             </objects>
             <point key="canvasLocation" x="1721" y="851"/>
         </scene>
+        <!--Easter Egg-->
+        <scene sceneID="pJT-s4-waX">
+            <objects>
+                <viewController storyboardIdentifier="VC_EasterEgg" id="UIl-eT-Hbm" customClass="VC_EasterEgg" customModule="Puzzles_from_Survivor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cir-EI-9i6">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.64999997615814209" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grass_green" translatesAutoresizingMaskIntoConstraints="NO" id="fvZ-1J-QoY">
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5Z-We-xU5">
+                                <rect key="frame" x="1041.5" y="-205" width="512" height="512"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="L5Z-We-xU5" secondAttribute="height" multiplier="1:1" id="fWM-8z-HqR"/>
+                                </constraints>
+                                <state key="normal" image="ground_1"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRh-1s-D9O">
+                                <rect key="frame" x="-187.5" y="717" width="512" height="512"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kRh-1s-D9O" secondAttribute="height" multiplier="1:1" id="Uuy-VP-eYp"/>
+                                </constraints>
+                                <state key="normal" image="ground_1"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0L-OR-E3b">
+                                <rect key="frame" x="-187.5" y="-205" width="512" height="512"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="G0L-OR-E3b" secondAttribute="height" multiplier="1:1" id="o1p-eW-S4J"/>
+                                </constraints>
+                                <state key="normal" image="ground_1"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Look for an egg in the maze  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74Y-aI-gdf">
+                                <rect key="frame" x="531" y="36.5" width="304" height="29"/>
+                                <color key="backgroundColor" red="0.16781586408615112" green="0.27407252788543701" blue="0.11319310218095779" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcl-G1-Yll">
+                                <rect key="frame" x="16" y="20" width="110.5" height="102.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mcl-G1-Yll" secondAttribute="height" multiplier="69:64" id="7bF-K3-SAe"/>
+                                </constraints>
+                                <state key="normal" title="Back" image="back_1150397"/>
+                                <connections>
+                                    <segue destination="cGV-bw-vTx" kind="show" id="9dY-eK-99b"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="egg" translatesAutoresizingMaskIntoConstraints="NO" id="ejB-zn-MMn">
+                                <rect key="frame" x="1239.5" y="20" width="110.5" height="102.5"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bh3-lD-Ted">
+                                <rect key="frame" x="601" y="123" width="164" height="164"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bh3-lD-Ted" secondAttribute="height" multiplier="1:1" id="A4j-So-5o1"/>
+                                </constraints>
+                                <state key="normal" image="button_up"/>
+                                <connections>
+                                    <action selector="up:" destination="UIl-eT-Hbm" eventType="touchUpInside" id="LkR-EW-Zh2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6h8-KF-nKe">
+                                <rect key="frame" x="1011" y="430" width="164" height="164"/>
+                                <state key="normal" image="button_right"/>
+                                <connections>
+                                    <action selector="right:" destination="UIl-eT-Hbm" eventType="touchUpInside" id="kek-34-iFz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jio-Ns-gQR">
+                                <rect key="frame" x="601" y="737" width="164" height="164"/>
+                                <state key="normal" image="button_down"/>
+                                <connections>
+                                    <action selector="down:" destination="UIl-eT-Hbm" eventType="touchUpInside" id="VkK-Na-exZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkq-Fe-diB">
+                                <rect key="frame" x="191" y="430" width="164" height="164"/>
+                                <state key="normal" image="button_left"/>
+                                <connections>
+                                    <action selector="left:" destination="UIl-eT-Hbm" eventType="touchUpInside" id="XWf-Su-pfK"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bunny" translatesAutoresizingMaskIntoConstraints="NO" id="8k7-Dz-R8N">
+                                <rect key="frame" x="632" y="443" width="102" height="138"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8k7-Dz-R8N" secondAttribute="height" multiplier="325:440" id="nQc-UE-Ocu"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTh-ni-ecC">
+                                <rect key="frame" x="546" y="333" width="274" height="358"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QTh-ni-ecC" secondAttribute="height" multiplier="290:380" id="QjE-Br-EnA"/>
+                                </constraints>
+                                <state key="normal" image="egg"/>
+                                <connections>
+                                    <action selector="egg:" destination="UIl-eT-Hbm" eventType="touchUpInside" id="ZGp-u1-8SW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wu-JO-t5y">
+                                <rect key="frame" x="1041.5" y="717" width="512" height="512"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7Wu-JO-t5y" secondAttribute="height" multiplier="1:1" id="StY-fg-fdT"/>
+                                </constraints>
+                                <state key="normal" image="ground_1"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kRh-1s-D9O" firstAttribute="height" secondItem="G0L-OR-E3b" secondAttribute="height" id="1lG-n0-ueQ"/>
+                            <constraint firstItem="mcl-G1-Yll" firstAttribute="top" secondItem="lv8-ue-DN8" secondAttribute="top" id="4yN-CX-psb"/>
+                            <constraint firstItem="wkq-Fe-diB" firstAttribute="width" secondItem="bh3-lD-Ted" secondAttribute="width" id="5Fo-2T-OT0"/>
+                            <constraint firstItem="QTh-ni-ecC" firstAttribute="height" secondItem="fvZ-1J-QoY" secondAttribute="height" multiplier="0.35" id="5Mm-G2-Ry5"/>
+                            <constraint firstItem="7Wu-JO-t5y" firstAttribute="centerY" secondItem="kRh-1s-D9O" secondAttribute="centerY" id="8d5-Jg-Ydi"/>
+                            <constraint firstItem="kRh-1s-D9O" firstAttribute="width" secondItem="G0L-OR-E3b" secondAttribute="width" id="8x3-zX-0BD"/>
+                            <constraint firstItem="lv8-ue-DN8" firstAttribute="trailing" secondItem="ejB-zn-MMn" secondAttribute="trailing" constant="16" id="Af2-Mk-6OQ"/>
+                            <constraint firstItem="6h8-KF-nKe" firstAttribute="height" secondItem="bh3-lD-Ted" secondAttribute="height" id="B8B-Zd-9bV"/>
+                            <constraint firstItem="6h8-KF-nKe" firstAttribute="centerX" secondItem="Cir-EI-9i6" secondAttribute="centerX" multiplier="1.6" id="C0j-d6-oce"/>
+                            <constraint firstItem="fvZ-1J-QoY" firstAttribute="centerX" secondItem="Cir-EI-9i6" secondAttribute="centerX" id="CHo-yo-YoA"/>
+                            <constraint firstItem="Jio-Ns-gQR" firstAttribute="height" secondItem="6h8-KF-nKe" secondAttribute="height" id="Ecj-T9-UZ5"/>
+                            <constraint firstItem="ejB-zn-MMn" firstAttribute="centerY" secondItem="mcl-G1-Yll" secondAttribute="centerY" id="FKC-Pp-Fz0"/>
+                            <constraint firstItem="kRh-1s-D9O" firstAttribute="centerY" secondItem="Cir-EI-9i6" secondAttribute="centerY" multiplier="1.9" id="Gcz-Q8-ISc"/>
+                            <constraint firstItem="L5Z-We-xU5" firstAttribute="width" secondItem="L5Z-We-xU5" secondAttribute="height" multiplier="1:1" id="IDi-aI-d4j"/>
+                            <constraint firstItem="L5Z-We-xU5" firstAttribute="centerY" secondItem="Cir-EI-9i6" secondAttribute="centerY" multiplier="0.1" id="IuL-5M-taC"/>
+                            <constraint firstItem="6h8-KF-nKe" firstAttribute="centerY" secondItem="Cir-EI-9i6" secondAttribute="centerY" id="J82-vk-26a"/>
+                            <constraint firstItem="fvZ-1J-QoY" firstAttribute="centerY" secondItem="Cir-EI-9i6" secondAttribute="centerY" id="JOJ-Jw-CSA"/>
+                            <constraint firstItem="G0L-OR-E3b" firstAttribute="centerY" secondItem="Cir-EI-9i6" secondAttribute="centerY" multiplier="0.1" id="Jzz-bS-2EI"/>
+                            <constraint firstItem="Jio-Ns-gQR" firstAttribute="centerY" secondItem="Cir-EI-9i6" secondAttribute="centerY" multiplier="1.6" id="Ld1-IE-g3p"/>
+                            <constraint firstItem="mcl-G1-Yll" firstAttribute="height" secondItem="Cir-EI-9i6" secondAttribute="height" multiplier="0.1" id="Muv-yD-R3W"/>
+                            <constraint firstItem="Jio-Ns-gQR" firstAttribute="width" secondItem="6h8-KF-nKe" secondAttribute="width" id="NmX-ZY-bmF"/>
+                            <constraint firstItem="kRh-1s-D9O" firstAttribute="centerX" secondItem="G0L-OR-E3b" secondAttribute="centerX" id="Pdk-CW-EPB"/>
+                            <constraint firstItem="QTh-ni-ecC" firstAttribute="centerX" secondItem="Cir-EI-9i6" secondAttribute="centerX" id="Ptb-OR-xYT"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mcl-G1-Yll" secondAttribute="trailing" constant="20" symbolic="YES" id="Q8c-oe-ffW"/>
+                            <constraint firstItem="L5Z-We-xU5" firstAttribute="height" secondItem="G0L-OR-E3b" secondAttribute="height" id="Rbn-Aj-AbG"/>
+                            <constraint firstItem="ejB-zn-MMn" firstAttribute="width" secondItem="mcl-G1-Yll" secondAttribute="width" id="TZn-Xi-Hfl"/>
+                            <constraint firstItem="fvZ-1J-QoY" firstAttribute="width" secondItem="Cir-EI-9i6" secondAttribute="width" id="VUh-TF-hnK"/>
+                            <constraint firstItem="8k7-Dz-R8N" firstAttribute="centerY" secondItem="6h8-KF-nKe" secondAttribute="centerY" id="WX8-PI-c4Y"/>
+                            <constraint firstItem="7Wu-JO-t5y" firstAttribute="width" secondItem="kRh-1s-D9O" secondAttribute="width" id="YSt-8G-0xf"/>
+                            <constraint firstItem="7Wu-JO-t5y" firstAttribute="centerX" secondItem="L5Z-We-xU5" secondAttribute="centerX" id="Zie-zN-cfY"/>
+                            <constraint firstItem="6h8-KF-nKe" firstAttribute="width" secondItem="bh3-lD-Ted" secondAttribute="width" id="bLx-1k-JKr"/>
+                            <constraint firstItem="mcl-G1-Yll" firstAttribute="leading" secondItem="lv8-ue-DN8" secondAttribute="leading" constant="16" id="csc-EW-6hh"/>
+                            <constraint firstItem="wkq-Fe-diB" firstAttribute="centerY" secondItem="Cir-EI-9i6" secondAttribute="centerY" id="dQv-ka-6fX"/>
+                            <constraint firstItem="wkq-Fe-diB" firstAttribute="height" secondItem="bh3-lD-Ted" secondAttribute="height" id="dTy-E7-d4t"/>
+                            <constraint firstItem="kRh-1s-D9O" firstAttribute="width" secondItem="kRh-1s-D9O" secondAttribute="height" multiplier="1:1" id="eMH-YI-T0f"/>
+                            <constraint firstItem="bh3-lD-Ted" firstAttribute="width" secondItem="fvZ-1J-QoY" secondAttribute="width" multiplier="0.12" id="eew-oE-1b0"/>
+                            <constraint firstItem="Jio-Ns-gQR" firstAttribute="centerX" secondItem="Cir-EI-9i6" secondAttribute="centerX" id="efw-9i-CnR"/>
+                            <constraint firstItem="wkq-Fe-diB" firstAttribute="centerX" secondItem="Cir-EI-9i6" secondAttribute="centerX" multiplier="0.4" id="faZ-vY-TxY"/>
+                            <constraint firstItem="8k7-Dz-R8N" firstAttribute="height" secondItem="fvZ-1J-QoY" secondAttribute="height" multiplier="0.135" id="gb8-ON-4zB"/>
+                            <constraint firstItem="L5Z-We-xU5" firstAttribute="centerX" secondItem="Cir-EI-9i6" secondAttribute="centerX" multiplier="1.9" id="hPR-K2-e6r"/>
+                            <constraint firstItem="bh3-lD-Ted" firstAttribute="centerY" secondItem="Cir-EI-9i6" secondAttribute="centerY" multiplier="0.4" id="i8h-81-3uh"/>
+                            <constraint firstItem="7Wu-JO-t5y" firstAttribute="height" secondItem="kRh-1s-D9O" secondAttribute="height" id="iPL-U5-Hnk"/>
+                            <constraint firstItem="7Wu-JO-t5y" firstAttribute="width" secondItem="7Wu-JO-t5y" secondAttribute="height" multiplier="1:1" id="lKz-iQ-iop"/>
+                            <constraint firstItem="8k7-Dz-R8N" firstAttribute="centerX" secondItem="bh3-lD-Ted" secondAttribute="centerX" id="lMV-lL-CVi"/>
+                            <constraint firstItem="L5Z-We-xU5" firstAttribute="width" secondItem="G0L-OR-E3b" secondAttribute="width" id="nnT-e3-PR0"/>
+                            <constraint firstItem="bh3-lD-Ted" firstAttribute="centerX" secondItem="Cir-EI-9i6" secondAttribute="centerX" id="pKP-qa-LJ6"/>
+                            <constraint firstItem="74Y-aI-gdf" firstAttribute="centerY" secondItem="Cir-EI-9i6" secondAttribute="centerY" multiplier="0.1" id="qEa-tL-aXR"/>
+                            <constraint firstItem="QTh-ni-ecC" firstAttribute="centerY" secondItem="Cir-EI-9i6" secondAttribute="centerY" id="qzk-EY-qji"/>
+                            <constraint firstItem="G0L-OR-E3b" firstAttribute="height" secondItem="fvZ-1J-QoY" secondAttribute="height" multiplier="0.5" id="uiF-CN-lCA"/>
+                            <constraint firstItem="fvZ-1J-QoY" firstAttribute="height" secondItem="Cir-EI-9i6" secondAttribute="height" id="xjR-0i-p0B"/>
+                            <constraint firstItem="ejB-zn-MMn" firstAttribute="height" secondItem="mcl-G1-Yll" secondAttribute="height" id="xwh-c5-IjM"/>
+                            <constraint firstItem="74Y-aI-gdf" firstAttribute="centerX" secondItem="Cir-EI-9i6" secondAttribute="centerX" id="zVJ-OQ-vUL"/>
+                            <constraint firstItem="G0L-OR-E3b" firstAttribute="centerX" secondItem="Cir-EI-9i6" secondAttribute="centerX" multiplier="0.1" id="ztQ-FT-0R0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lv8-ue-DN8"/>
+                    </view>
+                    <connections>
+                        <outlet property="Background" destination="fvZ-1J-QoY" id="hdD-7d-reK"/>
+                        <outlet property="egg_outlet" destination="QTh-ni-ecC" id="xT8-OG-Rzg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6hJ-3D-7ti" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2378" y="2413"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BlankTile" width="172" height="158"/>
@@ -14233,6 +14439,7 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
         <image name="blob_red" width="400" height="400"/>
         <image name="blob_violet" width="400" height="400"/>
         <image name="blob_yellow" width="400" height="400"/>
+        <image name="bunny" width="325" height="439"/>
         <image name="button_down" width="256" height="256"/>
         <image name="button_left" width="256" height="256"/>
         <image name="button_right" width="256" height="256"/>
@@ -14248,6 +14455,7 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
         <image name="comb3" width="1100" height="217"/>
         <image name="creditsIcon" width="520" height="612"/>
         <image name="credits_Icon" width="520" height="612"/>
+        <image name="egg" width="290" height="380"/>
         <image name="emailIcon" width="373" height="369"/>
         <image name="facebook" width="225" height="225"/>
         <image name="fire2" width="114" height="144"/>
@@ -14262,6 +14470,7 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
         <image name="flower_1_3" width="191" height="173"/>
         <image name="frame_extra" width="156" height="39"/>
         <image name="frame_side" width="576" height="252"/>
+        <image name="grass_green" width="800" height="450"/>
         <image name="ground_1" width="800" height="450"/>
         <image name="ground_6" width="800" height="450"/>
         <image name="ground_6_transparent" width="800" height="450"/>
@@ -14347,6 +14556,8 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
         <image name="youtube" width="1280" height="901"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="jWZ-Mw-V6d"/>
+        <segue reference="9dY-eK-99b"/>
         <segue reference="6Q5-jb-ww8"/>
         <segue reference="J1L-rd-Mh0"/>
     </inferredMetricsTieBreakers>
