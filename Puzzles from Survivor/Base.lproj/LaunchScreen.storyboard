@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="landscape">
+    <device id="retina6_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,25 +15,35 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="9RU-Ob-952">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon8_1024" translatesAutoresizingMaskIntoConstraints="NO" id="F2c-63-78g">
-                                <rect key="frame" x="146" y="0.0" width="375" height="375"/>
+                                <rect key="frame" x="241" y="0.0" width="414" height="414"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="F2c-63-78g" secondAttribute="height" multiplier="1:1" id="As3-Tk-wRr"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuY-Lh-fzS">
-                                <rect key="frame" x="582" y="344" width="75" height="21"/>
+                                <rect key="frame" x="767" y="362.66666666666669" width="75" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Puzzle Cluster  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxt-c7-DmF">
+                                <rect key="frame" x="230.33333333333337" y="380.66666666666669" width="148.66666666666663" height="25.333333333333314"/>
+                                <color key="backgroundColor" red="0.33815005421638489" green="0.33629217743873596" blue="0.65493351221084595" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" red="0.57693713903427124" green="0.72779756784439087" blue="0.62351733446121216" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 </variation>
                             </label>
                         </subviews>
@@ -43,6 +53,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wuY-Lh-fzS" secondAttribute="bottom" constant="10" id="3a4-y1-tYh"/>
                             <constraint firstItem="F2c-63-78g" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Lgw-R9-BfR"/>
                             <constraint firstItem="F2c-63-78g" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="NDd-ik-Tuk"/>
+                            <constraint firstItem="nxt-c7-DmF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="1.9" id="NXA-X3-uHP"/>
+                            <constraint firstItem="nxt-c7-DmF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" multiplier="0.68" id="SI7-wY-0Rf"/>
                             <constraint firstItem="9RU-Ob-952" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Two-ed-uhj"/>
                             <constraint firstItem="wuY-Lh-fzS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="F2c-63-78g" secondAttribute="trailing" constant="8" symbolic="YES" id="c8x-RT-DA9"/>
                             <constraint firstItem="9RU-Ob-952" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="dZx-0B-LHl"/>

@@ -6,5 +6,6 @@ target 'Puzzles from Survivor' do
   use_frameworks!
 
   pod 'SwiftyStoreKit'
+  pod "YoutubePlayer-in-WKWebView", "~> 0.2.0"
 
 end

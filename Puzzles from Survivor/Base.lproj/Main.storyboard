@@ -261,18 +261,19 @@
                                 <color key="backgroundColor" red="0.792156862745098" green="0.10980392156862745" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HZq-km-Qqo">
-                                <rect key="frame" x="34" y="102.5" width="1298" height="819"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="33.5" y="105" width="1299" height="814"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <string key="text">No Video
 
 This puzzle video has not yet been added to the app. If you are aware of the video being available somewhere on YouTube, please contact the app developer at rrtenz@gmail.com</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cs-Ob-wpx">
-                                <rect key="frame" x="34" y="102.5" width="1298" height="819"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddD-5e-LY8" customClass="WKYTPlayerView">
+                                <rect key="frame" x="33.5" y="105" width="1299" height="814"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kK-Lp-L1t">
                                 <rect key="frame" x="643" y="30.5" width="80.5" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -285,41 +286,65 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youtube" translatesAutoresizingMaskIntoConstraints="NO" id="18a-ft-2ep">
                                 <rect key="frame" x="1264" y="20" width="86" height="80"/>
                             </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="e77-At-sot">
+                                <rect key="frame" x="31.5" y="940" width="1303" height="31"/>
+                                <connections>
+                                    <action selector="Slide_change:" destination="5n2-8V-seh" eventType="valueChanged" id="WQO-gd-wsj"/>
+                                    <action selector="Slide_up_inside:" destination="5n2-8V-seh" eventType="touchUpInside" id="TgA-Lt-9i7"/>
+                                    <action selector="Slide_up_outside:" destination="5n2-8V-seh" eventType="touchUpOutside" id="BOx-bF-CZn"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAB-ln-lXo">
+                                <rect key="frame" x="33.5" y="105" width="1299" height="814"/>
+                                <state key="normal" image="transparent"/>
+                                <connections>
+                                    <action selector="overlay_button:" destination="5n2-8V-seh" eventType="touchUpInside" id="1II-tP-FbT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="XRn-QH-aXr" firstAttribute="centerX" secondItem="YWp-g5-cJP" secondAttribute="centerX" id="4Z2-Dr-ypP"/>
+                            <constraint firstItem="HZq-km-Qqo" firstAttribute="centerY" secondItem="gGx-H1-nuU" secondAttribute="centerY" id="5mk-79-TOK"/>
+                            <constraint firstItem="ddD-5e-LY8" firstAttribute="centerY" secondItem="HZq-km-Qqo" secondAttribute="centerY" id="6lk-yU-PH4"/>
+                            <constraint firstItem="ddD-5e-LY8" firstAttribute="centerX" secondItem="HZq-km-Qqo" secondAttribute="centerX" id="83n-yA-x9E"/>
+                            <constraint firstItem="HZq-km-Qqo" firstAttribute="width" secondItem="gGx-H1-nuU" secondAttribute="width" multiplier="0.98" id="Ap9-qm-kcO"/>
                             <constraint firstItem="18a-ft-2ep" firstAttribute="height" secondItem="ObS-oI-z1Z" secondAttribute="height" id="FLl-U3-wvI"/>
+                            <constraint firstItem="e77-At-sot" firstAttribute="width" secondItem="ddD-5e-LY8" secondAttribute="width" id="FaN-5U-dcS"/>
                             <constraint firstItem="18a-ft-2ep" firstAttribute="centerY" secondItem="ObS-oI-z1Z" secondAttribute="centerY" id="FgS-Fl-zmI"/>
+                            <constraint firstItem="e77-At-sot" firstAttribute="centerX" secondItem="ddD-5e-LY8" secondAttribute="centerX" id="HUT-En-wPY"/>
                             <constraint firstItem="AvS-t0-jLB" firstAttribute="trailing" secondItem="18a-ft-2ep" secondAttribute="trailing" constant="16" id="JLU-BS-cGx"/>
                             <constraint firstItem="gGx-H1-nuU" firstAttribute="centerX" secondItem="YWp-g5-cJP" secondAttribute="centerX" id="NeF-2N-DCU"/>
-                            <constraint firstItem="HZq-km-Qqo" firstAttribute="height" secondItem="5cs-Ob-wpx" secondAttribute="height" id="OUf-dI-GKL"/>
+                            <constraint firstItem="HZq-km-Qqo" firstAttribute="height" secondItem="gGx-H1-nuU" secondAttribute="height" multiplier="0.97" id="OX9-CM-NFb"/>
+                            <constraint firstItem="MAB-ln-lXo" firstAttribute="centerX" secondItem="ddD-5e-LY8" secondAttribute="centerX" id="Q0w-qc-yfb"/>
                             <constraint firstItem="ObS-oI-z1Z" firstAttribute="top" secondItem="AvS-t0-jLB" secondAttribute="top" id="Qgk-7C-akV"/>
                             <constraint firstItem="gGx-H1-nuU" firstAttribute="centerY" secondItem="YWp-g5-cJP" secondAttribute="centerY" id="QhP-LV-YdH"/>
                             <constraint firstItem="XRn-QH-aXr" firstAttribute="centerY" secondItem="YWp-g5-cJP" secondAttribute="centerY" id="Qv1-E3-YXI"/>
                             <constraint firstItem="18a-ft-2ep" firstAttribute="width" secondItem="ObS-oI-z1Z" secondAttribute="width" id="TAc-pN-W3f"/>
-                            <constraint firstItem="5cs-Ob-wpx" firstAttribute="centerX" secondItem="YWp-g5-cJP" secondAttribute="centerX" id="WTi-fu-7Ge"/>
-                            <constraint firstItem="HZq-km-Qqo" firstAttribute="centerX" secondItem="YWp-g5-cJP" secondAttribute="centerX" id="XcQ-L1-5AZ"/>
-                            <constraint firstItem="5cs-Ob-wpx" firstAttribute="centerY" secondItem="YWp-g5-cJP" secondAttribute="centerY" id="Yv0-3g-Xdy"/>
+                            <constraint firstItem="ddD-5e-LY8" firstAttribute="height" secondItem="HZq-km-Qqo" secondAttribute="height" id="U1X-XK-Xsc"/>
+                            <constraint firstItem="MAB-ln-lXo" firstAttribute="height" secondItem="ddD-5e-LY8" secondAttribute="height" id="aRR-bL-j8a"/>
+                            <constraint firstItem="HZq-km-Qqo" firstAttribute="centerX" secondItem="gGx-H1-nuU" secondAttribute="centerX" id="alY-WH-Mlf"/>
+                            <constraint firstItem="MAB-ln-lXo" firstAttribute="centerY" secondItem="ddD-5e-LY8" secondAttribute="centerY" id="alu-Jh-ePr"/>
                             <constraint firstItem="XRn-QH-aXr" firstAttribute="width" secondItem="YWp-g5-cJP" secondAttribute="width" id="cAN-lO-v7E"/>
                             <constraint firstItem="XRn-QH-aXr" firstAttribute="height" secondItem="YWp-g5-cJP" secondAttribute="height" id="drD-P2-6AI"/>
                             <constraint firstItem="gGx-H1-nuU" firstAttribute="width" secondItem="YWp-g5-cJP" secondAttribute="width" multiplier="0.97" id="eXC-Md-kFY"/>
                             <constraint firstItem="0kK-Lp-L1t" firstAttribute="centerY" secondItem="YWp-g5-cJP" secondAttribute="centerY" multiplier="0.1" id="hTL-UM-3Lg"/>
-                            <constraint firstItem="5cs-Ob-wpx" firstAttribute="height" secondItem="YWp-g5-cJP" secondAttribute="height" multiplier="0.8" id="jXx-D5-0h3"/>
+                            <constraint firstItem="e77-At-sot" firstAttribute="top" secondItem="gGx-H1-nuU" secondAttribute="bottom" constant="8" id="jMm-gW-Fol"/>
                             <constraint firstItem="ObS-oI-z1Z" firstAttribute="leading" secondItem="AvS-t0-jLB" secondAttribute="leading" constant="16" id="kQB-o5-lPl"/>
-                            <constraint firstItem="5cs-Ob-wpx" firstAttribute="width" secondItem="YWp-g5-cJP" secondAttribute="width" multiplier="0.95" id="qir-d6-jd8"/>
+                            <constraint firstItem="MAB-ln-lXo" firstAttribute="width" secondItem="ddD-5e-LY8" secondAttribute="width" id="sHU-pu-QhY"/>
                             <constraint firstItem="0kK-Lp-L1t" firstAttribute="centerX" secondItem="YWp-g5-cJP" secondAttribute="centerX" id="t14-us-SHG"/>
                             <constraint firstItem="gGx-H1-nuU" firstAttribute="height" secondItem="YWp-g5-cJP" secondAttribute="height" multiplier="0.82" id="uD1-WC-1H4"/>
-                            <constraint firstItem="HZq-km-Qqo" firstAttribute="centerY" secondItem="YWp-g5-cJP" secondAttribute="centerY" id="uoT-IS-4PJ"/>
+                            <constraint firstItem="ddD-5e-LY8" firstAttribute="width" secondItem="HZq-km-Qqo" secondAttribute="width" id="uII-N9-Cr1"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ObS-oI-z1Z" secondAttribute="trailing" constant="20" symbolic="YES" id="vbS-Wz-n6t"/>
                             <constraint firstItem="ObS-oI-z1Z" firstAttribute="height" secondItem="YWp-g5-cJP" secondAttribute="height" multiplier="0.078" id="wyt-K9-4vz"/>
-                            <constraint firstItem="HZq-km-Qqo" firstAttribute="width" secondItem="5cs-Ob-wpx" secondAttribute="width" id="zSK-Km-Cfn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AvS-t0-jLB"/>
                     </view>
                     <connections>
+                        <outlet property="Slider" destination="e77-At-sot" id="X2T-cO-Qmt"/>
                         <outlet property="labelTitle" destination="0kK-Lp-L1t" id="T3m-A1-AeQ"/>
-                        <outlet property="webView" destination="5cs-Ob-wpx" id="a9k-rE-g81"/>
+                        <outlet property="playerView" destination="ddD-5e-LY8" id="sHO-ag-6LF"/>
+                        <outlet property="textView" destination="HZq-km-Qqo" id="MgV-Ki-1qX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vpf-Jt-rzd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -14556,7 +14581,6 @@ This puzzle video has not yet been added to the app. If you are aware of the vid
         <image name="youtube" width="1280" height="901"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jWZ-Mw-V6d"/>
         <segue reference="9dY-eK-99b"/>
         <segue reference="6Q5-jb-ww8"/>
         <segue reference="J1L-rd-Mh0"/>

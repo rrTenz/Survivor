@@ -237,11 +237,26 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
         }
     }
     
+    func showAlert(alert: UIAlertController) {
+        guard let _ = self.presentedViewController else {
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+    }
+    
+    func alertWithTitle(title: String, message: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        return alert
+    }
+    
     func displayNewVersionAlert() {
         let alertController = UIAlertController(title: "New Version!", message: "A new version has been released! We hope you enjoy the improvements and/or new puzzles.\n\nTo stay up to date, follow rrTenz on Facebook and subscribe to the Survivor Geek YouTube channel.\n\nIf you have suggestions or questions, please send emails to\n rrtenz@gmail.com", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
-            NSLog("OK Pressed")
+            NSLog("OK Pressed")            
+            
+            self.showAlert(alert: self.alertWithTitle(title: "No Money?", message: "Hi, this is rrTenz from rrTenz Games. I am trying to make\n'Puzzle Cluster'\navailable to as many people as possible. However I have locked some puzzles and am asking for a contribution because I do need some money to keep this project going.\n\nIf you really don't have the money or can't get mom or dad's permission to make a purchase, here are a few things you can do:\n\n1. Follow 'rrTenz Games' on Facebook\n2. Subscribe to 'Survivor Geek' on YouTube\n3. Share Puzzle Cluster on social media\n\nWhen you have done at least one of these things, take a screen shot and email it to rrtenz@gmail.com\nFor each one you do, I will send you a promo code to 1 puzzle of your choice. If you do all 3 of those things, I'll give you a promo code for all current and future puzzles! I can only give a limited number of promo codes, so don't wait."))
         }
         let sendEmail = UIAlertAction(title: "Send Email", style: UIAlertAction.Style.default) {
             UIAlertAction in
@@ -503,7 +518,8 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
     }
     
     func unlockAlert() {
-        let alertController = UIAlertController(title: "Locked Puzzle", message: "This puzzle is locked. Press the 'Store' button to see options.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Locked Puzzle", message: "This puzzle is locked. Press the 'Store' button to see options.\n\n\nHi, this is rrTenz from rrTenz Games. I am trying to make\n'Puzzle Cluster'\navailable to as many people as possible. However I have locked some puzzles and am asking for a contribution because I do need some money to keep this project going.\n\nIf you really don't have the money or can't get mom or dad's permission to make a purchase, here are a few things you can do:\n\n1. Follow 'rrTenz Games' on Facebook\n2. Subscribe to 'Survivor Geek' on YouTube\n3. Share Puzzle Cluster on social media\n\nWhen you have done at least one of these things, take a screen shot and email it to rrtenz@gmail.com\nFor each one you do, I will send you a promo code to 1 puzzle of your choice. If you do all 3 of those things, I'll give you a promo code for all current and future puzzles! I can only give a limited number of promo codes, so don't wait.", preferredStyle: .alert)
+        
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             NSLog("OK Pressed")

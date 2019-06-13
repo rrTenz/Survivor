@@ -7,106 +7,186 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		191C0274F1961C002525EBBF0A43BC4B /* RestorePurchasesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100DB68041A30845142151C3B316D9A /* RestorePurchasesController.swift */; };
-		198B4FDC686C900CF633EB1B70B9F237 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		2B632F8F275236E24F72C62533E7503A /* ProductsInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17E22CDE09D45C3270D4EC2A6CE625E /* ProductsInfoController.swift */; };
-		3F1A0C9633C58E03F1BC31EB4EC4A7BA /* OS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAF579CE733D9DF1E3980BDEFA07DC /* OS.swift */; };
-		41B94504A4BD1EA392BFB85CF9D20B4E /* InAppReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C358C372EE7485F72623B4C1B86F1D65 /* InAppReceipt.swift */; };
-		445E46BDFCA8E6385833B12CFCC5ADDA /* SwiftyStoreKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EDE1F76AF5732BDAB01C3069AC227C15 /* SwiftyStoreKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		50096A570EAF41A057EEBCB7AE02435C /* SwiftyStoreKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0CA9CE0FB22D586C280ABE8AF169FC /* SwiftyStoreKit-dummy.m */; };
-		52DECFA708C60B688442511A7B8AF4BE /* CompleteTransactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B6B61E119D02DF18FC882D25A0CBCC /* CompleteTransactionsController.swift */; };
-		647564410D61F8FE90096670C5768C35 /* Pods-Puzzles from Survivor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AD9E1E1EF100B70E1AB0BA1F4105E706 /* Pods-Puzzles from Survivor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		736BC968040C2C2DFE01386E7A7653D0 /* Pods-Puzzles from Survivor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F6C5C49DB0BFE62C858C3CC3C9A231 /* Pods-Puzzles from Survivor-dummy.m */; };
-		7AB807DC7585F6CD65EE049B34DE0CC8 /* SwiftyStoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DB78EADF74D6B520A9F96C0CA8293A /* SwiftyStoreKit.swift */; };
-		A0496B35FCA83A2CD8A316DBB19EC756 /* SKProduct+LocalizedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982ABA9F7D85DD9B6B570CFEFAE1E502 /* SKProduct+LocalizedPrice.swift */; };
-		AC1998E7F63A4E4F541D16CF44F8BD2A /* SwiftyStoreKit+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721C6F2151485E499339F81E7B0959BF /* SwiftyStoreKit+Types.swift */; };
-		C03C5366E248F2EB612213047AE7A92F /* PaymentQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507EDE9A5DD3113C61B39E23F7EFCA82 /* PaymentQueueController.swift */; };
-		C7DCA6F29200C310A53B8AAEA898CD08 /* InAppReceiptVerificator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D0E0206D12CECC2D4806ACB3426DC1 /* InAppReceiptVerificator.swift */; };
-		E06C64290A12220C7656903DAAF67AC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		E9FE8344D4D9DC32E7B5ED413773F02E /* AppleReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E26E5EE26787F17DEF9072934C14D4 /* AppleReceiptValidator.swift */; };
-		F2616BF8374945F8A14293193562E39A /* InAppReceiptRefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDF535AD500EA3C438E500CABE6C158 /* InAppReceiptRefreshRequest.swift */; };
-		F961CDFDCF9C05AD0E63788093251AFD /* InAppProductQueryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70921C0A2C05118371E89E093DFE379B /* InAppProductQueryRequest.swift */; };
-		FA77BC424C0A8AD79E9AD240B795EE99 /* PaymentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BD4FFAD916D1A2714CA44692B3805 /* PaymentsController.swift */; };
+		00BD6D4AF249BDD2210AFE668CC389D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		01D43FD785D877E0A906001CBF99DA78 /* InAppReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A5CBADEC0DEE214452EDCD9018B47 /* InAppReceipt.swift */; };
+		0519002C7C51B8B954CB5A627E34C17A /* ProductsInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749EF1D0C59B99F446F2032F697C4DC4 /* ProductsInfoController.swift */; };
+		0D23BF2125AB85DA59E7880F939756E1 /* SwiftyStoreKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DA6CA73DF60DB03691F3684F2DB15259 /* SwiftyStoreKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E2F009DE6CDCA6872049174F08A0976 /* PaymentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8BEF05068022F8DA6686BCA0C4F01D /* PaymentsController.swift */; };
+		30702FE2BEBE7A694B14A5674BC8240B /* WKYTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FC4AC052BD1740472DD6CA206904F6E /* WKYTPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		34D27C0CD2C9D300FF35CB879D66523E /* SwiftyStoreKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F40F2CFEF9C4ED85780BCBBF38238D /* SwiftyStoreKit-dummy.m */; };
+		3E614C4D51A6E16F806B42EA7D758175 /* PaymentQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231EBCC0BB5CCC6B4F5E317E879C1679 /* PaymentQueueController.swift */; };
+		6013621322820FCB49FCC526E4260043 /* WKYTPlayerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DCBC3694A6483266B9A0B3CA14E538CE /* WKYTPlayerView.bundle */; };
+		7363FC50FF858DB8C306969D75975EEF /* Pods-Puzzles from Survivor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F6C5C49DB0BFE62C858C3CC3C9A231 /* Pods-Puzzles from Survivor-dummy.m */; };
+		74D3517772F1B4CC4A6A3DD91927EB7B /* SwiftyStoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E7E780FB5A32B59839A6BB7AAF49B3 /* SwiftyStoreKit.swift */; };
+		78F51635194F50F8D6ABD6B12FAB326F /* InAppReceiptVerificator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70237CA991A8678349BD775BE70D1AED /* InAppReceiptVerificator.swift */; };
+		8C8FEECB0A77542A6FDE3D08566A1256 /* CompleteTransactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563DD3BE49B23889F92CCD51465B399E /* CompleteTransactionsController.swift */; };
+		90589D71B99AD6A15689BA3724F0D54B /* InAppProductQueryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F58AAD62C6C96985C4D100BAE63B28 /* InAppProductQueryRequest.swift */; };
+		935904A12A81F532032C82A10423684C /* InAppReceiptRefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D06AD28B6F498565F16171A139E2C /* InAppReceiptRefreshRequest.swift */; };
+		9675709A5E5BB5B6F979F04817D45EF5 /* SKProduct+LocalizedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33414DEFE7AEAA8CCBF406D7A41045D1 /* SKProduct+LocalizedPrice.swift */; };
+		9E8BD64381E8C26C306BABD2C7C2A8C0 /* RestorePurchasesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAAD9362D11B5F711701B0EA627A233 /* RestorePurchasesController.swift */; };
+		A934F817062B05DA2D543694B63A9868 /* WKYTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAD33139B0B31A489AA29475B4F4A36 /* WKYTPlayerView.m */; };
+		B6E078034F7BF1E17A416EA65AA9CEDF /* OS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D391AB9CA710E7E79501D1AE603156 /* OS.swift */; };
+		C43FDBFD0591B2593B36BE8271D25A6B /* YoutubePlayer-in-WKWebView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E47DAB8DDFB4D64CEEED3A86E780F31 /* YoutubePlayer-in-WKWebView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6EE62A9BA328B64E352ABAE7E76C1BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		E19D61C0792310B2B91511E833D2ACB3 /* YoutubePlayer-in-WKWebView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA58D48DEB38C10C51B9FCB20C7476 /* YoutubePlayer-in-WKWebView-dummy.m */; };
+		E912CE18C8FE7D1491B9221FB1871176 /* SwiftyStoreKit+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D711328C13973B59FDD07698F76813 /* SwiftyStoreKit+Types.swift */; };
+		F1AD8F8F5F66902FC08574114F65F04A /* Pods-Puzzles from Survivor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AD9E1E1EF100B70E1AB0BA1F4105E706 /* Pods-Puzzles from Survivor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F3B49498E840B211058B604D6D85748F /* AppleReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB2D4CCBCBC94DADF339598BD96C86 /* AppleReceiptValidator.swift */; };
+		F93705636F74A7C23897FEC3E9023869 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		61AAC0B6473A84ACB02370BEE43CEB3B /* PBXContainerItemProxy */ = {
+		5754F2724BC0B4954E5F2E90C9224E54 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0CA2C4A7E89611120A692430828E3A8D;
+			remoteGlobalIDString = 5E39C067C6A74C61C07348EFDE0C00EB;
+			remoteInfo = "YoutubePlayer-in-WKWebView";
+		};
+		6C62E23BE11E9EC9E534F70875832226 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E9EF2B7727EB0C2C430B36C2EE02A0C;
 			remoteInfo = SwiftyStoreKit;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06E26E5EE26787F17DEF9072934C14D4 /* AppleReceiptValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppleReceiptValidator.swift; path = SwiftyStoreKit/AppleReceiptValidator.swift; sourceTree = "<group>"; };
-		11D34AEE11BC572575024C73B5B939DE /* SwiftyStoreKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyStoreKit.modulemap; sourceTree = "<group>"; };
-		222A61DA711258D6FFAA1E1E79CDBCBF /* SwiftyStoreKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyStoreKit-prefix.pch"; sourceTree = "<group>"; };
+		07CAD0DE3FCA0F3F9BEDDE7A8A2DDD74 /* YoutubePlayer-in-WKWebView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "YoutubePlayer-in-WKWebView.modulemap"; sourceTree = "<group>"; };
+		07F40F2CFEF9C4ED85780BCBBF38238D /* SwiftyStoreKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyStoreKit-dummy.m"; sourceTree = "<group>"; };
+		0D08F42F7EE02A5529C571980C52A4BE /* YoutubePlayer-in-WKWebView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YoutubePlayer-in-WKWebView-prefix.pch"; sourceTree = "<group>"; };
+		0D4ECC0E04BC326C66458386BD9EDDC2 /* SwiftyStoreKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyStoreKit-prefix.pch"; sourceTree = "<group>"; };
+		0E47DAB8DDFB4D64CEEED3A86E780F31 /* YoutubePlayer-in-WKWebView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YoutubePlayer-in-WKWebView-umbrella.h"; sourceTree = "<group>"; };
+		182D06AD28B6F498565F16171A139E2C /* InAppReceiptRefreshRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceiptRefreshRequest.swift; path = SwiftyStoreKit/InAppReceiptRefreshRequest.swift; sourceTree = "<group>"; };
+		231EBCC0BB5CCC6B4F5E317E879C1679 /* PaymentQueueController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentQueueController.swift; path = SwiftyStoreKit/PaymentQueueController.swift; sourceTree = "<group>"; };
+		28D711328C13973B59FDD07698F76813 /* SwiftyStoreKit+Types.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwiftyStoreKit+Types.swift"; path = "SwiftyStoreKit/SwiftyStoreKit+Types.swift"; sourceTree = "<group>"; };
 		2B94E6F5A3DAFAF3944ACCD7E7C1CECE /* Pods-Puzzles from Survivor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Puzzles from Survivor.modulemap"; sourceTree = "<group>"; };
 		2D48A2595F5F38727EA38C9C383D4C96 /* Pods-Puzzles from Survivor-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Puzzles from Survivor-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2DAD33139B0B31A489AA29475B4F4A36 /* WKYTPlayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WKYTPlayerView.m; path = WKYTPlayerView/WKYTPlayerView.m; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		3FDF535AD500EA3C438E500CABE6C158 /* InAppReceiptRefreshRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceiptRefreshRequest.swift; path = SwiftyStoreKit/InAppReceiptRefreshRequest.swift; sourceTree = "<group>"; };
-		507EDE9A5DD3113C61B39E23F7EFCA82 /* PaymentQueueController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentQueueController.swift; path = SwiftyStoreKit/PaymentQueueController.swift; sourceTree = "<group>"; };
-		51BAF579CE733D9DF1E3980BDEFA07DC /* OS.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OS.swift; path = SwiftyStoreKit/OS.swift; sourceTree = "<group>"; };
-		5A3BD4FFAD916D1A2714CA44692B3805 /* PaymentsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentsController.swift; path = SwiftyStoreKit/PaymentsController.swift; sourceTree = "<group>"; };
+		33414DEFE7AEAA8CCBF406D7A41045D1 /* SKProduct+LocalizedPrice.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SKProduct+LocalizedPrice.swift"; path = "SwiftyStoreKit/SKProduct+LocalizedPrice.swift"; sourceTree = "<group>"; };
+		36E7E780FB5A32B59839A6BB7AAF49B3 /* SwiftyStoreKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyStoreKit.swift; path = SwiftyStoreKit/SwiftyStoreKit.swift; sourceTree = "<group>"; };
+		37D391AB9CA710E7E79501D1AE603156 /* OS.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OS.swift; path = SwiftyStoreKit/OS.swift; sourceTree = "<group>"; };
+		423B823BCE8A7C3CEEDC6F5E746D4EF6 /* YoutubePlayer_in_WKWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YoutubePlayer_in_WKWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DAAD9362D11B5F711701B0EA627A233 /* RestorePurchasesController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RestorePurchasesController.swift; path = SwiftyStoreKit/RestorePurchasesController.swift; sourceTree = "<group>"; };
+		563DD3BE49B23889F92CCD51465B399E /* CompleteTransactionsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompleteTransactionsController.swift; path = SwiftyStoreKit/CompleteTransactionsController.swift; sourceTree = "<group>"; };
 		5B03568E6444B7DAD10FC7CAB9D6AA46 /* Pods-Puzzles from Survivor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Puzzles from Survivor.release.xcconfig"; sourceTree = "<group>"; };
-		70921C0A2C05118371E89E093DFE379B /* InAppProductQueryRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppProductQueryRequest.swift; path = SwiftyStoreKit/InAppProductQueryRequest.swift; sourceTree = "<group>"; };
+		5B2A5CBADEC0DEE214452EDCD9018B47 /* InAppReceipt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceipt.swift; path = SwiftyStoreKit/InAppReceipt.swift; sourceTree = "<group>"; };
+		5BAA58D48DEB38C10C51B9FCB20C7476 /* YoutubePlayer-in-WKWebView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YoutubePlayer-in-WKWebView-dummy.m"; sourceTree = "<group>"; };
+		5C8BEF05068022F8DA6686BCA0C4F01D /* PaymentsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentsController.swift; path = SwiftyStoreKit/PaymentsController.swift; sourceTree = "<group>"; };
+		656095F191E379574BEF67560478972C /* SwiftyStoreKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyStoreKit-Info.plist"; sourceTree = "<group>"; };
+		70237CA991A8678349BD775BE70D1AED /* InAppReceiptVerificator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceiptVerificator.swift; path = SwiftyStoreKit/InAppReceiptVerificator.swift; sourceTree = "<group>"; };
 		70DAECE347E37CE8E2A9C29F13F558B7 /* Pods-Puzzles from Survivor-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Puzzles from Survivor-frameworks.sh"; sourceTree = "<group>"; };
 		70F6C5C49DB0BFE62C858C3CC3C9A231 /* Pods-Puzzles from Survivor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Puzzles from Survivor-dummy.m"; sourceTree = "<group>"; };
-		721C6F2151485E499339F81E7B0959BF /* SwiftyStoreKit+Types.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwiftyStoreKit+Types.swift"; path = "SwiftyStoreKit/SwiftyStoreKit+Types.swift"; sourceTree = "<group>"; };
-		75D0E0206D12CECC2D4806ACB3426DC1 /* InAppReceiptVerificator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceiptVerificator.swift; path = SwiftyStoreKit/InAppReceiptVerificator.swift; sourceTree = "<group>"; };
-		76B6B61E119D02DF18FC882D25A0CBCC /* CompleteTransactionsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompleteTransactionsController.swift; path = SwiftyStoreKit/CompleteTransactionsController.swift; sourceTree = "<group>"; };
-		834B13B3A49367CE893FF78EE84E5F7E /* SwiftyStoreKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyStoreKit-Info.plist"; sourceTree = "<group>"; };
-		8F84850C7770B5BBC315DB38E21E2009 /* Pods_Puzzles_from_Survivor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Puzzles_from_Survivor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73F58AAD62C6C96985C4D100BAE63B28 /* InAppProductQueryRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppProductQueryRequest.swift; path = SwiftyStoreKit/InAppProductQueryRequest.swift; sourceTree = "<group>"; };
+		749EF1D0C59B99F446F2032F697C4DC4 /* ProductsInfoController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductsInfoController.swift; path = SwiftyStoreKit/ProductsInfoController.swift; sourceTree = "<group>"; };
+		867947F31AA8321FC15AAB89C70332DC /* SwiftyStoreKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyStoreKit.modulemap; sourceTree = "<group>"; };
+		8FC4AC052BD1740472DD6CA206904F6E /* WKYTPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WKYTPlayerView.h; path = WKYTPlayerView/WKYTPlayerView.h; sourceTree = "<group>"; };
 		917F518CDBDD08DE744AEC46340831CB /* Pods-Puzzles from Survivor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Puzzles from Survivor.debug.xcconfig"; sourceTree = "<group>"; };
-		982ABA9F7D85DD9B6B570CFEFAE1E502 /* SKProduct+LocalizedPrice.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SKProduct+LocalizedPrice.swift"; path = "SwiftyStoreKit/SKProduct+LocalizedPrice.swift"; sourceTree = "<group>"; };
 		9B5AE16831CC6B6CCBD3923DA28793C1 /* Pods-Puzzles from Survivor-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Puzzles from Survivor-Info.plist"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		AC0CA9CE0FB22D586C280ABE8AF169FC /* SwiftyStoreKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyStoreKit-dummy.m"; sourceTree = "<group>"; };
+		9FBC9FDC33DE62F1ABD030CF89BD9E0E /* SwiftyStoreKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyStoreKit.xcconfig; sourceTree = "<group>"; };
 		AD9E1E1EF100B70E1AB0BA1F4105E706 /* Pods-Puzzles from Survivor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Puzzles from Survivor-umbrella.h"; sourceTree = "<group>"; };
-		B8DB78EADF74D6B520A9F96C0CA8293A /* SwiftyStoreKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyStoreKit.swift; path = SwiftyStoreKit/SwiftyStoreKit.swift; sourceTree = "<group>"; };
-		C358C372EE7485F72623B4C1B86F1D65 /* InAppReceipt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceipt.swift; path = SwiftyStoreKit/InAppReceipt.swift; sourceTree = "<group>"; };
-		DDA12FBBB86EE5105963C10EC4C4F1D3 /* SwiftyStoreKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyStoreKit.xcconfig; sourceTree = "<group>"; };
+		B23E3B57AB825226397CD6E76EF643D1 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD3ADF4F80BD3C28B78A770B5148FC4A /* Pods_Puzzles_from_Survivor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Puzzles_from_Survivor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2CDAE48C8B015C4742111B9E7C979EC /* YoutubePlayer-in-WKWebView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "YoutubePlayer-in-WKWebView-Info.plist"; sourceTree = "<group>"; };
+		DA6CA73DF60DB03691F3684F2DB15259 /* SwiftyStoreKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyStoreKit-umbrella.h"; sourceTree = "<group>"; };
+		DBBB2D4CCBCBC94DADF339598BD96C86 /* AppleReceiptValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppleReceiptValidator.swift; path = SwiftyStoreKit/AppleReceiptValidator.swift; sourceTree = "<group>"; };
+		DCBC3694A6483266B9A0B3CA14E538CE /* WKYTPlayerView.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = WKYTPlayerView.bundle; path = WKYTPlayerView/WKYTPlayerView.bundle; sourceTree = "<group>"; };
 		E055CAC32A9FD833768C1B4AA92E395C /* Pods-Puzzles from Survivor-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Puzzles from Survivor-acknowledgements.plist"; sourceTree = "<group>"; };
-		E100DB68041A30845142151C3B316D9A /* RestorePurchasesController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RestorePurchasesController.swift; path = SwiftyStoreKit/RestorePurchasesController.swift; sourceTree = "<group>"; };
-		EDE1F76AF5732BDAB01C3069AC227C15 /* SwiftyStoreKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyStoreKit-umbrella.h"; sourceTree = "<group>"; };
-		F17E22CDE09D45C3270D4EC2A6CE625E /* ProductsInfoController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductsInfoController.swift; path = SwiftyStoreKit/ProductsInfoController.swift; sourceTree = "<group>"; };
-		F3BD811F9AEEB12A3F7E5F33C685FB25 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E80E8943E62876BB42B2D2083A5E24D8 /* YoutubePlayer-in-WKWebView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "YoutubePlayer-in-WKWebView.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		68F32868C24A20AB729E3A5BF40C60CF /* Frameworks */ = {
+		915AA14BEA35CEBD0289FD27D10480EC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				198B4FDC686C900CF633EB1B70B9F237 /* Foundation.framework in Frameworks */,
+				F93705636F74A7C23897FEC3E9023869 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		787AE785894C8243F49941E5E09AC671 /* Frameworks */ = {
+		DBA874FF3569F674033400ED25C66614 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E06C64290A12220C7656903DAAF67AC3 /* Foundation.framework in Frameworks */,
+				D6EE62A9BA328B64E352ABAE7E76C1BF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8FFB804D7C63CC60B3903CB5106290D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00BD6D4AF249BDD2210AFE668CC389D0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		21B75529D572B6065272F48564DBF4FC /* Support Files */ = {
+		0334C8A90A34DD4BF527C9277D4C2F4F /* SwiftyStoreKit */ = {
 			isa = PBXGroup;
 			children = (
-				11D34AEE11BC572575024C73B5B939DE /* SwiftyStoreKit.modulemap */,
-				DDA12FBBB86EE5105963C10EC4C4F1D3 /* SwiftyStoreKit.xcconfig */,
-				AC0CA9CE0FB22D586C280ABE8AF169FC /* SwiftyStoreKit-dummy.m */,
-				834B13B3A49367CE893FF78EE84E5F7E /* SwiftyStoreKit-Info.plist */,
-				222A61DA711258D6FFAA1E1E79CDBCBF /* SwiftyStoreKit-prefix.pch */,
-				EDE1F76AF5732BDAB01C3069AC227C15 /* SwiftyStoreKit-umbrella.h */,
+				DBBB2D4CCBCBC94DADF339598BD96C86 /* AppleReceiptValidator.swift */,
+				563DD3BE49B23889F92CCD51465B399E /* CompleteTransactionsController.swift */,
+				73F58AAD62C6C96985C4D100BAE63B28 /* InAppProductQueryRequest.swift */,
+				5B2A5CBADEC0DEE214452EDCD9018B47 /* InAppReceipt.swift */,
+				182D06AD28B6F498565F16171A139E2C /* InAppReceiptRefreshRequest.swift */,
+				70237CA991A8678349BD775BE70D1AED /* InAppReceiptVerificator.swift */,
+				37D391AB9CA710E7E79501D1AE603156 /* OS.swift */,
+				231EBCC0BB5CCC6B4F5E317E879C1679 /* PaymentQueueController.swift */,
+				5C8BEF05068022F8DA6686BCA0C4F01D /* PaymentsController.swift */,
+				749EF1D0C59B99F446F2032F697C4DC4 /* ProductsInfoController.swift */,
+				4DAAD9362D11B5F711701B0EA627A233 /* RestorePurchasesController.swift */,
+				33414DEFE7AEAA8CCBF406D7A41045D1 /* SKProduct+LocalizedPrice.swift */,
+				36E7E780FB5A32B59839A6BB7AAF49B3 /* SwiftyStoreKit.swift */,
+				28D711328C13973B59FDD07698F76813 /* SwiftyStoreKit+Types.swift */,
+				AFAA57406985C02FE1C6B4F13F4356DC /* Support Files */,
+			);
+			path = SwiftyStoreKit;
+			sourceTree = "<group>";
+		};
+		2A81A9A569BEF54D9CDEF7230488FA48 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0334C8A90A34DD4BF527C9277D4C2F4F /* SwiftyStoreKit */,
+				EBA42E746DA7ACDD59252386AEDBC45A /* YoutubePlayer-in-WKWebView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3FB0B6DA92EC9AA142295927DE156886 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD3ADF4F80BD3C28B78A770B5148FC4A /* Pods_Puzzles_from_Survivor.framework */,
+				B23E3B57AB825226397CD6E76EF643D1 /* SwiftyStoreKit.framework */,
+				423B823BCE8A7C3CEEDC6F5E746D4EF6 /* YoutubePlayer_in_WKWebView.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		50F0F839B66F76E55AAAF9F7D0D28368 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				07CAD0DE3FCA0F3F9BEDDE7A8A2DDD74 /* YoutubePlayer-in-WKWebView.modulemap */,
+				E80E8943E62876BB42B2D2083A5E24D8 /* YoutubePlayer-in-WKWebView.xcconfig */,
+				5BAA58D48DEB38C10C51B9FCB20C7476 /* YoutubePlayer-in-WKWebView-dummy.m */,
+				D2CDAE48C8B015C4742111B9E7C979EC /* YoutubePlayer-in-WKWebView-Info.plist */,
+				0D08F42F7EE02A5529C571980C52A4BE /* YoutubePlayer-in-WKWebView-prefix.pch */,
+				0E47DAB8DDFB4D64CEEED3A86E780F31 /* YoutubePlayer-in-WKWebView-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/SwiftyStoreKit";
+			path = "../Target Support Files/YoutubePlayer-in-WKWebView";
+			sourceTree = "<group>";
+		};
+		7A0C038124950EC1402E9DE601A2D5AC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DCBC3694A6483266B9A0B3CA14E538CE /* WKYTPlayerView.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		7BF06CB49620507E5FC061AB9365CE57 /* Pods-Puzzles from Survivor */ = {
@@ -126,34 +206,18 @@
 			path = "Target Support Files/Pods-Puzzles from Survivor";
 			sourceTree = "<group>";
 		};
-		9039292760238609F029C76198676C6F /* SwiftyStoreKit */ = {
+		AFAA57406985C02FE1C6B4F13F4356DC /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				06E26E5EE26787F17DEF9072934C14D4 /* AppleReceiptValidator.swift */,
-				76B6B61E119D02DF18FC882D25A0CBCC /* CompleteTransactionsController.swift */,
-				70921C0A2C05118371E89E093DFE379B /* InAppProductQueryRequest.swift */,
-				C358C372EE7485F72623B4C1B86F1D65 /* InAppReceipt.swift */,
-				3FDF535AD500EA3C438E500CABE6C158 /* InAppReceiptRefreshRequest.swift */,
-				75D0E0206D12CECC2D4806ACB3426DC1 /* InAppReceiptVerificator.swift */,
-				51BAF579CE733D9DF1E3980BDEFA07DC /* OS.swift */,
-				507EDE9A5DD3113C61B39E23F7EFCA82 /* PaymentQueueController.swift */,
-				5A3BD4FFAD916D1A2714CA44692B3805 /* PaymentsController.swift */,
-				F17E22CDE09D45C3270D4EC2A6CE625E /* ProductsInfoController.swift */,
-				E100DB68041A30845142151C3B316D9A /* RestorePurchasesController.swift */,
-				982ABA9F7D85DD9B6B570CFEFAE1E502 /* SKProduct+LocalizedPrice.swift */,
-				B8DB78EADF74D6B520A9F96C0CA8293A /* SwiftyStoreKit.swift */,
-				721C6F2151485E499339F81E7B0959BF /* SwiftyStoreKit+Types.swift */,
-				21B75529D572B6065272F48564DBF4FC /* Support Files */,
+				867947F31AA8321FC15AAB89C70332DC /* SwiftyStoreKit.modulemap */,
+				9FBC9FDC33DE62F1ABD030CF89BD9E0E /* SwiftyStoreKit.xcconfig */,
+				07F40F2CFEF9C4ED85780BCBBF38238D /* SwiftyStoreKit-dummy.m */,
+				656095F191E379574BEF67560478972C /* SwiftyStoreKit-Info.plist */,
+				0D4ECC0E04BC326C66458386BD9EDDC2 /* SwiftyStoreKit-prefix.pch */,
+				DA6CA73DF60DB03691F3684F2DB15259 /* SwiftyStoreKit-umbrella.h */,
 			);
-			path = SwiftyStoreKit;
-			sourceTree = "<group>";
-		};
-		B67F51A3F1A2221F9AEA8BD1C3563605 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9039292760238609F029C76198676C6F /* SwiftyStoreKit */,
-			);
-			name = Pods;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyStoreKit";
 			sourceTree = "<group>";
 		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
@@ -169,19 +233,10 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				B67F51A3F1A2221F9AEA8BD1C3563605 /* Pods */,
-				D0AE438D1EABA67FEF92F74A44BBF61D /* Products */,
+				2A81A9A569BEF54D9CDEF7230488FA48 /* Pods */,
+				3FB0B6DA92EC9AA142295927DE156886 /* Products */,
 				FA406CA526FD1A1D890B1DC06E700934 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		D0AE438D1EABA67FEF92F74A44BBF61D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8F84850C7770B5BBC315DB38E21E2009 /* Pods_Puzzles_from_Survivor.framework */,
-				F3BD811F9AEEB12A3F7E5F33C685FB25 /* SwiftyStoreKit.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
@@ -190,6 +245,17 @@
 				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EBA42E746DA7ACDD59252386AEDBC45A /* YoutubePlayer-in-WKWebView */ = {
+			isa = PBXGroup;
+			children = (
+				8FC4AC052BD1740472DD6CA206904F6E /* WKYTPlayerView.h */,
+				2DAD33139B0B31A489AA29475B4F4A36 /* WKYTPlayerView.m */,
+				7A0C038124950EC1402E9DE601A2D5AC /* Resources */,
+				50F0F839B66F76E55AAAF9F7D0D28368 /* Support Files */,
+			);
+			path = "YoutubePlayer-in-WKWebView";
 			sourceTree = "<group>";
 		};
 		FA406CA526FD1A1D890B1DC06E700934 /* Targets Support Files */ = {
@@ -203,33 +269,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		19E75F4CCEB5185C784EA888EEF18265 /* Headers */ = {
+		0DF195008986738C831ACAA6506210ED /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				445E46BDFCA8E6385833B12CFCC5ADDA /* SwiftyStoreKit-umbrella.h in Headers */,
+				0D23BF2125AB85DA59E7880F939756E1 /* SwiftyStoreKit-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B3075452BA81413968F09C9103B64DFE /* Headers */ = {
+		2A96C1ED3BEF49BB889E092FC0496794 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				647564410D61F8FE90096670C5768C35 /* Pods-Puzzles from Survivor-umbrella.h in Headers */,
+				F1AD8F8F5F66902FC08574114F65F04A /* Pods-Puzzles from Survivor-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F351C0851063B4D71A3CBB88C878AB16 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30702FE2BEBE7A694B14A5674BC8240B /* WKYTPlayerView.h in Headers */,
+				C43FDBFD0591B2593B36BE8271D25A6B /* YoutubePlayer-in-WKWebView-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0CA2C4A7E89611120A692430828E3A8D /* SwiftyStoreKit */ = {
+		2E9EF2B7727EB0C2C430B36C2EE02A0C /* SwiftyStoreKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B4BBDEC2E10901C727AD6184B9E85509 /* Build configuration list for PBXNativeTarget "SwiftyStoreKit" */;
+			buildConfigurationList = 4638179AA822DCE6431ED8FB2E315CE0 /* Build configuration list for PBXNativeTarget "SwiftyStoreKit" */;
 			buildPhases = (
-				19E75F4CCEB5185C784EA888EEF18265 /* Headers */,
-				649B80F1382E1FC721EE2E1F1B93E77A /* Sources */,
-				787AE785894C8243F49941E5E09AC671 /* Frameworks */,
-				E40A3F8EC596A01F32539DD077B5E513 /* Resources */,
+				0DF195008986738C831ACAA6506210ED /* Headers */,
+				39CD983F9B2E45465D8B3A522CF8105A /* Sources */,
+				F8FFB804D7C63CC60B3903CB5106290D /* Frameworks */,
+				8E582C82A4ED99933620F20C5CBBCD29 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -237,26 +312,45 @@
 			);
 			name = SwiftyStoreKit;
 			productName = SwiftyStoreKit;
-			productReference = F3BD811F9AEEB12A3F7E5F33C685FB25 /* SwiftyStoreKit.framework */;
+			productReference = B23E3B57AB825226397CD6E76EF643D1 /* SwiftyStoreKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		73F2CA8F9B2075D0C66DE95FD44F489D /* Pods-Puzzles from Survivor */ = {
+		5E39C067C6A74C61C07348EFDE0C00EB /* YoutubePlayer-in-WKWebView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 42DCD0595D185D5C2A4EE575DB59CCC9 /* Build configuration list for PBXNativeTarget "Pods-Puzzles from Survivor" */;
+			buildConfigurationList = 7DFD64F87322CE03EA646A16245246C0 /* Build configuration list for PBXNativeTarget "YoutubePlayer-in-WKWebView" */;
 			buildPhases = (
-				B3075452BA81413968F09C9103B64DFE /* Headers */,
-				10642A664B932101645DFA4A833E2FCE /* Sources */,
-				68F32868C24A20AB729E3A5BF40C60CF /* Frameworks */,
-				FE320AF195272745173B2909590FCD06 /* Resources */,
+				F351C0851063B4D71A3CBB88C878AB16 /* Headers */,
+				E7A4DDC3937F81E7ED8C363500AC40E5 /* Sources */,
+				DBA874FF3569F674033400ED25C66614 /* Frameworks */,
+				139C6B21031235069CAB6AC6CBA5B7E4 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A08B2B029E6D9895F27C184CC073F693 /* PBXTargetDependency */,
+			);
+			name = "YoutubePlayer-in-WKWebView";
+			productName = "YoutubePlayer-in-WKWebView";
+			productReference = 423B823BCE8A7C3CEEDC6F5E746D4EF6 /* YoutubePlayer_in_WKWebView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CBFF5AD55A62792BEE16D99B34125978 /* Pods-Puzzles from Survivor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4232AD34FC8FC1C7439B2E479779891 /* Build configuration list for PBXNativeTarget "Pods-Puzzles from Survivor" */;
+			buildPhases = (
+				2A96C1ED3BEF49BB889E092FC0496794 /* Headers */,
+				B1CF3ADDA4A076E3FE88B1AAC1FAF785 /* Sources */,
+				915AA14BEA35CEBD0289FD27D10480EC /* Frameworks */,
+				1519244B4FD88A052DDEB15D8B3FDBFE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B466E84B967C10853F672A3E0F97F5B /* PBXTargetDependency */,
+				0227A3211FC79BABCD4B4CA840789C60 /* PBXTargetDependency */,
 			);
 			name = "Pods-Puzzles from Survivor";
 			productName = "Pods-Puzzles from Survivor";
-			productReference = 8F84850C7770B5BBC315DB38E21E2009 /* Pods_Puzzles_from_Survivor.framework */;
+			productReference = CD3ADF4F80BD3C28B78A770B5148FC4A /* Pods_Puzzles_from_Survivor.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -268,7 +362,7 @@
 				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
 				TargetAttributes = {
-					0CA2C4A7E89611120A692430828E3A8D = {
+					2E9EF2B7727EB0C2C430B36C2EE02A0C = {
 						LastSwiftMigration = 1020;
 					};
 				};
@@ -281,25 +375,34 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = D0AE438D1EABA67FEF92F74A44BBF61D /* Products */;
+			productRefGroup = 3FB0B6DA92EC9AA142295927DE156886 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				73F2CA8F9B2075D0C66DE95FD44F489D /* Pods-Puzzles from Survivor */,
-				0CA2C4A7E89611120A692430828E3A8D /* SwiftyStoreKit */,
+				CBFF5AD55A62792BEE16D99B34125978 /* Pods-Puzzles from Survivor */,
+				2E9EF2B7727EB0C2C430B36C2EE02A0C /* SwiftyStoreKit */,
+				5E39C067C6A74C61C07348EFDE0C00EB /* YoutubePlayer-in-WKWebView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E40A3F8EC596A01F32539DD077B5E513 /* Resources */ = {
+		139C6B21031235069CAB6AC6CBA5B7E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6013621322820FCB49FCC526E4260043 /* WKYTPlayerView.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1519244B4FD88A052DDEB15D8B3FDBFE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FE320AF195272745173B2909590FCD06 /* Resources */ = {
+		8E582C82A4ED99933620F20C5CBBCD29 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -309,122 +412,63 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		10642A664B932101645DFA4A833E2FCE /* Sources */ = {
+		39CD983F9B2E45465D8B3A522CF8105A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				736BC968040C2C2DFE01386E7A7653D0 /* Pods-Puzzles from Survivor-dummy.m in Sources */,
+				F3B49498E840B211058B604D6D85748F /* AppleReceiptValidator.swift in Sources */,
+				8C8FEECB0A77542A6FDE3D08566A1256 /* CompleteTransactionsController.swift in Sources */,
+				90589D71B99AD6A15689BA3724F0D54B /* InAppProductQueryRequest.swift in Sources */,
+				01D43FD785D877E0A906001CBF99DA78 /* InAppReceipt.swift in Sources */,
+				935904A12A81F532032C82A10423684C /* InAppReceiptRefreshRequest.swift in Sources */,
+				78F51635194F50F8D6ABD6B12FAB326F /* InAppReceiptVerificator.swift in Sources */,
+				B6E078034F7BF1E17A416EA65AA9CEDF /* OS.swift in Sources */,
+				3E614C4D51A6E16F806B42EA7D758175 /* PaymentQueueController.swift in Sources */,
+				0E2F009DE6CDCA6872049174F08A0976 /* PaymentsController.swift in Sources */,
+				0519002C7C51B8B954CB5A627E34C17A /* ProductsInfoController.swift in Sources */,
+				9E8BD64381E8C26C306BABD2C7C2A8C0 /* RestorePurchasesController.swift in Sources */,
+				9675709A5E5BB5B6F979F04817D45EF5 /* SKProduct+LocalizedPrice.swift in Sources */,
+				E912CE18C8FE7D1491B9221FB1871176 /* SwiftyStoreKit+Types.swift in Sources */,
+				34D27C0CD2C9D300FF35CB879D66523E /* SwiftyStoreKit-dummy.m in Sources */,
+				74D3517772F1B4CC4A6A3DD91927EB7B /* SwiftyStoreKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		649B80F1382E1FC721EE2E1F1B93E77A /* Sources */ = {
+		B1CF3ADDA4A076E3FE88B1AAC1FAF785 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9FE8344D4D9DC32E7B5ED413773F02E /* AppleReceiptValidator.swift in Sources */,
-				52DECFA708C60B688442511A7B8AF4BE /* CompleteTransactionsController.swift in Sources */,
-				F961CDFDCF9C05AD0E63788093251AFD /* InAppProductQueryRequest.swift in Sources */,
-				41B94504A4BD1EA392BFB85CF9D20B4E /* InAppReceipt.swift in Sources */,
-				F2616BF8374945F8A14293193562E39A /* InAppReceiptRefreshRequest.swift in Sources */,
-				C7DCA6F29200C310A53B8AAEA898CD08 /* InAppReceiptVerificator.swift in Sources */,
-				3F1A0C9633C58E03F1BC31EB4EC4A7BA /* OS.swift in Sources */,
-				C03C5366E248F2EB612213047AE7A92F /* PaymentQueueController.swift in Sources */,
-				FA77BC424C0A8AD79E9AD240B795EE99 /* PaymentsController.swift in Sources */,
-				2B632F8F275236E24F72C62533E7503A /* ProductsInfoController.swift in Sources */,
-				191C0274F1961C002525EBBF0A43BC4B /* RestorePurchasesController.swift in Sources */,
-				A0496B35FCA83A2CD8A316DBB19EC756 /* SKProduct+LocalizedPrice.swift in Sources */,
-				AC1998E7F63A4E4F541D16CF44F8BD2A /* SwiftyStoreKit+Types.swift in Sources */,
-				50096A570EAF41A057EEBCB7AE02435C /* SwiftyStoreKit-dummy.m in Sources */,
-				7AB807DC7585F6CD65EE049B34DE0CC8 /* SwiftyStoreKit.swift in Sources */,
+				7363FC50FF858DB8C306969D75975EEF /* Pods-Puzzles from Survivor-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7A4DDC3937F81E7ED8C363500AC40E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A934F817062B05DA2D543694B63A9868 /* WKYTPlayerView.m in Sources */,
+				E19D61C0792310B2B91511E833D2ACB3 /* YoutubePlayer-in-WKWebView-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A08B2B029E6D9895F27C184CC073F693 /* PBXTargetDependency */ = {
+		0227A3211FC79BABCD4B4CA840789C60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "YoutubePlayer-in-WKWebView";
+			target = 5E39C067C6A74C61C07348EFDE0C00EB /* YoutubePlayer-in-WKWebView */;
+			targetProxy = 5754F2724BC0B4954E5F2E90C9224E54 /* PBXContainerItemProxy */;
+		};
+		8B466E84B967C10853F672A3E0F97F5B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyStoreKit;
-			target = 0CA2C4A7E89611120A692430828E3A8D /* SwiftyStoreKit */;
-			targetProxy = 61AAC0B6473A84ACB02370BEE43CEB3B /* PBXContainerItemProxy */;
+			target = 2E9EF2B7727EB0C2C430B36C2EE02A0C /* SwiftyStoreKit */;
+			targetProxy = 6C62E23BE11E9EC9E534F70875832226 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		6F291A5FF8E296C7FE46B0F1BB925188 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDA12FBBB86EE5105963C10EC4C4F1D3 /* SwiftyStoreKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit.modulemap";
-				PRODUCT_MODULE_NAME = SwiftyStoreKit;
-				PRODUCT_NAME = SwiftyStoreKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		8A9E4CC2B235CB714608BC9257B5AF91 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B03568E6444B7DAD10FC7CAB9D6AA46 /* Pods-Puzzles from Survivor.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Puzzles from Survivor/Pods-Puzzles from Survivor-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Puzzles from Survivor/Pods-Puzzles from Survivor.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		8F17DC3A99F99FBAD606CE6963886315 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -549,7 +593,80 @@
 			};
 			name = Debug;
 		};
-		D0BC67313EF606CB41DBCE2CD6CCFF66 /* Debug */ = {
+		98D1A55F19913289F5FC28C722779325 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B03568E6444B7DAD10FC7CAB9D6AA46 /* Pods-Puzzles from Survivor.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Puzzles from Survivor/Pods-Puzzles from Survivor-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Puzzles from Survivor/Pods-Puzzles from Survivor.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		98EA54EEF74ECD2A290BD638EA73B84F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FBC9FDC33DE62F1ABD030CF89BD9E0E /* SwiftyStoreKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyStoreKit;
+				PRODUCT_NAME = SwiftyStoreKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9D47EF15DD0F6592E5CC056DC193AAAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 917F518CDBDD08DE744AEC46340831CB /* Pods-Puzzles from Survivor.debug.xcconfig */;
 			buildSettings = {
@@ -586,9 +703,45 @@
 			};
 			name = Debug;
 		};
-		DDA70304FCA0947566734B2C3853A55F /* Debug */ = {
+		B390BF78A0600F7EEFA89FB264F893C5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDA12FBBB86EE5105963C10EC4C4F1D3 /* SwiftyStoreKit.xcconfig */;
+			baseConfigurationReference = E80E8943E62876BB42B2D2083A5E24D8 /* YoutubePlayer-in-WKWebView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView.modulemap";
+				PRODUCT_MODULE_NAME = YoutubePlayer_in_WKWebView;
+				PRODUCT_NAME = YoutubePlayer_in_WKWebView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CF781DD7AA10FF39CDF8351256FD346B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FBC9FDC33DE62F1ABD030CF89BD9E0E /* SwiftyStoreKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -616,6 +769,42 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D9D93E04646D064791889A978A201DFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E80E8943E62876BB42B2D2083A5E24D8 /* YoutubePlayer-in-WKWebView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView.modulemap";
+				PRODUCT_MODULE_NAME = YoutubePlayer_in_WKWebView;
+				PRODUCT_NAME = YoutubePlayer_in_WKWebView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -624,11 +813,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		42DCD0595D185D5C2A4EE575DB59CCC9 /* Build configuration list for PBXNativeTarget "Pods-Puzzles from Survivor" */ = {
+		4638179AA822DCE6431ED8FB2E315CE0 /* Build configuration list for PBXNativeTarget "SwiftyStoreKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D0BC67313EF606CB41DBCE2CD6CCFF66 /* Debug */,
-				8A9E4CC2B235CB714608BC9257B5AF91 /* Release */,
+				98EA54EEF74ECD2A290BD638EA73B84F /* Debug */,
+				CF781DD7AA10FF39CDF8351256FD346B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -642,11 +831,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B4BBDEC2E10901C727AD6184B9E85509 /* Build configuration list for PBXNativeTarget "SwiftyStoreKit" */ = {
+		7DFD64F87322CE03EA646A16245246C0 /* Build configuration list for PBXNativeTarget "YoutubePlayer-in-WKWebView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DDA70304FCA0947566734B2C3853A55F /* Debug */,
-				6F291A5FF8E296C7FE46B0F1BB925188 /* Release */,
+				D9D93E04646D064791889A978A201DFF /* Debug */,
+				B390BF78A0600F7EEFA89FB264F893C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4232AD34FC8FC1C7439B2E479779891 /* Build configuration list for PBXNativeTarget "Pods-Puzzles from Survivor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D47EF15DD0F6592E5CC056DC193AAAB /* Debug */,
+				98D1A55F19913289F5FC28C722779325 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

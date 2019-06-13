@@ -63,7 +63,7 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
                         "$0.99 - 3 Amulets - Keep your streak alive 3 time (3 days)",
                         "$1.99 - 10 Amulets - Keep your streak alive 3 time (3 days)",
                         "$0.99 - Bowl of Rice - Get option to buy Amulets before streak reset",
-                        ""]//"I can't afford it :("]
+                        "I can't afford it :("]
     var RegisteredPurchaseArray: [RegisteredPurchase] = [.UnlockAll,
                                                          .Slide_5_Piece,
                                                          .Fire_And_Ice,
@@ -166,7 +166,7 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
             if myArray[indexPath.row] == STR_PROUDCT_NOT_AVAILABLE {
                 showAlert(alert: alertWithTitle(title: "Not Available", message: "This product is not yet available. Check back soon."))
             }else if myArray.count - 1 == indexPath.row {
-//                showAlert(alert: alertWithTitle(title: "No Money?", message: "Hi, this is rrTenz from rrTenz Games. I am trying to make\n'Puzzle Cluster'\navailable to as many people as possible. However I have locked some puzzles and am asking for a contribution because I do need some money to keep this project going.\n\nIf you really don't have the money or can't get mom or dad's permission to make a purchase, I have added a secret way to play the locked the puzzles - an Easter Egg. If you want to know the secret, here are a few things you can do:\n\n1. Follow 'rrTenz Games' on Facebook\n2. Subscribe to 'Survivor Geek' on YouTube\n3. Share Puzzle Cluster on social media\n\nWhen you have done at least one of these things, take a screen shot and email it to rrtenz@gmail.com\nFor each one you do, I will send you the secret way to play 1 puzzle of your choice. If you do all 3 of those things, I'll tell you how to play all current and future puzzles! If you can't do any of these things, send me an email and we'll talk about it."))
+                showAlert(alert: alertWithTitle(title: "No Money?", message: "Hi, this is rrTenz from rrTenz Games. I am trying to make\n'Puzzle Cluster'\navailable to as many people as possible. However I have locked some puzzles and am asking for a contribution because I do need some money to keep this project going.\n\nIf you really don't have the money or can't get mom or dad's permission to make a purchase, here are a few things you can do:\n\n1. Follow 'rrTenz Games' on Facebook\n2. Subscribe to 'Survivor Geek' on YouTube\n3. Share Puzzle Cluster on social media\n\nWhen you have done at least one of these things, take a screen shot and email it to rrtenz@gmail.com\nFor each one you do, I will send you a promo code to 1 puzzle of your choice. If you do all 3 of those things, I'll give you a promo code for all current and future puzzles! I can only give a limited number of promo codes, so don't wait."))
             }else {
                 purchase(purchase: RegisteredPurchaseArray[indexPath.row])
             }
@@ -195,7 +195,7 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
                 self.getInfoIndex += 1
                 self.getInfo(purchase: self.RegisteredPurchaseArray[self.getInfoIndex])
             }else {
-                self.myArray.append("") //holder for "cannot afford"
+                self.myArray.append("I can't afford it :(") //holder for "cannot afford"
             }
             self.tableView.reloadData()
         })
