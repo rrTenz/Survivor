@@ -51,6 +51,7 @@ class VC_Stats: UIViewController, GKGameCenterControllerDelegate {
             "Amulets Purchased: \(appDelegate.amuletsPurchased)\n" +
             "Rice Bowls Purchased: \(appDelegate.bowlsOfRice)\n\n" +
             "Puzzles Completed: \(appDelegate.puzzlesCompleted)\n" +
+            " - Tile Puzzle: \(appDelegate.pcc_TilePuzzle)\n" +
             " - 5 Piece Slide Puzzle: \(appDelegate.pcc_SlidePuzzle3)\n" +
             " - Fire and Ice: \(appDelegate.pcc_VerticallyChallenged)\n" +
             " - Vertical Puzzle: \(appDelegate.pcc_VerticalPuzzle)\n" +
@@ -137,6 +138,7 @@ class VC_Stats: UIViewController, GKGameCenterControllerDelegate {
         self.submitScoreToGC(score: Int(appDelegate.pcc_VerticalPuzzle), leaderBoardID: appDelegate.LEADERBOARD_pcc_VerticalPuzzle)
         self.submitScoreToGC(score: Int(appDelegate.pcc_VerticallyChallenged), leaderBoardID: appDelegate.LEADERBOARD_pcc_VerticallyChallenged)
         self.submitScoreToGC(score: Int(appDelegate.pcc_SlidePuzzle3), leaderBoardID: appDelegate.LEADERBOARD_pcc_SlidePuzzle3)
+        self.submitScoreToGC(score: Int(appDelegate.pcc_TilePuzzle), leaderBoardID: appDelegate.LEADERBOARD_pcc_TilePuzzle)
         
         self.submitScoreToGC(score: Int(appDelegate.longestStreak), leaderBoardID: self.LEADERBOARD_streakCount)
         self.submitScoreToGC(score: Int(appDelegate.bowlsOfRice), leaderBoardID: self.LEADERBOARD_bowlsOfRice)

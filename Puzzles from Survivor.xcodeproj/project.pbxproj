@@ -28,6 +28,8 @@
 		C722640F22613C8D00A3FA22 /* SeaCrates.png in Resources */ = {isa = PBXBuildFile; fileRef = C722640E22613C8D00A3FA22 /* SeaCrates.png */; };
 		C722641122613F4900A3FA22 /* SpencerPuzzle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C722641022613F4900A3FA22 /* SpencerPuzzle.jpg */; };
 		C72264132261412A00A3FA22 /* SlidePuzzle2.png in Resources */ = {isa = PBXBuildFile; fileRef = C72264122261412A00A3FA22 /* SlidePuzzle2.png */; };
+		C72FF7BC22C17F48000945A9 /* VC_TilePuzzle_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FF7BB22C17F48000945A9 /* VC_TilePuzzle_Practice.swift */; };
+		C72FF7BE22C2B89F000945A9 /* TilePuzzle.png in Resources */ = {isa = PBXBuildFile; fileRef = C72FF7BD22C2B89E000945A9 /* TilePuzzle.png */; };
 		C731DA81224538DE00F25B51 /* VC_SlidePuzzle3_Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731DA80224538DE00F25B51 /* VC_SlidePuzzle3_Practice.swift */; };
 		C731DA8522498C9F00F25B51 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C731DA8422498C9F00F25B51 /* StoreKit.framework */; };
 		C731DA892249920C00F25B51 /* ViewController_Unlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731DA882249920C00F25B51 /* ViewController_Unlock.swift */; };
@@ -86,6 +88,8 @@
 		C722640E22613C8D00A3FA22 /* SeaCrates.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SeaCrates.png; sourceTree = "<group>"; };
 		C722641022613F4900A3FA22 /* SpencerPuzzle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SpencerPuzzle.jpg; sourceTree = "<group>"; };
 		C72264122261412A00A3FA22 /* SlidePuzzle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SlidePuzzle2.png; sourceTree = "<group>"; };
+		C72FF7BB22C17F48000945A9 /* VC_TilePuzzle_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_TilePuzzle_Practice.swift; sourceTree = "<group>"; };
+		C72FF7BD22C2B89E000945A9 /* TilePuzzle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TilePuzzle.png; sourceTree = "<group>"; };
 		C731DA80224538DE00F25B51 /* VC_SlidePuzzle3_Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_SlidePuzzle3_Practice.swift; sourceTree = "<group>"; };
 		C731DA8422498C9F00F25B51 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C731DA882249920C00F25B51 /* ViewController_Unlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_Unlock.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 				C704154E2267C2F500B7B7D9 /* VerticallyChallenged.png */,
 				C70415562267C4E900B7B7D9 /* CogPuzzle.png */,
 				C70415482267BD1200B7B7D9 /* SlidePuzzle_5Piece.png */,
+				C72FF7BD22C2B89E000945A9 /* TilePuzzle.png */,
 				C71D4A61214B1C81009E81AB /* blank.png */,
 			);
 			path = Images;
@@ -218,6 +223,7 @@
 				C7C54E1B2237247A006565CB /* VC_VerticalPuzzle_Practice.swift */,
 				C7C54E5D223C3E4B006565CB /* VC_VerticallyChallenged_Practice.swift */,
 				C731DA80224538DE00F25B51 /* VC_SlidePuzzle3_Practice.swift */,
+				C72FF7BB22C17F48000945A9 /* VC_TilePuzzle_Practice.swift */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 				C70B3FC5226693CE003C2092 /* VerticalPuzzle.png in Resources */,
 				C722641122613F4900A3FA22 /* SpencerPuzzle.jpg in Resources */,
 				C722640B22613AC500A3FA22 /* Hanoi.png in Resources */,
+				C72FF7BE22C2B89F000945A9 /* TilePuzzle.png in Resources */,
 				C70B3FC722669439003C2092 /* FlipOut.png in Resources */,
 				C704154B2267BFB900B7B7D9 /* MightAsWellJump.png in Resources */,
 				C72264132261412A00A3FA22 /* SlidePuzzle2.png in Resources */,
@@ -452,6 +459,7 @@
 				C7603F26213F2FFD008731C5 /* ViewController_Information.swift in Sources */,
 				C7603F1E2139C883008731C5 /* VC_SeaCrates_Practice.swift in Sources */,
 				C7F64D942194F67400108338 /* VC_ColorAndShape_Practice.swift in Sources */,
+				C72FF7BC22C17F48000945A9 /* VC_TilePuzzle_Practice.swift in Sources */,
 				C7885C29222F442B005D2E3B /* VC_CogPuzzle_Practice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

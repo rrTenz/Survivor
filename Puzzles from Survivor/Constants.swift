@@ -32,6 +32,7 @@ class Constants {
      * ???? https://www.youtube.com/watch?v=7KmsnS7rJMo
      */
     
+    static let TilePuzzle = PuzzleSimple(Name: "Tile Puzzle", Description: "The edges of each puzzle piece must match the color of the piece next to it (i.e. black must line up with black, orange with orange, yellow with yellow, and white with white). If it doesn't line up, you don't have it right.", VideoCode: "-7KAWFCQzaY", VideoCode_Learn: "6NWjhHUZ1uA", Image: #imageLiteral(resourceName: "TilePuzzle.png"), Locked: true)
     static let SlidePuzzle_5 = PuzzleSimple(Name: "5 Piece Slide Puzzle", Description: "In this slide puzzle you must surround the square block with the 4 corner pieces.", VideoCode: "0NA5h78sd-U", VideoCode_Learn: "wEau2mI1QZE", Image: #imageLiteral(resourceName: "SlidePuzzle_5Piece.png"), Locked: true)
     static let VerticallyChallenged = PuzzleSimple(Name: "Fire and Ice", Description: "You must flip and/or rotate the pieces to get them to fit. Once you place a piece correctly, you will be able to place more pieces, until all pieces are placed correctly.", VideoCode: "FjSWaEKjJOQ", VideoCode_Learn: "uA0gu_lBuiI", Image: #imageLiteral(resourceName: "VerticallyChallenged.png"), Locked: true)
     static let VerticalPuzzle = PuzzleSimple(Name: "Vertical Puzzle", Description: "Use the 20 pieces to solve a vertical puzzle.", VideoCode: "WSg7hJp__X8", VideoCode_Learn: "QX6jU62rFAY", Image: #imageLiteral(resourceName: "VerticalPuzzle.png"), Locked: true)
@@ -50,7 +51,7 @@ class Constants {
     static let TwentyOneFlags = PuzzleSimple(Name: "21 Flags", Description: "You will take turns against another player removing flags. You want to be the player that removes the last flag. On each turn you must remove 1, 2, or 3 flags.", VideoCode: "kx8vdnARxbw", VideoCode_Learn: "K_MckZc8VvQ", Image: #imageLiteral(resourceName: "Flags_21.png"), Locked: false)
     static let MightAsWellJump = PuzzleSimple(Name: "Turn Table Puzzle", Description: "Move balls around so they match the corresponding color in the chutes.\nTo sping the wheel, swipe left/right or up/down, or use 2 finger rotations.\nTo move the balls in/out of the middle, tap the rack or the center.", VideoCode: "gfDheINwSFk", VideoCode_Learn: "yBsdJ38fEv0", Image: #imageLiteral(resourceName: "MightAsWellJump.png"), Locked: false)
     
-    static let PuzzleArraySimple = [SlidePuzzle_5, VerticallyChallenged, VerticalPuzzle, CogPuzzle, NumbersGame, FlipOut, ComboLock, SpinPuzzle, MightAsWellJump, SlidePuzzle, Matchbox25, ColorAndShape, SlidePuzzle_8, TowerOfHanoi, TwentyOneFlags, SeaCrates, FivePiece]
+    static let PuzzleArraySimple = [TilePuzzle, SlidePuzzle_5, VerticallyChallenged, VerticalPuzzle, CogPuzzle, NumbersGame, FlipOut, ComboLock, SpinPuzzle, MightAsWellJump, SlidePuzzle, Matchbox25, ColorAndShape, SlidePuzzle_8, TowerOfHanoi, TwentyOneFlags, SeaCrates, FivePiece]
     
     
     

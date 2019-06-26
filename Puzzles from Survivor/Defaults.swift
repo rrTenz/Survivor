@@ -26,6 +26,7 @@ internal class Defaults {
     let key_haveUnlocked_5PiecePuzzle = "key_haveUnlocked_5PiecePuzzle"
     let key_haveUnlocked_FireAndIce = "key_haveUnlocked_FireAndIce"
     let key_haveUnlocked_VerticalPuzzle = "key_haveUnlocked_VerticalPuzzle"
+    let key_haveUnlocked_TilePuzzle = "key_haveUnlocked_TilePuzzle"
     let key_promoCodesUsed_Array = "key_promoCodesUsed_Array"
     let key_giveFreeAmulet = "key_giveFreeAmulet"
     
@@ -45,6 +46,7 @@ internal class Defaults {
     let key_pcc_VerticalPuzzle = "key_pcc_VerticalPuzzle"
     let key_pcc_VerticallyChallenged = "key_pcc_VerticallyChallenged"
     let key_pcc_SlidePuzzle3 = "key_pcc_SlidePuzzle3"
+    let key_pcc_TilePuzzle = "key_pcc_TilePuzzle"
     
     func load_Defaults() {
         let defaults = UserDefaults.standard
@@ -78,6 +80,7 @@ internal class Defaults {
         appDelegate.haveUnlocked_5PiecePuzzle = defaults.bool(forKey: key_haveUnlocked_5PiecePuzzle)
         appDelegate.haveUnlocked_FireAndIce = defaults.bool(forKey: key_haveUnlocked_FireAndIce)
         appDelegate.haveUnlocked_VerticalPuzzle = defaults.bool(forKey: key_haveUnlocked_VerticalPuzzle)
+        appDelegate.haveUnlocked_TilePuzzle = defaults.bool(forKey: key_haveUnlocked_TilePuzzle)
         if defaults.object(forKey: key_promoCodesUsed_Array) == nil {
             print("key_promoCodesUsed_Array has not been saved")
         }else {
@@ -101,6 +104,7 @@ internal class Defaults {
         appDelegate.pcc_VerticalPuzzle = defaults.integer(forKey: key_pcc_VerticalPuzzle)
         appDelegate.pcc_VerticallyChallenged = defaults.integer(forKey: key_pcc_VerticallyChallenged)
         appDelegate.pcc_SlidePuzzle3 = defaults.integer(forKey: key_pcc_SlidePuzzle3)
+        appDelegate.pcc_TilePuzzle = defaults.integer(forKey: key_pcc_TilePuzzle)
     }
     
     func save_Defaults(updateStreak: Bool) {
@@ -128,6 +132,7 @@ internal class Defaults {
         defaults.set(appDelegate.haveUnlocked_5PiecePuzzle, forKey: key_haveUnlocked_5PiecePuzzle)
         defaults.set(appDelegate.haveUnlocked_FireAndIce, forKey: key_haveUnlocked_FireAndIce)
         defaults.set(appDelegate.haveUnlocked_VerticalPuzzle, forKey: key_haveUnlocked_VerticalPuzzle)
+        defaults.set(appDelegate.haveUnlocked_TilePuzzle, forKey: key_haveUnlocked_TilePuzzle)
         defaults.set(appDelegate.promoCodesUsed_Array, forKey: key_promoCodesUsed_Array)
         defaults.set(appDelegate.giveFreeAmulet, forKey: key_giveFreeAmulet)
 
@@ -148,6 +153,7 @@ internal class Defaults {
         defaults.set(appDelegate.pcc_VerticalPuzzle, forKey: key_pcc_VerticalPuzzle)
         defaults.set(appDelegate.pcc_VerticallyChallenged, forKey: key_pcc_VerticallyChallenged)
         defaults.set(appDelegate.pcc_SlidePuzzle3, forKey: key_pcc_SlidePuzzle3)
+        defaults.set(appDelegate.pcc_TilePuzzle, forKey: key_pcc_TilePuzzle)
     }
 
 }

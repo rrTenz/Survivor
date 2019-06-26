@@ -18,6 +18,7 @@ class VC_EasterEgg: UIViewController {
         case FivePiece
         case FireAndIce
         case Vertical
+        case Tile
         case Contra
         case None
     }
@@ -154,6 +155,11 @@ class VC_EasterEgg: UIViewController {
             print("Vertical Puzzle")
             alertMessage = "You can now play\nVertical Puzzle"
             appDelegate.haveUnlocked_VerticalPuzzle = true
+            checkEggHidden()
+        }else if selectedEgg == .Tile {
+            print("Tile Puzzle")
+            alertMessage = "You can now play\nTile Puzzle"
+            appDelegate.haveUnlocked_TilePuzzle = true
             checkEggHidden()
         }else if selectedEgg == .Contra {
             print("Contra code")
@@ -306,6 +312,7 @@ class VC_EasterEgg: UIViewController {
                     case VerticalPuzzle = 8
                     case CompletedCount_add = 9
                     case CompletedCount_set = 10
+                    case TilePuzzle = 11
                 }
                 enum CompletedCount: Int {
                     case SlidePuzzle = 0
@@ -322,6 +329,7 @@ class VC_EasterEgg: UIViewController {
                     case VerticalPuzzle = 11
                     case VerticallyChallenged = 12
                     case SlidePuzzle3 = 13
+                    case TilePuzzle = 14
                     case Total = 99
                 }
                 if let typeEnum = PromoCodeType(rawValue: type) {
@@ -357,6 +365,9 @@ class VC_EasterEgg: UIViewController {
                     case .VerticalPuzzle:
                         alertMessage = "Vertical Puzzle\nhas been unlocked"
                         appDelegate.haveUnlocked_VerticalPuzzle = true
+                    case .TilePuzzle:
+                        alertMessage = "Tile Puzzle\nhas been unlocked"
+                        appDelegate.haveUnlocked_TilePuzzle = true
                     case .CompletedCount_add, .CompletedCount_set:
                         print("Completed Count Promo Code")
                         if let puzzleEnum = CompletedCount(rawValue: val / 1000) {
@@ -461,6 +472,13 @@ class VC_EasterEgg: UIViewController {
                                     appDelegate.pcc_SlidePuzzle3 = count
                                 }
                                 alertMessage = "5 Piece Slide Puzzle Count: \(appDelegate.pcc_SlidePuzzle3)"
+                            case .TilePuzzle:
+                                if typeEnum == .CompletedCount_add {
+                                    appDelegate.pcc_TilePuzzle += count
+                                }else {
+                                    appDelegate.pcc_TilePuzzle = count
+                                }
+                                alertMessage = "Tile Puzzle Count: \(appDelegate.pcc_TilePuzzle)"
                             case .Total:
                                 if typeEnum == .CompletedCount_add {
                                     appDelegate.puzzlesCompleted += count
@@ -495,5 +513,5 @@ class VC_EasterEgg: UIViewController {
     }
     
     func update_puzzlesCompleted() {
-        appDelegate.puzzlesCompleted = appDelegate.pcc_SlidePuzzle + appDelegate.pcc_Hanoi + appDelegate.pcc_MightAsWellJump + appDelegate.pcc_SlidePuzzle2 + appDelegate.pcc_ColorAndShape + appDelegate.pcc_Matchbox25 + appDelegate.pcc_SpinPuzzle + appDelegate.pcc_CombinationLock + appDelegate.pcc_NumbersGame + appDelegate.pcc_CogPuzzle + appDelegate.pcc_VerticalPuzzle + appDelegate.pcc_VerticallyChallenged + appDelegate.pcc_SlidePuzzle3
+        appDelegate.puzzlesCompleted = appDelegate.pcc_SlidePuzzle + appDelegate.pcc_Hanoi + appDelegate.pcc_MightAsWellJump + appDelegate.pcc_SlidePuzzle2 + appDelegate.pcc_ColorAndShape + appDelegate.pcc_Matchbox25 + appDelegate.pcc_SpinPuzzle + appDelegate.pcc_CombinationLock + appDelegate.pcc_NumbersGame + appDelegate.pcc_CogPuzzle + appDelegate.pcc_VerticalPuzzle + appDelegate.pcc_VerticallyChallenged + appDelegate.pcc_SlidePuzzle3 + appDelegate.pcc_TilePuzzle
     }}

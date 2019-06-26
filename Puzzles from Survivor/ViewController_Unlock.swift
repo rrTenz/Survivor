@@ -17,6 +17,7 @@ enum RegisteredPurchase: String {
     case Slide_5_Piece = "5_Piece_Puzzle"
     case Fire_And_Ice = "Fire_And_Ice"
     case Vertical_Puzzle = "Vertical_Puzzle"
+    case Tile_Puzzle = "Tile_Puzzle"
     case Amulet_3 = "ImmunityNecklace_3"
     case Amulet_10 = "ImmunityNecklace_10"
     case BowlOfRice = "BowlOfRice"
@@ -60,6 +61,7 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
                         "$0.99 - 5 Piece Slide Puzzle - Unlock 5 Piece Slide Puzzle",
                         "$0.99 - Fire and Ice - Unlock Fire and Ice Puzzle",
                         "$0.99 - Vertical Puzzle - Unlock Vertical Puzzle",
+                        "$0.99 - Tile Puzzle - Unlock Tile Puzzle",
                         "$0.99 - 3 Amulets - Keep your streak alive 3 time (3 days)",
                         "$1.99 - 10 Amulets - Keep your streak alive 3 time (3 days)",
                         "$0.99 - Bowl of Rice - Get option to buy Amulets before streak reset",
@@ -68,6 +70,7 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
                                                          .Slide_5_Piece,
                                                          .Fire_And_Ice,
                                                          .Vertical_Puzzle,
+                                                         .Tile_Puzzle,
                                                          .Amulet_3,
                                                          .Amulet_10,
                                                          .BowlOfRice,
@@ -79,6 +82,7 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
     var SlidePuzzle_5 = RegisteredPurchase.Slide_5_Piece
     var FireAndIce = RegisteredPurchase.Fire_And_Ice
     var VerticalPuzzle = RegisteredPurchase.Vertical_Puzzle
+    var TilePuzzle = RegisteredPurchase.Tile_Puzzle
     var UnlockAll = RegisteredPurchase.UnlockAll
     var getInfoIndex = 0
     var verifyPurchaseIndex = 0
@@ -226,6 +230,10 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
                     print("Purchase complete: Vertical Puzzle \(self.appDelegate.haveUnlocked_VerticalPuzzle)")
                     self.appDelegate.haveUnlocked_VerticalPuzzle = true
                     print("                   Vertical Puzzle \(self.appDelegate.haveUnlocked_VerticalPuzzle)")
+                case self.bundleID + "." + RegisteredPurchase.Tile_Puzzle.rawValue:
+                    print("Purchase complete: Tile Puzzle \(self.appDelegate.haveUnlocked_TilePuzzle)")
+                    self.appDelegate.haveUnlocked_TilePuzzle = true
+                    print("                   Tile Puzzle \(self.appDelegate.haveUnlocked_TilePuzzle)")
                 case self.bundleID + "." + RegisteredPurchase.UnlockAll.rawValue:
                     print("Purchase complete: UnlockAll \(self.appDelegate.haveUnlocked_All)")
                     self.appDelegate.haveUnlocked_All = true
@@ -276,6 +284,10 @@ class ViewController_Unlock: UIViewController, UITableViewDelegate, UITableViewD
                     print("Restore complete: Vertical Puzzle \(self.appDelegate.haveUnlocked_VerticalPuzzle)")
                     self.appDelegate.haveUnlocked_VerticalPuzzle = true
                     print("                   Vertical Puzzle \(self.appDelegate.haveUnlocked_VerticalPuzzle)")
+                case self.bundleID + "." + RegisteredPurchase.Tile_Puzzle.rawValue:
+                    print("Restore complete: Tile Puzzle \(self.appDelegate.haveUnlocked_TilePuzzle)")
+                    self.appDelegate.haveUnlocked_TilePuzzle = true
+                    print("                   Tile Puzzle \(self.appDelegate.haveUnlocked_TilePuzzle)")
                 case self.bundleID + "." + RegisteredPurchase.UnlockAll.rawValue:
                     print("Restore complete: UnlockAll \(self.appDelegate.haveUnlocked_All)")
                     self.appDelegate.haveUnlocked_All = true

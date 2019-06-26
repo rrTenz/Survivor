@@ -127,6 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var haveUnlocked_5PiecePuzzle = false
     var haveUnlocked_FireAndIce = false
     var haveUnlocked_VerticalPuzzle = false
+    var haveUnlocked_TilePuzzle = false
     var promoCodesUsed_Array: [String] = []
     var giveFreeAmulet = false
     var didEarnAmulet = false
@@ -146,6 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var pcc_VerticalPuzzle = 0
     var pcc_VerticallyChallenged = 0
     var pcc_SlidePuzzle3 = 0
+    var pcc_TilePuzzle = 0
 
     var SeasonSelected = -1
     var EpisodeSelected = -1
@@ -176,6 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let LEADERBOARD_pcc_VerticalPuzzle = "com.pcc_VerticalPuzzle.puzzlesfromsurvivor2"               //Completed Count: Vertical Puzzle
     let LEADERBOARD_pcc_VerticallyChallenged = "com.pcc_VerticallyChallenged.puzzlesfromsurvivor2"   //Completed Count: Fire and Ice
     let LEADERBOARD_pcc_SlidePuzzle3 = "com.pcc_SlidePuzzle3.puzzlesfromsurvivor2"                   //Completed Count: 5 Piece Slide Puzzle
+    let LEADERBOARD_pcc_TilePuzzle = "com.pcc_TilePuzzle.puzzlesfromsurvivor2"                       //Completed Count: Tile Puzzle
     
 }
 

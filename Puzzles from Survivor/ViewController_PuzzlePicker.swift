@@ -58,6 +58,12 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
                 }else {
                     return true
                 }
+            }else if appDelegate.puzzleArraySimple[appDelegate.PuzzleSelected].Name == "Tile Puzzle" {
+                if appDelegate.haveUnlocked_TilePuzzle {
+                    return false
+                }else {
+                    return true
+                }
             }
         }
         fatalError()
@@ -507,6 +513,16 @@ class ViewController_PuzzlePicker: UIViewController, UIPickerViewDataSource, UIP
                 let controller = storyboard.instantiateViewController(withIdentifier: "VC_SlidePuzzle3_Practice")
                 self.present(controller, animated: true, completion: nil)
                 if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_SlidePuzzle3_Practice") as? VC_SlidePuzzle3_Practice {
+                    present(vc, animated: true, completion: nil)
+                }
+            }else {
+                unlockAlert()
+            }
+        case "Tile Puzzle":
+            if puzzleIsLocked() == false {
+                let controller = storyboard.instantiateViewController(withIdentifier: "VC_TilePuzzle_Practice")
+                self.present(controller, animated: true, completion: nil)
+                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VC_TilePuzzle_Practice") as? VC_TilePuzzle_Practice {
                     present(vc, animated: true, completion: nil)
                 }
             }else {
